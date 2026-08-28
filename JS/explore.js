@@ -534,3 +534,39 @@ const secs =
 return minutes + ":" +
     secs.toString().padStart(2, "0");
 }
+/* ================================ FINAL PLAYER + EFFECTS ================================ */
+function updatePlayer(song) { playerCover.src = song.cover; playerTitle.textContent = song.title; playerArtist.textContent = song.artist; }
+function togglePlay() { if (!audioPlayer.src) return;
+if (audioPlayer.paused) {
+    audioPlayer.play();
+} else {
+    audioPlayer.pause();
+}
+}
+audioPlayer.addEventListener("play", function () { playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>'; });
+audioPlayer.addEventListener("pause", function () { playPauseBtn.innerHTML = '<i class="bi bi-play-fill"></i>'; });
+audioPlayer.addEventListener("loadedmetadata", function () { progressBar.max = audioPlayer.duration; duration.textContent = formatTime(audioPlayer.duration); });
+audioPlayer.addEventListener("timeupdate", function () { progressBar.value = audioPlayer.currentTime; currentTime.textContent = formatTime(audioPlayer.currentTime); });
+progressBar.addEventListener("input", function () { audioPlayer.currentTime = progressBar.value; });
+volumeBar.addEventListener("input", function () { audioPlayer.volume = volumeBar.value; });
+function formatTime(seconds) { if (isNaN(seconds)) return "0:00";
+let min = Math.floor(seconds / 60);
+let sec = Math.floor(seconds % 60);
+
+return min + ":" + sec.toString().padStart(2, "0");
+}
+/* Hover effect */
+document.addEventListener("mouseover", function (e) {
+const card = e.target.closest(".explore-song-card");
+
+if (card) {
+    card.style.transform = "translateY(-6px)";
+}
+});
+document.addEventListener("mouseout", function (e) {
+const card = e.target.closest(".explore-song-card");
+
+if (card) {
+    card.style.transform = "";
+}
+});
