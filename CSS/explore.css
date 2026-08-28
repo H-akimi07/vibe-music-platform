@@ -1,0 +1,259 @@
+/* ===================================================== VIBE — EXPLORE PAGE Page-specific styles only.
+IMPORTANT: Global colors come from style.css ===================================================== */
+/* ===================================================== NAVBAR ===================================================== */
+.vibe-explore-navbar {
+position: sticky;
+top: 0;
+z-index: 1000;
+
+background: rgba(7, 7, 17, 0.78);
+
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px);
+
+border-bottom: 1px solid var(--vibe-border);
+}
+.vibe-explore-logo {
+color: var(--vibe-text) !important;
+
+font-family: "Space Grotesk", sans-serif;
+
+font-size: 1.7rem;
+
+font-weight: 800;
+
+letter-spacing: -2px;
+}
+.vibe-explore-logo span {
+background: var(--vibe-gradient);
+
+-webkit-background-clip: text;
+background-clip: text;
+
+color: transparent;
+}
+.explore-nav-link {
+color: var(--vibe-muted) !important;
+
+font-size: 0.88rem;
+
+font-weight: 600;
+
+transition: 0.25s ease;
+}
+.explore-nav-link:hover, .explore-nav-link.active {
+color: var(--vibe-text) !important;
+}
+.explore-icon-btn {
+width: 42px;
+height: 42px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+
+border: 1px solid var(--vibe-border);
+
+background: rgba(255, 255, 255, 0.04);
+
+color: var(--vibe-text);
+
+transition: 0.3s ease;
+}
+.explore-icon-btn:hover {
+transform: translateY(-2px);
+
+border-color: var(--vibe-border-hover);
+
+box-shadow: var(--vibe-glow-primary);
+}
+.explore-navbar-toggler {
+color: var(--vibe-text);
+
+border: 1px solid var(--vibe-border);
+}
+/* ===================================================== HERO ===================================================== */
+.explore-hero {
+position: relative;
+
+overflow: hidden;
+
+padding: 100px 0 90px;
+}
+.explore-glow {
+position: absolute;
+
+width: 420px;
+height: 420px;
+
+border-radius: 50%;
+
+filter: blur(100px);
+
+pointer-events: none;
+}
+.explore-glow-primary {
+top: -220px;
+right: 12%;
+
+background: rgba(168, 85, 247, 0.14);
+}
+.explore-glow-secondary {
+bottom: -260px;
+left: 4%;
+
+background: rgba(236, 72, 153, 0.10);
+}
+.explore-eyebrow {
+display: flex;
+
+align-items: center;
+
+gap: 9px;
+
+margin-bottom: 24px;
+
+color: var(--vibe-primary);
+
+font-size: 0.72rem;
+
+font-weight: 800;
+
+letter-spacing: 2px;
+}
+.explore-pulse {
+width: 8px;
+height: 8px;
+
+flex-shrink: 0;
+
+border-radius: 50%;
+
+background: var(--vibe-primary);
+
+box-shadow: var(--vibe-glow-primary);
+
+animation: explorePulse 2s infinite;
+}
+@keyframes explorePulse {
+0%,
+100% {
+
+    transform: scale(1);
+
+    opacity: 1;
+
+}
+
+50% {
+
+    transform: scale(1.5);
+
+    opacity: 0.55;
+
+}
+}
+.explore-title {
+max-width: 780px;
+
+margin: 0;
+
+font-family: "Space Grotesk", sans-serif;
+
+font-size: clamp(3.2rem, 7vw, 6.5rem);
+
+font-weight: 700;
+
+line-height: 0.94;
+
+letter-spacing: -5px;
+}
+.explore-title span {
+display: inline-block;
+
+background: var(--vibe-gradient);
+
+-webkit-background-clip: text;
+background-clip: text;
+
+color: transparent;
+}
+.explore-subtitle {
+max-width: 570px;
+
+margin: 28px 0;
+
+color: var(--vibe-muted);
+
+font-size: 1rem;
+
+line-height: 1.8;
+}
+/* ===================================================== SEARCH ===================================================== */
+.explore-search {
+position: relative;
+
+max-width: 650px;
+}
+.explore-search-icon {
+position: absolute;
+
+z-index: 2;
+
+top: 50%;
+left: 21px;
+
+transform: translateY(-50%);
+
+color: var(--vibe-muted);
+
+font-size: 1rem;
+}
+.explore-search-input {
+height: 62px;
+
+padding-left: 52px;
+padding-right: 60px;
+
+border: 1px solid var(--vibe-border);
+
+border-radius: 17px;
+
+background: var(--vibe-input-bg);
+
+color: var(--vibe-text);
+
+box-shadow: var(--vibe-shadow);
+}
+.explore-search-input::placeholder {
+color: var(--vibe-muted);
+}
+.explore-search-input:focus {
+background: var(--vibe-input-bg);
+
+color: var(--vibe-text);
+
+border-color: var(--vibe-border-hover);
+
+box-shadow:
+    0 0 0 4px rgba(168, 85, 247, 0.07),
+    var(--vibe-shadow);
+}
+.explore-search-shortcut {
+position: absolute;
+
+top: 50%;
+right: 17px;
+
+transform: translateY(-50%);
+
+width: 28px;
+height: 28px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;}
