@@ -457,3 +457,73 @@ playSong(songs[currentSongIndex].id);
 audioPlayer.addEventListener("ended", function() {
 nextSong();
 });
+/* ================================ 6. PLAYER CONTROLS ================================ */
+const playPauseBtn = document.getElementById("playPauseBtn");
+const playerCover = document.getElementById("playerCover");
+const playerTitle = document.getElementById("playerTitle");
+const playerArtist = document.getElementById("playerArtist");
+const progressBar = document.getElementById("progressBar");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
+const volumeBar = document.getElementById("volumeBar");
+function updatePlayer(song) {
+playerCover.src = song.cover;
+
+playerTitle.textContent = song.title;
+
+playerArtist.textContent = song.artist;
+}
+function togglePlay() {
+if (!audioPlayer.src) return;
+
+if (audioPlayer.paused) {
+
+    audioPlayer.play();
+
+} else {
+
+    audioPlayer.pause();
+
+}
+}
+audioPlayer.addEventListener("play", function() {
+playPauseBtn.innerHTML =
+    '<i class="bi bi-pause-fill"></i>';
+});
+audioPlayer.addEventListener("pause", function() {
+playPauseBtn.innerHTML =
+    '<i class="bi bi-play-fill"></i>';
+});
+audioPlayer.addEventListener("loadedmetadata", function() {
+progressBar.max = audioPlayer.duration;
+
+duration.textContent =
+    formatTime(audioPlayer.duration);
+});
+audioPlayer.addEventListener("timeupdate", function() {
+progressBar.value =
+    audioPlayer.currentTime;
+
+currentTime.textContent =
+    formatTime(audioPlayer.currentTime);
+});
+progressBar.addEventListener("input", function() {
+audioPlayer.currentTime =
+    progressBar.value;
+});
+volumeBar.addEventListener("input", function() {
+audioPlayer.volume =
+    volumeBar.value;
+});
+function formatTime(seconds) {
+if (isNaN(seconds)) return "0:00";
+
+const minutes =
+    Math.floor(seconds / 60);
+
+const secs =
+    Math.floor(seconds % 60);
+
+return minutes + ":" +
+    secs.toString().padStart(2, "0");
+}
