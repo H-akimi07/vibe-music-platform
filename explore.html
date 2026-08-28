@@ -1,529 +1,167 @@
-<!-- ==============================
-     BASIC META
-=============================== -->
+<!DOCTYPE html>
+<html lang="en">
 
-<meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta name="description" content="Discover new music, artists and genres with VIBE.">
 
-<meta
-    name="description"
-    content="Discover new music, artists and genres with VIBE."
->
-
-<title>VIBE — Explore</title>
+    <title>VIBE — Explore</title>
 
 
-<!-- ==============================
+    <!-- ==============================
      BOOTSTRAP 5
 =============================== -->
 
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-<!-- ==============================
+    <!-- ==============================
      BOOTSTRAP ICONS
 =============================== -->
 
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-<!-- ==============================
+    <!-- ==============================
      GOOGLE FONTS
 =============================== -->
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-    rel="stylesheet"
->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
 
 
-<!-- ==============================
+    <!-- ==============================
      GLOBAL CSS
      Shared with entire team
 =============================== -->
 
-<link
-    rel="stylesheet"
-    href="css/style.css"
->
+    <link rel="stylesheet" href="css/style.css">
 
 
-<!-- ==============================
+    <!-- ==============================
      EXPLORE PAGE CSS
 =============================== -->
 
-<link
-    rel="stylesheet"
-    href="css/explore.css"
->
-aria-label="Toggle theme"
-                >
+    <link rel="stylesheet" href="css/explore.css">
+</head>
 
-                    <i class="bi bi-moon-stars"></i>
+<body>
+    aria-label="Toggle theme"
+    >
 
-                </button>
+    <i class="bi bi-moon-stars"></i>
 
-            </div>
-
-        </div>
+    </button>
 
     </div>
 
-</nav>
+    </div>
 
+    </div>
 
+    </nav>
 
-<!-- ==================================================
-     MAIN CONTENT
-=================================================== -->
-
-<main>
 
 
     <!-- ==================================================
+     MAIN CONTENT
+=================================================== -->
+
+    <main>
+
+
+        <!-- ==================================================
          HERO
     =================================================== -->
 
-    <section class="explore-hero">
+        <section class="explore-hero">
 
-        <!-- Decorative glow -->
+            <!-- Decorative glow -->
 
-        <div
-            class="explore-glow explore-glow-primary"
-        ></div>
+            <div class="explore-glow explore-glow-primary"></div>
 
-        <div
-            class="explore-glow explore-glow-secondary"
-        ></div>
+            <div class="explore-glow explore-glow-secondary"></div>
 
 
-        <div class="container">
+            <div class="container">
 
-            <div class="row align-items-center g-5">
-
-
-                <!-- HERO TEXT -->
-
-                <div class="col-lg-7">
-
-                    <div class="explore-eyebrow">
-
-                        <span class="explore-pulse"></span>
-
-                        DISCOVER SOMETHING NEW
-
-                    </div>
+                <div class="row align-items-center g-5">
 
 
-                    <h1 class="explore-title">
+                    <!-- HERO TEXT -->
 
-                        Find your next
+                    <div class="col-lg-7">
 
-                        <span>VIBE.</span>
+                        <div class="explore-eyebrow">
 
-                    </h1>
+                            <span class="explore-pulse"></span>
 
+                            DISCOVER SOMETHING NEW
 
-                    <p class="explore-subtitle">
-
-                        Explore fresh sounds, discover
-                        rising artists and find the music
-                        that matches your mood.
-
-                    </p>
+                        </div>
 
 
-                    <!-- SEARCH -->
+                        <h1 class="explore-title">
 
-                    <div class="explore-search">
+                            Find your next
 
-                        <i
-                            class="bi bi-search explore-search-icon"
-                        ></i>
+                            <span>VIBE.</span>
 
-
-                        <input
-                            type="search"
-                            id="searchInput"
-                            class="form-control explore-search-input"
-                            placeholder="Search songs, artists or albums..."
-                            autocomplete="off"
-                        >
+                        </h1>
 
 
-                        <span class="explore-search-shortcut">
-                            /
-                        </span>
+                        <p class="explore-subtitle">
 
-                    </div>
+                            Explore fresh sounds, discover
+                            rising artists and find the music
+                            that matches your mood.
 
-                </div>
-
-
-                <!-- 3D RECORD -->
-
-                <div
-                    class="col-lg-5 d-none d-lg-flex justify-content-center"
-                >
-
-                    <div class="explore-record">
-
-                        <div class="record-line record-line-one"></div>
-
-                        <div class="record-line record-line-two"></div>
-
-                        <div class="record-line record-line-three"></div>
+                        </p>
 
 
-                        <div class="record-label">
+                        <!-- SEARCH -->
 
-                            <span>V</span>
+                        <div class="explore-search">
+
+                            <i class="bi bi-search explore-search-icon"></i>
+
+
+                            <input type="search" id="searchInput" class="form-control explore-search-input"
+                                placeholder="Search songs, artists or albums..." autocomplete="off">
+
+
+                            <span class="explore-search-shortcut">
+                                /
+                            </span>
 
                         </div>
 
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- 3D RECORD -->
 
-        </div>
+                    <div class="col-lg-5 d-none d-lg-flex justify-content-center">
 
-    </section>
+                        <div class="explore-record">
 
+                            <div class="record-line record-line-one"></div>
 
+                            <div class="record-line record-line-two"></div>
 
-    <!-- ==================================================
-         GENRES
-    =================================================== -->
+                            <div class="record-line record-line-three"></div>
 
-    <section class="explore-genres py-5">
 
-        <div class="container">
+                            <div class="record-label">
 
-
-            <div class="mb-4">
-
-                <span class="explore-section-label">
-                    EXPLORE
-                </span>
-
-                <h2 class="explore-section-title">
-                    Browse by genre
-                </h2>
-
-            </div>
-
-
-            <!-- Bootstrap responsive flex -->
-
-            <div
-                id="genreFilters"
-                class="d-flex gap-2 flex-nowrap overflow-auto pb-2"
-            >
-
-
-                <button
-                    type="button"
-                    class="btn genre-btn active"
-                    data-genre="All"
-                >
-
-                    <i class="bi bi-grid me-1"></i>
-
-                    All
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn genre-btn"
-                    data-genre="Pop"
-                >
-
-                    <i class="bi bi-stars me-1"></i>
-
-                    Pop
-
-                </button>
-
-
-                <button
-type="button"
-                    class="btn genre-btn"
-                    data-genre="Hip-Hop"
-                >
-
-                    <i class="bi bi-music-note-beamed me-1"></i>
-
-                    Hip-Hop
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn genre-btn"
-                    data-genre="Rock"
-                >
-
-                    <i class="bi bi-lightning me-1"></i>
-
-                    Rock
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn genre-btn"
-                    data-genre="Electronic"
-                >
-
-                    <i class="bi bi-cpu me-1"></i>
-
-                    Electronic
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn genre-btn"
-                    data-genre="R&B"
-                >
-
-                    <i class="bi bi-vinyl me-1"></i>
-
-                    R&B
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn genre-btn"
-                    data-genre="Jazz"
-                >
-
-                    <i class="bi bi-mic me-1"></i>
-
-                    Jazz
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         MUSIC SECTION
-    =================================================== -->
-
-    <section class="explore-music py-5">
-
-        <div class="container">
-
-
-            <!-- HEADER -->
-
-            <div
-                class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4"
-            >
-
-
-                <div>
-
-                    <span class="explore-section-label">
-                        YOUR DISCOVERY
-                    </span>
-
-                    <h2 class="explore-section-title mb-0">
-                        Discover music
-                    </h2>
-
-                </div>
-
-
-                <div class="d-flex align-items-center gap-3">
-
-                    <span
-                        id="resultCount"
-                        class="explore-result-count"
-                    >
-                        0 tracks
-                    </span>
-
-
-                    <select
-                        id="sortSelect"
-                        class="form-select explore-sort"
-                    >
-
-                        <option value="popular">
-                            Most Popular
-                        </option>
-
-                        <option value="az">
-                            A — Z
-                        </option>
-
-                        <option value="shortest">
-                            Shortest
-                        </option>
-
-                        <option value="longest">
-                            Longest
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SONG GRID -->
-
-            <div
-                id="songGrid"
-                class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 g-lg-4"
-            >
-
-                <!--
-                    JavaScript inserts
-                    song cards here.
-                -->
-
-            </div>
-
-
-
-            <!-- EMPTY STATE -->
-
-            <div
-                id="emptyState"
-                class="text-center d-none py-5"
-            >
-
-                <div class="empty-state-icon">
-
-                    <i class="bi bi-headphones"></i>
-
-                </div>
-
-
-                <h3 class="mt-3">
-                    No vibes found
-                </h3>
-
-
-                <p class="text-secondary">
-                    Try another song, artist or genre.
-                </p>
-
-
-                <button
-                    id="clearSearch"
-                    type="button"
-                    class="btn explore-primary-btn"
-                >
-
-                    Clear search
-
-                </button>
-
-            </div>
-</div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         SURPRISE ME
-    =================================================== -->
-
-    <section class="explore-surprise py-5">
-
-        <div class="container">
-
-            <div class="surprise-card">
-
-
-                <div class="row align-items-center">
-
-                    <div class="col-lg-8">
-
-                        <span class="explore-section-label">
-                            FEELING CURIOUS?
-                        </span>
-
-
-                        <h2 class="surprise-title">
-                            Don't know what to play?
-                        </h2>
-
-
-                        <p class="surprise-description">
-                            Let VIBE choose something
-                            unexpected for you.
-                        </p>
-
-
-                        <button
-                            id="surpriseBtn"
-                            type="button"
-                            class="btn explore-surprise-btn"
-                        >
-
-                            <i class="bi bi-shuffle me-2"></i>
-
-                            Surprise Me
-
-                        </button>
-
-                    </div>
-
-
-                    <!-- Decorative 3D orb -->
-
-                    <div
-                        class="col-lg-4 d-none d-lg-flex justify-content-center"
-                    >
-
-                        <div class="surprise-orb">
-
-                            <div class="surprise-orb-inner">
-
-                                <i class="bi bi-music-note-beamed"></i>
+                                <span>V</span>
 
                             </div>
 
@@ -535,28 +173,297 @@ type="button"
 
             </div>
 
-        </div>
-
-    </section>
-
-
-</main>
+        </section>
 
 
 
-<!-- ==================================================
+        <!-- ==================================================
+         GENRES
+    =================================================== -->
+
+        <section class="explore-genres py-5">
+
+            <div class="container">
+
+
+                <div class="mb-4">
+
+                    <span class="explore-section-label">
+                        EXPLORE
+                    </span>
+
+                    <h2 class="explore-section-title">
+                        Browse by genre
+                    </h2>
+
+                </div>
+
+
+                <!-- Bootstrap responsive flex -->
+
+                <div id="genreFilters" class="d-flex gap-2 flex-nowrap overflow-auto pb-2">
+
+
+                    <button type="button" class="btn genre-btn active" data-genre="All">
+
+                        <i class="bi bi-grid me-1"></i>
+
+                        All
+
+                    </button>
+
+
+                    <button type="button" class="btn genre-btn" data-genre="Pop">
+
+                        <i class="bi bi-stars me-1"></i>
+
+                        Pop
+
+                    </button>
+
+
+                    <button type="button" class="btn genre-btn" data-genre="Hip-Hop">
+
+                        <i class="bi bi-music-note-beamed me-1"></i>
+
+                        Hip-Hop
+
+                    </button>
+
+
+                    <button type="button" class="btn genre-btn" data-genre="Rock">
+
+                        <i class="bi bi-lightning me-1"></i>
+
+                        Rock
+
+                    </button>
+
+
+                    <button type="button" class="btn genre-btn" data-genre="Electronic">
+
+                        <i class="bi bi-cpu me-1"></i>
+
+                        Electronic
+
+                    </button>
+
+
+                    <button type="button" class="btn genre-btn" data-genre="R&B">
+
+                        <i class="bi bi-vinyl me-1"></i>
+
+                        R&B
+
+                    </button>
+
+
+                    <button type="button" class="btn genre-btn" data-genre="Jazz">
+
+                        <i class="bi bi-mic me-1"></i>
+
+                        Jazz
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+         MUSIC SECTION
+    =================================================== -->
+
+        <section class="explore-music py-5">
+
+            <div class="container">
+
+
+                <!-- HEADER -->
+
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+
+
+                    <div>
+
+                        <span class="explore-section-label">
+                            YOUR DISCOVERY
+                        </span>
+
+                        <h2 class="explore-section-title mb-0">
+                            Discover music
+                        </h2>
+
+                    </div>
+
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <span id="resultCount" class="explore-result-count">
+                            0 tracks
+                        </span>
+
+
+                        <select id="sortSelect" class="form-select explore-sort">
+
+                            <option value="popular">
+                                Most Popular
+                            </option>
+
+                            <option value="az">
+                                A — Z
+                            </option>
+
+                            <option value="shortest">
+                                Shortest
+                            </option>
+
+                            <option value="longest">
+                                Longest
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SONG GRID -->
+
+                <div id="songGrid" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 g-lg-4">
+
+                    <!--
+                    JavaScript inserts
+                    song cards here.
+                -->
+
+                </div>
+
+
+
+                <!-- EMPTY STATE -->
+
+                <div id="emptyState" class="text-center d-none py-5">
+
+                    <div class="empty-state-icon">
+
+                        <i class="bi bi-headphones"></i>
+
+                    </div>
+
+
+                    <h3 class="mt-3">
+                        No vibes found
+                    </h3>
+
+
+                    <p class="text-secondary">
+                        Try another song, artist or genre.
+                    </p>
+
+
+                    <button id="clearSearch" type="button" class="btn explore-primary-btn">
+
+                        Clear search
+
+                    </button>
+
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+         SURPRISE ME
+    =================================================== -->
+
+        <section class="explore-surprise py-5">
+
+            <div class="container">
+
+                <div class="surprise-card">
+
+
+                    <div class="row align-items-center">
+
+                        <div class="col-lg-8">
+
+                            <span class="explore-section-label">
+                                FEELING CURIOUS?
+                            </span>
+
+
+                            <h2 class="surprise-title">
+                                Don't know what to play?
+                            </h2>
+
+
+                            <p class="surprise-description">
+                                Let VIBE choose something
+                                unexpected for you.
+                            </p>
+
+
+                            <button id="surpriseBtn" type="button" class="btn explore-surprise-btn">
+
+                                <i class="bi bi-shuffle me-2"></i>
+
+                                Surprise Me
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- Decorative 3D orb -->
+
+                        <div class="col-lg-4 d-none d-lg-flex justify-content-center">
+
+                            <div class="surprise-orb">
+
+                                <div class="surprise-orb-inner">
+
+                                    <i class="bi bi-music-note-beamed"></i>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==================================================
      BOOTSTRAP JAVASCRIPT
 =================================================== -->
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-<!-- ==================================================
+    <!-- ==================================================
      EXPLORE JAVASCRIPT
 =================================================== -->
 
-<script
-    src="js/explore.js"
-></script>
+    <script src="js/explore.js"></script>
+</body>
+
+</html>
