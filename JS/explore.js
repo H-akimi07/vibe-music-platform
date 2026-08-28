@@ -323,3 +323,78 @@ surpriseBtn.addEventListener("click", function() {
     );
 
 });
+/* ================================
+   4. CLEAR + KEYBOARD + THEME
+================================ */
+
+clearSearch.addEventListener("click", function() {
+
+    searchInput.value = "";
+
+    currentSearch = "";
+
+    currentGenre = "All";
+
+    currentSort = "popular";
+
+    sortSelect.value = "popular";
+
+
+    genreButtons.forEach(function(button) {
+        button.classList.remove("active");
+    });
+
+
+    genreButtons[0].classList.add("active");
+
+
+    displaySongs();
+
+});
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (
+        event.key === "/" &&
+        document.activeElement !== searchInput
+    ) {
+
+        event.preventDefault();
+
+        searchInput.focus();
+
+    }
+
+});
+
+
+themeToggle.addEventListener("click", function() {
+
+    document.body.classList.toggle("light-mode");
+
+
+    const icon =
+        themeToggle.querySelector("i");
+
+
+    if (
+        document.body.classList.contains("light-mode")
+    ) {
+
+        icon.className = "bi bi-sun";
+
+    } else {
+
+        icon.className = "bi bi-moon-stars";
+
+    }
+
+});
+
+
+/* START */
+
+displaySongs();
+
+console.log("VIBE Explore is ready!");
