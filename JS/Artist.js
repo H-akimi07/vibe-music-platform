@@ -1,10 +1,4 @@
 
-
-
-// Hero section part ......
-
-// دیتا بیس فرضی خواننده‌ها (زمانی که پروژه به سرور وصل نیست)
-
 const artistsDatabase = {
   "101": {
     name: "AURORA",
@@ -13,48 +7,348 @@ const artistsDatabase = {
     listeners: "2.4M",
     streams: "1.2B",
     songsCount: "45",
-    image: "https://media.istockphoto.com/id/1778147067/photo/photo-of-pretty-cool-lady-wear-tinsel-jacket-rising-discoball-singing-songs-isolated-neon.jpg?b=1&s=612x612&w=0&k=20&c=OUWfK4H_8WbLOrrEnEraWrhEaQbRQ3EzPiKIPEg3irM=F" // یک عکس نمونه با کیفیت بالا
+    image: "https://media.istockphoto.com/id/1778147067/photo/photo-of-pretty-cool-lady-wear-tinsel-jacket-rising-discoball-singing-songs-isolated-neon.jpg?b=1&s=612x612&w=0&k=20&c=OUWfK4H_8WbLOrrEnEraWrhEaQbRQ3EzPiKIPEg3irM=",
+
+
+songs: [
+  { id: "s1", title: "Runaway", album: "All My Demons Greeting Me", plays: "412M", duration: "4:08", img: "https://images.pexels.com/photos/12311203/pexels-photo-12311203.jpeg", audioUrl: "./audio/ranaway.mp3" },
+  { id: "s2", title: "Cure For Me", album: "The Gods We Can Touch", plays: "189M", duration: "3:21", img: "https://images.pexels.com/photos/4552528/pexels-photo-4552528.jpeg", audioUrl: "./audio/song2.mp3" },
+  { id: "s3", title: "Giving In To The Love", album: "The Gods We Can Touch", plays: "95M", duration: "3:01", img: "https://images.pexels.com/photos/7715779/pexels-photo-7715779.jpeg", audioUrl: "./audio/song3.mp3" },
+  { id: "s4", title: "Seed", album: "A Different Kind of Human", plays: "64M", duration: "4:27", img: "https://images.pexels.com/photos/14045843/pexels-photo-14045843.jpeg", audioUrl: "./audio/song4.mp3" },
+  { id: "s5", title: "Running with the Wolves", album: "All My Demons Greeting Me", plays: "143M", duration: "3:14", img: "https://images.pexels.com/photos/7802596/pexels-photo-7802596.jpeg", audioUrl: "./audio/song5.mp3" }
+]
+
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ۱. گرفتن ID خواننده از آدرس مرورگر (مثال: artist.html?id=101)
-  const urlParams = new URLSearchParams(window.location.search);
-  const artistId = urlParams.get('id') || "101"; // اگر آیدی نبود به صورت پیش‌فرض آیدی آرورا را بگذار
 
-  // ۲. پیدا کردن خواننده در دیتابیس
+// آهنگ فعلی
+let currentAudio = new Audio();
+
+// آهنگ فعلی که انتخاب شده
+let currentSongId = null;
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const artistId = urlParams.get("id") || "101";
   const artist = artistsDatabase[artistId];
 
-  if (artist) {
-    // ۳. رندر کردن و نشاندن اطلاعات در صفحه
-    document.getElementById("artist-name").innerText = artist.name;
-    document.getElementById("artist-role").innerText = artist.role;
-    document.getElementById("artist-bio").innerText = artist.bio;
-    document.getElementById("artist-listeners").innerText = artist.listeners;
-    document.getElementById("artist-streams").innerText = artist.streams;
-    document.getElementById("artist-songs-count").innerText = artist.songsCount;
 
-    // تنظیم تصاویر هیرو
-    document.getElementById("hero-main-img").src = artist.image;
-    document.getElementById("hero-blur-img").style.backgroundImage = `url('${artist.image}')`;
+  if (artist) {
+
+    // =========================
+    // HERO
+    // =========================
+
+    const nameEl = document.getElementById("artist-name");
+    const roleEl = document.getElementById("artist-role");
+    const bioEl = document.getElementById("artist-bio");
+    const listenersEl = document.getElementById("artist-listeners");
+    const streamsEl = document.getElementById("artist-streams");
+    const songsCountEl = document.getElementById("artist-songs-count");
+    const mainImgEl = document.getElementById("hero-main-img");
+    const blurImgEl = document.getElementById("hero-blur-img");
+
+
+    if (nameEl) nameEl.innerText = artist.name;
+    if (roleEl) roleEl.innerText = artist.role;
+    if (bioEl) bioEl.innerText = artist.bio;
+    if (listenersEl) listenersEl.innerText = artist.listeners;
+    if (streamsEl) streamsEl.innerText = artist.streams;
+    if (songsCountEl) songsCountEl.innerText = artist.songsCount;
+
+    if (mainImgEl) mainImgEl.src = artist.image;
+
+    if (blurImgEl) {
+      blurImgEl.style.backgroundImage = `url('${artist.image}')`;
+    }
+
+
+    // =========================
+    // POPULAR SONGS
+    // =========================
+
+    const songsListContainer =
+      document.getElementById("popular-songs-list");
+
+
+    if (songsListContainer) {
+
+      songsListContainer.innerHTML = "";
+
+
+      artist.songs.forEach((song, index) => {
+
+        const songRow = document.createElement("div");
+
+        songRow.className =
+          "song-row d-flex align-items-center justify-content-between p-3";
+
+        songRow.dataset.songId = song.id;
+
+
+        songRow.innerHTML = `
+          
+          <div class="d-flex align-items-center gap-3 flex-grow-1">
+
+            <!-- شماره و دکمه Play -->
+            <div class="song-control text-center fw-semibold"
+                 style="width: 40px; cursor: pointer;">
+
+              <span class="song-number">
+                ${index + 1}
+              </span>
+
+              <span class="song-play-icon"
+                    style="display:none; color: var(--vibe-primary); font-size: 18px;">
+                ▶
+              </span>
+
+            </div>
+
+
+            <!-- عکس -->
+            <img
+              src="${song.img}"
+              alt="${song.title}"
+              class="song-img"
+              style="
+                width:48px;
+                height:48px;
+                object-fit:cover;
+                border-radius:6px;
+              "
+            >
+
+
+            <!-- اطلاعات آهنگ -->
+            <div class="text-start">
+
+              <h4 class="fs-6 fw-bold mb-0 text-white song-title">
+                ${song.title}
+              </h4>
+
+              <span
+                class="text-xs opacity-50"
+                style="color: var(--vibe-muted);"
+              >
+                ${song.album}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Plays و Duration -->
+          <div class="d-flex align-items-center gap-4 text-sm fw-semibold">
+
+            <div
+              class="d-none d-md-block opacity-50"
+              style="color: var(--vibe-muted);"
+            >
+              ${song.plays} plays
+            </div>
+
+            <div
+              class="opacity-50"
+              style="color: var(--vibe-muted);"
+            >
+              ${song.duration}
+            </div>
+
+          </div>
+        `;
+
+
+        const control =
+          songRow.querySelector(".song-control");
+
+        const playIcon =
+          songRow.querySelector(".song-play-icon");
+
+        const songNumber =
+          songRow.querySelector(".song-number");
+
+
+        // =========================
+        // PLAY / PAUSE
+        // =========================
+
+        control.addEventListener("click", (event) => {
+
+          // جلوگیری از اجرای event ردیف
+          event.stopPropagation();
+
+
+          // اگر همین آهنگ در حال پخش است
+          if (
+            currentSongId === song.id &&
+            !currentAudio.paused
+          ) {
+
+            // توقف
+            currentAudio.pause();
+
+            playIcon.innerText = "▶";
+            songRow.classList.remove("active");
+
+            return;
+          }
+
+
+          // متوقف کردن آهنگ قبلی
+          currentAudio.pause();
+
+
+          // برگرداندن ظاهر همه آهنگ‌ها
+          document.querySelectorAll(".song-row").forEach(row => {
+
+            row.classList.remove("active");
+
+            const icon =
+              row.querySelector(".song-play-icon");
+
+            const number =
+              row.querySelector(".song-number");
+
+            if (icon) {
+              icon.innerText = "▶";
+              icon.style.display = "none";
+            }
+
+            if (number) {
+              number.style.display = "inline";
+            }
+
+          });
+
+
+          // آهنگ جدید
+          currentSongId = song.id;
+
+          currentAudio.src = song.audioUrl;
+          currentAudio.load();
+
+
+          // فعال کردن آهنگ
+          songRow.classList.add("active");
+
+          songNumber.style.display = "none";
+          playIcon.style.display = "inline";
+          playIcon.innerText = "⏸";
+
+
+          // پخش
+          currentAudio.play()
+            .then(() => {
+
+              console.log(
+                "Playing:",
+                song.title
+              );
+
+            })
+            .catch(error => {
+
+              console.error(
+                "Audio Error:",
+                error
+              );
+
+              playIcon.innerText = "▶";
+
+            });
+
+        });
+
+
+        // =========================
+        // کلیک روی خود ردیف
+        // =========================
+
+        songRow.addEventListener("click", () => {
+
+          control.click();
+
+        });
+
+
+        // =========================
+        // وقتی آهنگ تمام شد
+        // =========================
+
+        currentAudio.addEventListener("ended", () => {
+
+          if (currentSongId === song.id) {
+
+            songRow.classList.remove("active");
+
+            playIcon.innerText = "▶";
+            playIcon.style.display = "none";
+
+            songNumber.style.display = "inline";
+
+            currentSongId = null;
+
+          }
+
+        });
+
+
+        songsListContainer.appendChild(songRow);
+
+      });
+
+    }
+
   }
 
-  // ۴. پیاده‌سازی سیستم پویا Follow 
-  const followBtn = document.getElementById("btn-follow");
-  const followText = document.getElementById("follow-text");
+
+  // =========================
+  // FOLLOW
+  // =========================
+
+  const followBtn =
+    document.getElementById("btn-follow");
+
+  const followText =
+    document.getElementById("follow-text");
+
   let isFollowing = false;
 
-  followBtn.addEventListener("click", () => {
-    isFollowing = !isFollowing;
-    if (isFollowing) {
-      followText.innerText = "Following";
-      followBtn.classList.remove("btn-outline-light");
-      followBtn.classList.add("btn-light"); // تغییر ظاهر دکمه به حالت فعال
-    } else {
-      followText.innerText = "Follow";
-      followBtn.classList.remove("btn-light");
-      followBtn.classList.add("btn-outline-light");
-    }
-  });
+
+  if (followBtn && followText) {
+
+    followBtn.addEventListener("click", () => {
+
+      isFollowing = !isFollowing;
+
+      followText.innerText =
+        isFollowing ? "Following" : "Follow";
+
+      followBtn.style.backgroundColor =
+        isFollowing ? "#ffffff" : "transparent";
+
+      followBtn.style.color =
+        isFollowing ? "#000000" : "#ffffff";
+
+    });
+
+  }
+
 });
+
+
+
+
+
+
+
+
+
+
+
 

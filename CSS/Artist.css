@@ -101,3 +101,56 @@
 .text-xs { font-size: 0.75rem; }
 .tracking-tight { tracking-spacing: -0.05em; }
 
+
+
+/* استایل ردیف‌های آهنگ */
+.song-row {
+  background-color: var(--vibe-card);
+  border: 1px solid var(--vibe-border);
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+/* افکت هوور روی آهنگ */
+.song-row:hover {
+  background-color: var(--vibe-card-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
+}
+
+/* حالت فعال یا در حال پخش */
+.song-row.active {
+  background-color: var(--vibe-card-hover);
+  border-color: var(--vibe-primary);
+  box-shadow: var(--vibe-glow-primary);
+}
+
+.song-row.active .song-title {
+  color: var(--vibe-primary) !important;
+}
+
+.song-row.active .song-number {
+  color: var(--vibe-primary) !important;
+}
+
+/* عکس کوچک آهنگ */
+.song-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* شخصی‌سازی آیکون‌ها برای هماهنگی ظاهر */
+.play-icon-hover {
+  display: none;
+}
+.song-row:hover .song-number {
+  display: none;
+}
+.song-row:hover .play-icon-hover {
+  display: block;
+  color: var(--vibe-primary);
+}
+
