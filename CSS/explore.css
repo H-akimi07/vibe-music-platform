@@ -256,4 +256,243 @@ height: 28px;
 display: flex;
 
 align-items: center;
-justify-content: center;}
+justify-content: center;
+border: 1px solid var(--vibe-border);
+
+border-radius: 7px;
+
+color: var(--vibe-muted);
+
+background: rgba(255, 255, 255, 0.04);
+
+font-size: 0.8rem;
+}
+/* ===================================================== 3D RECORD ===================================================== */
+.explore-record {
+position: relative;
+
+width: 310px;
+height: 310px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+
+background:
+    radial-gradient(
+        circle at 35% 30%,
+        #2a2638 0%,
+        #11111c 42%,
+        #070711 75%
+    );
+
+box-shadow:
+    0 45px 90px rgba(0, 0, 0, 0.65),
+    var(--vibe-glow-primary);
+
+animation: exploreRecordFloat 6s ease-in-out infinite;
+}
+.explore-record::before {
+content: "";
+
+position: absolute;
+
+inset: 17px;
+
+border-radius: 50%;
+
+border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.explore-record::after {
+content: "";
+
+position: absolute;
+
+inset: 45px;
+
+border-radius: 50%;
+
+border: 1px solid rgba(255, 255, 255, 0.055);
+}
+.record-line {
+position: absolute;
+
+border-radius: 50%;
+
+border: 1px solid rgba(255, 255, 255, 0.045);
+}
+.record-line-one {
+inset: 72px;
+}
+.record-line-two {
+inset: 94px;
+}
+.record-line-three {
+inset: 116px;
+}
+.record-label {
+position: relative;
+z-index: 5;
+
+width: 74px;
+height: 74px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+
+background: var(--vibe-gradient);
+
+box-shadow:
+    0 0 45px rgba(168, 85, 247, 0.35);
+}
+.record-label span {
+font-family: "Space Grotesk", sans-serif;
+
+font-size: 1.8rem;
+
+font-weight: 800;
+}
+@keyframes exploreRecordFloat {
+0%,
+100% {
+
+    transform:
+        translateY(0)
+        rotate(-3deg);
+
+}
+
+50% {
+
+    transform:
+        translateY(-16px)
+        rotate(3deg);
+
+}
+}
+/* ===================================================== SECTION HEADINGS ===================================================== */
+.explore-section-label {
+display: block;
+
+margin-bottom: 7px;
+
+color: var(--vibe-primary);
+
+font-size: 0.68rem;
+
+font-weight: 800;
+
+letter-spacing: 2px;
+}
+.explore-section-title {
+color: var(--vibe-text);
+
+font-family: "Space Grotesk", sans-serif;
+
+font-size: 2rem;
+
+font-weight: 700;
+
+letter-spacing: -1px;
+}
+/* ===================================================== GENRE BUTTONS ===================================================== */
+.genre-btn {
+flex: 0 0 auto;
+
+padding: 10px 17px;
+
+border: 1px solid var(--vibe-border) !important;
+
+border-radius: 50px !important;
+
+background: rgba(255, 255, 255, 0.025) !important;
+
+color: var(--vibe-muted) !important;
+
+font-size: 0.82rem !important;
+
+font-weight: 600 !important;
+
+transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease;
+}
+.genre-btn:hover {
+transform: translateY(-2px);
+
+border-color: var(--vibe-border-hover) !important;
+
+color: var(--vibe-text) !important;
+}
+.genre-btn.active {
+border-color: transparent !important;
+
+background: var(--vibe-gradient) !important;
+
+color: var(--vibe-text) !important;
+
+box-shadow: var(--vibe-glow-primary);
+}
+/* ===================================================== MUSIC CONTROLS ===================================================== */
+.explore-result-count {
+color: var(--vibe-muted);
+
+font-size: 0.76rem;
+}
+.explore-sort {
+width: auto;
+
+min-width: 175px;
+
+border: 1px solid var(--vibe-border);
+
+border-radius: 10px;
+
+background-color: var(--vibe-card);
+
+color: var(--vibe-text);
+
+font-size: 0.8rem;
+}
+.explore-sort:focus {
+border-color: var(--vibe-border-hover);
+
+box-shadow: none;
+}
+/* ===================================================== SONG CARD ===================================================== */
+.explore-song-card {
+position: relative;
+
+height: 100%;
+
+padding: 10px;
+
+overflow: hidden;
+
+border: 1px solid var(--vibe-border);
+
+border-radius: 20px;
+
+background:
+    linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.018)
+    );
+
+transition:
+    transform 0.4s cubic-bezier(.2, .8, .2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.4s ease;
+}
+.explore-song-card:hover {
+transform: translateY(-8px);}
