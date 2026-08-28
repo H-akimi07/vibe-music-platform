@@ -197,6 +197,14 @@ function displaySongs() {
 
 
         songGrid.appendChild(card);
+        const favorites = JSON.parse(localStorage.getItem("vibeFavorites")) || [];
+if (favorites.includes(song.id)) {
+const favoriteButton =
+    card.querySelector(".explore-favorite-btn");
+
+favoriteButton.innerHTML =
+    '<i class="bi bi-heart-fill"></i>';
+}
 
     });
 
@@ -245,64 +253,63 @@ sortSelect.addEventListener("change", function() {
 ================================ */
 
 function toggleFavorite(id, button) {
+let favorites =
+    JSON.parse(localStorage.getItem("vibeFavorites")) || [];
 
-    let favorites =
-        JSON.parse(
-            localStorage.getItem("vibeFavorites")
-        ) || [];
+if (favorites.includes(id)) {
 
+    favorites = favorites.filter(function(songId) {
+        return songId !== id;
+    });
 
-    if (favorites.includes(id)) {
+    button.innerHTML =
+        '<i class="bi bi-heart"></i>';
 
-        favorites = favorites.filter(function(item) {
-            return item !== id;
-        });
+} else {
 
-        button.classList.remove("active");
+    favorites.push(id);
 
-        button.innerHTML =
-            '<i class="bi bi-heart"></i>';
+    button.innerHTML =
+        '<i class="bi bi-heart-fill"></i>';
+}
 
-    } else {
-
-        favorites.push(id);
-
-        button.classList.add("active");
-
-        button.innerHTML =
-            '<i class="bi bi-heart-fill"></i>';
-    }
-
-
-    localStorage.setItem(
-        "vibeFavorites",
-        JSON.stringify(favorites)
-    );
+localStorage.setItem(
+    "vibeFavorites",
+    JSON.stringify(favorites)
+);
 }
 
 
 function playSong(id) {
+currentSongIndex = songs.findIndex(function(song) {
+    return song.id === id;
+});
 
-    const song = songs.find(function(song) {
-        return song.id === id;
-    });
+const song = songs[currentSongIndex];
 
+if (!song) return;
 
-    if (!song) return;
+// اطلاعات آهنگ را داخل Player نمایش می‌دهد
+updatePlayer(song);
 
+// آهنگ آنلاین
+audioPlayer.src =
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
 
-    localStorage.setItem(
-        "vibeLastPlayed",
-        JSON.stringify(song)
-    );
+audioPlayer.play();
 
+// ذخیره آخرین آهنگ
+localStorage.setItem(
+    "vibeLastPlayed",
+    JSON.stringify(song)
+);
 
-    alert(
-        "▶ Now playing: " +
-        song.title +
-        " — " +
-        song.artist
-    );
+console.log(
+    "Playing:",
+    song.title,
+    "-",
+    song.artist
+);
 }
 
 
