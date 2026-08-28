@@ -398,3 +398,62 @@ themeToggle.addEventListener("click", function() {
 displaySongs();
 
 console.log("VIBE Explore is ready!");
+/* ================================ 5. MUSIC PLAYER ================================ */
+const audioPlayer = document.getElementById("audioPlayer");
+let currentSongIndex = 0;
+/* PLAY */
+function playSong(id) {
+currentSongIndex = songs.findIndex(function(song) {
+    return song.id === id;
+});
+
+const song = songs[currentSongIndex];
+
+if (!song) return;
+
+/*
+   فعلاً برای تست از یک آهنگ آنلاین استفاده می‌کنیم.
+   بعداً می‌توانیم آهنگ‌های واقعی مناسب پروژه را اضافه کنیم.
+*/
+
+audioPlayer.src =
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+
+audioPlayer.play();
+
+localStorage.setItem(
+    "vibeLastPlayed",
+    JSON.stringify(song)
+);
+
+console.log(
+    "Playing:",
+    song.title,
+    "-", 
+    song.artist
+);
+}
+/* NEXT */
+function nextSong() {
+currentSongIndex++;
+
+if (currentSongIndex >= songs.length) {
+    currentSongIndex = 0;
+}
+
+playSong(songs[currentSongIndex].id);
+}
+/* PREVIOUS */
+function previousSong() {
+currentSongIndex--;
+
+if (currentSongIndex < 0) {
+    currentSongIndex = songs.length - 1;
+}
+
+playSong(songs[currentSongIndex].id);
+}
+/* AUTO NEXT */
+audioPlayer.addEventListener("ended", function() {
+nextSong();
+});
