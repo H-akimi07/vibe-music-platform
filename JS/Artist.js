@@ -342,7 +342,111 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// ================= part 3 album secton =================
 
+const albumsData = [
+  {
+    id: "a1",
+    title: "Midnight Dreams",
+    artist: "AURORA",
+    year: "2024",
+    songs: "12 songs",
+    image: "https://images.pexels.com/photos/164829/pexels-photo-164829.jpeg"
+  },
+
+  {
+    id: "a2",
+    title: "Echoes",
+    artist: "AURORA",
+    year: "2023",
+    songs: "10 songs",
+    image: "https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg"
+  },
+
+  {
+    id: "a3",
+    title: "Shadows & Light",
+    artist: "AURORA",
+    year: "2022",
+    songs: "11 songs",
+    image: "https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg"
+  },
+
+  {
+    id: "a4",
+    title: "Unspoken",
+    artist: "AURORA",
+    year: "2021",
+    songs: "9 songs",
+    image: "https://images.pexels.com/photos/14870726/pexels-photo-14870726.jpeg"
+  }
+];
+
+
+// ================= RENDER ALBUMS =================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const albumsList = document.getElementById("albums-list");
+
+  if (!albumsList) return;
+
+  albumsList.innerHTML = "";
+
+  albumsData.forEach(album => {
+
+    const card = document.createElement("div");
+
+    card.className = "album-card";
+
+    card.innerHTML = `
+      
+      <div class="album-image">
+
+        <img 
+          src="${album.image}" 
+          alt="${album.title}"
+        >
+
+      </div>
+
+      <div class="album-info">
+
+        <h3 class="album-title">
+          ${album.title}
+        </h3>
+
+        <p class="album-artist">
+          ${album.artist}
+        </p>
+
+        <span class="album-meta">
+          ${album.year} • ${album.songs}
+        </span>
+
+      </div>
+    `;
+
+    albumsList.appendChild(card);
+  });
+
+
+
+  // ================= VIEW ALL =================
+
+  const seeAll = document.getElementById("albums-see-all");
+
+  if (seeAll) {
+
+    seeAll.addEventListener("click", () => {
+
+      console.log("Showing all albums");
+
+    });
+
+  }
+
+});
 
 
 
