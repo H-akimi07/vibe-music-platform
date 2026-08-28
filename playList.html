@@ -162,7 +162,7 @@
     </nav>
 
     <!-- player bar -->
-     
+
     <footer class="vibe-player fixed-bottom d-flex align-items-center px-3" style="bottom:56px; z-index:1030;">
     
         <!-- song info and vinyl -->
@@ -205,6 +205,37 @@
         <i class="bi bi-heart text-white-50 fs-5 ms-2" id="playerLikeBtn" style="cursor:pointer;"></i>
     
     </footer>
+
+    <!-- song modal -->
+    <div class="modal fade" id="addSongModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content vibe-modal">
+    
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-white">
+                        <i class="bi bi-plus-circle-fill text-primary"></i> Add New Song
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+    
+                <div class="modal-body">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongTitle" placeholder="Song Title">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongArtist" placeholder="Artist Name">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongLyric" placeholder="Lyric snippet">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongDuration"
+                        placeholder="Duration (e.g. 3:24)">
+                </div>
+    
+                <div class="modal-footer border-0">
+                    <button class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary rounded-pill" id="addSongBtn">
+                        <i class="bi bi-plus-lg"></i> Add Song
+                    </button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
