@@ -84,3 +84,159 @@ const themeToggle = document.getElementById("themeToggle");
 let currentGenre = "All";
 let currentSearch = "";
 let currentSort = "popular";
+/* ================================
+   2. DISPLAY + SEARCH + FILTER
+================================ */
+
+function displaySongs() {
+
+    let filteredSongs = songs.filter(function(song) {
+
+        const genreMatch =
+            currentGenre === "All" ||
+            song.genre === currentGenre;
+
+        const searchMatch =
+            song.title.toLowerCase().includes(currentSearch) ||
+            song.artist.toLowerCase().includes(currentSearch);
+
+        return genreMatch && searchMatch;
+    });
+
+
+    if (currentSort === "az") {
+
+        filteredSongs.sort(function(a, b) {
+            return a.title.localeCompare(b.title);
+        });
+
+    }
+
+
+    songGrid.innerHTML = "";
+
+
+    if (filteredSongs.length === 0) {
+
+        emptyState.classList.remove("d-none");
+
+        resultCount.textContent = "0 tracks";
+
+        return;
+    }
+
+
+    emptyState.classList.add("d-none");
+
+    resultCount.textContent =
+        filteredSongs.length + " tracks";
+
+
+    filteredSongs.forEach(function(song) {
+
+        const card = document.createElement("div");
+
+        card.className = "col";
+
+
+        card.innerHTML = `
+            <div class="explore-song-card">
+
+                <div class="explore-cover-wrapper">
+
+                    <img
+                        src="${song.cover}"
+                        alt="${song.title}"
+                        class="explore-song-cover"
+                        loading="lazy"
+                    >
+
+                    <div class="explore-cover-overlay">
+
+                        <button
+                            class="explore-play-btn"
+                            onclick="playSong(${song.id})"
+                        >
+                            <i class="bi bi-play-fill"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="explore-song-info">
+
+                    <h3 class="explore-song-title">
+                        ${song.title}
+                    </h3>
+
+                    <p class="explore-song-artist">
+                        ${song.artist}
+                    </p>
+
+                    <div class="explore-song-bottom">
+
+                        <span class="explore-song-genre">
+                            ${song.genre}
+                        </span>
+
+                        <button
+                            class="explore-favorite-btn"
+                            onclick="toggleFavorite(${song.id}, this)"
+                        >
+                            <i class="bi bi-heart"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+
+
+        songGrid.appendChild(card);
+
+    });
+
+}
+
+
+searchInput.addEventListener("input", function() {
+
+    currentSearch =
+        searchInput.value.toLowerCase().trim();
+
+    displaySongs();
+
+});
+
+
+genreButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        genreButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        currentGenre =
+            button.dataset.genre;
+
+        displaySongs();
+
+    });
+
+});
+
+
+sortSelect.addEventListener("change", function() {
+
+    currentSort = sortSelect.value;
+
+    displaySongs();
+
+});
