@@ -240,3 +240,86 @@ sortSelect.addEventListener("change", function() {
     displaySongs();
 
 });
+/* ================================
+   3. FAVORITES + PLAY + SURPRISE
+================================ */
+
+function toggleFavorite(id, button) {
+
+    let favorites =
+        JSON.parse(
+            localStorage.getItem("vibeFavorites")
+        ) || [];
+
+
+    if (favorites.includes(id)) {
+
+        favorites = favorites.filter(function(item) {
+            return item !== id;
+        });
+
+        button.classList.remove("active");
+
+        button.innerHTML =
+            '<i class="bi bi-heart"></i>';
+
+    } else {
+
+        favorites.push(id);
+
+        button.classList.add("active");
+
+        button.innerHTML =
+            '<i class="bi bi-heart-fill"></i>';
+    }
+
+
+    localStorage.setItem(
+        "vibeFavorites",
+        JSON.stringify(favorites)
+    );
+}
+
+
+function playSong(id) {
+
+    const song = songs.find(function(song) {
+        return song.id === id;
+    });
+
+
+    if (!song) return;
+
+
+    localStorage.setItem(
+        "vibeLastPlayed",
+        JSON.stringify(song)
+    );
+
+
+    alert(
+        "▶ Now playing: " +
+        song.title +
+        " — " +
+        song.artist
+    );
+}
+
+
+surpriseBtn.addEventListener("click", function() {
+
+    const randomIndex =
+        Math.floor(Math.random() * songs.length);
+
+    const randomSong =
+        songs[randomIndex];
+
+
+    alert(
+        "✨ Your vibe:\n" +
+        randomSong.title +
+        " — " +
+        randomSong.artist
+    );
+
+});
