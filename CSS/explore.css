@@ -977,3 +977,55 @@ color: var(--vibe-text);
     flex: 1;
 }
 }
+/* NOW PLAYING */
+.now-playing-card { display: flex; align-items: center; gap: 30px;
+padding: 25px;
+
+background: rgba(17, 17, 31, .8);
+border: 1px solid var(--vibe-border);
+border-radius: 25px;
+
+box-shadow: var(--vibe-shadow),
+            var(--vibe-glow-primary);
+
+backdrop-filter: blur(20px);
+}
+.now-playing-cover img { width: 150px; height: 150px;
+object-fit: cover;
+border-radius: 18px;
+
+box-shadow: var(--vibe-glow-primary);
+}
+.now-playing-info { flex: 1; }
+.now-playing-info h3 { color: var(--vibe-text); margin: 8px 0 2px; }
+.now-playing-info p { color: var(--vibe-muted); }
+.player-progress { display: flex; align-items: center; gap: 10px; }
+.player-progress input { flex: 1; }
+.player-progress span { font-size: 12px; color: var(--vibe-muted); }
+.player-buttons { display: flex; align-items: center; gap: 15px; margin-top: 15px; }
+.player-buttons button { width: 40px; height: 40px;
+border: 0;
+border-radius: 50%;
+
+background: var(--vibe-card-hover);
+color: white;
+}
+.player-buttons .main-play { width: 50px; height: 50px;
+background: var(--vibe-gradient);
+}
+.volume { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.volume input { width: 80px; }
+@media (max-width: 700px) {
+.now-playing-card {
+    flex-direction: column;
+    text-align: center;
+}
+
+.player-progress {
+    width: 100%;
+}
+
+.player-buttons {
+    justify-content: center;
+}
+}
