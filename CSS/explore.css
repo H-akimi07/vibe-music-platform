@@ -495,4 +495,275 @@ transition:
     box-shadow 0.4s ease;
 }
 .explore-song-card:hover {
-transform: translateY(-8px);}
+transform: translateY(-8px);
+border-color: var(--vibe-border-hover);
+
+box-shadow:
+    var(--vibe-shadow),
+    var(--vibe-glow-primary);
+}
+.explore-cover-wrapper {
+position: relative;
+
+overflow: hidden;
+
+border-radius: 15px;
+
+aspect-ratio: 1 / 1;
+}
+.explore-song-cover {
+width: 100%;
+height: 100%;
+
+display: block;
+
+object-fit: cover;
+
+transition: transform 0.5s ease;
+}
+.explore-song-card:hover .explore-song-cover {
+transform: scale(1.06);
+}
+.explore-cover-overlay {
+position: absolute;
+
+inset: 0;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+background: rgba(0, 0, 0, 0.3);
+
+opacity: 0;
+
+transition: opacity 0.3s ease;
+}
+.explore-song-card:hover .explore-cover-overlay {
+opacity: 1;
+}
+.explore-play-btn {
+width: 52px;
+height: 52px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+border: none;
+
+border-radius: 50%;
+
+background: var(--vibe-gradient);
+
+color: var(--vibe-text);
+
+box-shadow: var(--vibe-shadow);
+
+transition: transform 0.25s ease;
+}
+.explore-play-btn:hover {
+transform: scale(1.1);
+}
+.explore-song-info {
+padding: 16px 4px 5px;
+}
+.explore-song-title {
+margin: 0 0 5px;
+
+overflow: hidden;
+
+color: var(--vibe-text);
+
+font-size: 0.92rem;
+
+font-weight: 700;
+
+white-space: nowrap;
+
+text-overflow: ellipsis;
+}
+.explore-song-artist {
+margin: 0;
+
+overflow: hidden;
+
+color: var(--vibe-muted);
+
+font-size: 0.75rem;
+
+white-space: nowrap;
+
+text-overflow: ellipsis;
+}
+.explore-song-bottom {
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+margin-top: 13px;
+}
+.explore-song-genre {
+padding: 4px 8px;
+
+border-radius: 50px;
+
+background: rgba(168, 85, 247, 0.08);
+
+color: var(--vibe-primary);
+
+font-size: 0.62rem;
+
+font-weight: 600;
+}
+.explore-favorite-btn {
+border: none;
+
+background: transparent;
+
+color: var(--vibe-muted);
+
+font-size: 1.05rem;
+
+transition: 0.25s ease;
+}
+.explore-favorite-btn:hover {
+color: var(--vibe-secondary);
+
+transform: scale(1.12);
+}
+.explore-favorite-btn.active {
+color: var(--vibe-secondary);
+}
+/* ===================================================== EMPTY STATE ===================================================== */
+.empty-state-icon {
+width: 75px;
+height: 75px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+margin: auto;
+
+border: 1px solid var(--vibe-border);
+
+border-radius: 50%;
+
+background: rgba(168, 85, 247, 0.08);
+
+color: var(--vibe-primary);
+
+font-size: 1.8rem;
+
+box-shadow: var(--vibe-glow-primary);
+}
+.explore-primary-btn {
+border: none;
+
+border-radius: 10px;
+
+background: var(--vibe-gradient);
+
+color: var(--vibe-text);
+
+font-weight: 600;
+}
+/* ===================================================== SURPRISE CARD ===================================================== */
+.surprise-card {
+position: relative;
+
+overflow: hidden;
+
+padding: 55px;
+
+border: 1px solid var(--vibe-border);
+
+border-radius: 28px;
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(168, 85, 247, 0.09),
+        rgba(236, 72, 153, 0.035)
+    );
+
+box-shadow: var(--vibe-shadow);
+}
+.surprise-card::before {
+content: "";
+
+position: absolute;
+
+width: 260px;
+height: 260px;
+
+top: -150px;
+right: -80px;
+
+border-radius: 50%;
+
+background: rgba(168, 85, 247, 0.12);
+
+filter: blur(60px);
+}
+.surprise-title {
+margin: 7px 0 10px;
+
+color: var(--vibe-text);
+
+font-family: "Space Grotesk", sans-serif;
+
+font-size: clamp(2rem, 4vw, 3.3rem);
+
+letter-spacing: -2px;
+}
+.surprise-description {
+color: var(--vibe-muted);
+}
+.explore-surprise-btn {
+margin-top: 12px;
+
+padding: 12px 20px;
+
+border: none;
+
+border-radius: 50px;
+
+background: var(--vibe-gradient);
+
+color: var(--vibe-text);
+
+font-weight: 700;
+
+transition: 0.3s ease;
+}
+.explore-surprise-btn:hover {
+transform: translateY(-3px);
+
+color: var(--vibe-text);
+
+box-shadow: var(--vibe-glow-secondary);
+}
+/* ===================================================== SURPRISE 3D ORB ===================================================== */
+.surprise-orb {
+width: 190px;
+height: 190px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+
+background:
+    radial-gradient(
+        circle,
+        rgba(168, 85, 247, 0.3),
+        rgba(99, 102, 241, 0.12),)}
