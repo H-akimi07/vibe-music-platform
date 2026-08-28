@@ -151,7 +151,7 @@
     </section>
 
     <!-- Bottom navigation -->
-     
+
     <nav class="vibe-bottom-nav fixed-bottom d-flex justify-content-around py-2">
         <i class="bi bi-house-fill text-white-50 fs-4" id="navHome"></i>
         <i class="bi bi-search text-white-50 fs-4" id="navSearch"></i>
@@ -161,6 +161,50 @@
         <i class="bi bi-person text-white-50 fs-4" id="navProfile"></i>
     </nav>
 
+    <!-- player bar -->
+     
+    <footer class="vibe-player fixed-bottom d-flex align-items-center px-3" style="bottom:56px; z-index:1030;">
+    
+        <!-- song info and vinyl -->
+
+        <div class="d-flex align-items-center gap-3 flex-shrink-0">
+            <div class="vinyl-spin" id="vinylIcon">
+                <i class="bi bi-vinyl-fill text-primary fs-2"></i>
+            </div>
+            <div>
+                <div class="text-white fw-semibold" id="currentSongTitle">Washing Machine Heart</div>
+                <div class="text-muted small" id="currentSongArtist">Mitski</div>
+            </div>
+        </div>
+    
+        <!-- controls -->
+
+        <div class="d-flex align-items-center gap-2 mx-auto">
+            <button class="btn btn-sm btn-outline-light rounded-circle" id="prevBtn">
+                <i class="bi bi-skip-backward-fill"></i>
+            </button>
+            <button class="btn btn-sm btn-primary rounded-circle" id="playPauseBtn">
+                <i class="bi bi-play-fill"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-light rounded-circle" id="nextBtn">
+                <i class="bi bi-skip-forward-fill"></i>
+            </button>
+        </div>
+    
+        
+        <div class="d-flex align-items-center gap-2 flex-grow-1 ms-3" style="min-width:120px;">
+            <span class="text-muted small" id="currentTime">1:24</span>
+            <div class="progress flex-grow-1" style="height:4px; cursor:pointer;" id="progressContainer">
+                <div class="progress-bar bg-primary" id="progressBar" style="width:42%;"></div>
+            </div>
+            <span class="text-muted small" id="totalTime">3:24</span>
+            <i class="bi bi-volume-up-fill text-white-50 ms-2" id="volumeIcon"></i>
+        </div>
+    
+        
+        <i class="bi bi-heart text-white-50 fs-5 ms-2" id="playerLikeBtn" style="cursor:pointer;"></i>
+    
+    </footer>
 
 
     <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
