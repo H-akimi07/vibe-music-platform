@@ -904,3 +904,76 @@ box-shadow: var(--vibe-glow-primary);
 
 }
 }
+/* ================================ VIBE MUSIC PLAYER ================================ */
+.vibe-player { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%);
+width: min(1100px, 94%);
+
+padding: 15px 20px;
+
+display: flex;
+align-items: center;
+gap: 25px;
+
+background: rgba(17, 17, 31, 0.92);
+backdrop-filter: blur(20px);
+
+border: 1px solid var(--vibe-border);
+border-radius: 20px;
+
+box-shadow: var(--vibe-shadow),
+            var(--vibe-glow-primary);
+
+z-index: 9999;
+}
+.player-song { display: flex; align-items: center; gap: 12px;
+min-width: 200px;
+}
+.player-song img { width: 50px; height: 50px;
+object-fit: cover;
+border-radius: 10px;
+}
+.player-song h6 { margin: 0; color: var(--vibe-text); }
+.player-song small { color: var(--vibe-muted); }
+.player-controls { display: flex; align-items: center; gap: 15px; }
+.player-controls button { width: 38px; height: 38px;
+border: 0;
+background: transparent;
+
+color: var(--vibe-text);
+
+font-size: 18px;
+}
+#playPauseBtn { width: 48px; height: 48px;
+border-radius: 50%;
+
+background: var(--vibe-gradient);
+
+box-shadow: var(--vibe-glow-primary);
+}
+.player-progress { flex: 1;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.player-progress span { color: var(--vibe-muted); font-size: 12px; }
+.player-progress input { flex: 1; }
+.player-volume { display: flex; align-items: center; gap: 8px;
+color: var(--vibe-text);
+}
+.player-volume input { width: 80px; }
+@media (max-width: 768px) {
+.vibe-player {
+    gap: 10px;
+    padding: 10px;
+}
+
+.player-volume,
+.player-progress span {
+    display: none;
+}
+
+.player-song {
+    min-width: 0;
+    flex: 1;
+}
+}
