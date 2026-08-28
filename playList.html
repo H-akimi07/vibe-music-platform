@@ -69,6 +69,38 @@
         </div>
     </section>
 
+    <!-- Filter and search section -->
+
+    <!-- ========================================================== -->
+    <!-- بخش ۳: جستجو و فیلتر                                       -->
+    <!-- ========================================================== -->
+    <section class="vibe-search py-3">
+        <div class="container">
+            <div class="row g-3 align-items-center">
+    
+                <!-- باکس جستجو -->
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <i class="bi bi-search position-absolute text-muted"
+                            style="top:50%; right:18px; transform:translateY(-50%);"></i>
+                        <input type="text" class="form-control vibe-input ps-5" id="searchInput"
+                            placeholder="Search songs, artists...">
+                    </div>
+                </div>
+    
+                <!-- دکمه‌های فیلتر -->
+                <div class="col-lg-6 d-flex gap-2 flex-wrap justify-content-lg-end">
+                    <button class="btn btn-sm btn-primary rounded-pill filter-btn active-filter" data-filter="all"
+                        id="filterAll">همه</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill filter-btn" data-filter="popular"
+                        id="filterPopular">پرطرفدار</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill filter-btn" data-filter="recent"
+                        id="filterRecent">جدیدترین</button>
+                </div>
+    
+            </div>
+        </div>
+    </section>
 
     <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
