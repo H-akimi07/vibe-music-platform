@@ -329,3 +329,111 @@
 
 }
 
+
+ /* related songer section 4....  */
+
+ .related-artists {
+      background: var(--vibe-card);
+      padding: 50px;
+
+}
+
+.section-heading h2 {
+    color: var(--vibe-text);
+    font-size: 20px;
+    margin: 0;
+}
+
+.section-heading a {
+    color: var(--vibe-primary);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.section-heading a:hover {
+    color: var(--vibe-secondary);
+}
+
+.artists-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+}
+
+.artist-card {
+    text-align: center;
+    padding: 12px 8px;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.artist-card:hover {
+    background: var(--vibe-card-hover);
+    border-color: var(--vibe-border-hover);
+    box-shadow: var(--vibe-glow-primary);
+    transform: translateY(-5px);
+}
+
+.artist-card img {
+    width: 82px;
+    height: 82px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--vibe-border);
+    margin-bottom: 10px;
+}
+
+.artist-card:hover img {
+    border-color: var(--vibe-primary);
+}
+
+.artist-card h3 {
+    color: var(--vibe-text);
+    font-size: 14px;
+    margin: 0 0 5px;
+}
+
+.artist-card p {
+    color: var(--vibe-muted);
+    font-size: 11px;
+    margin: 0 0 12px;
+}
+
+.artist-card button {
+    background: transparent;
+    color: var(--vibe-text-secondary);
+    border: 1px solid var(--vibe-border);
+    border-radius: 20px;
+    padding: 6px 17px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: 0.3s;
+}
+
+.artist-card button:hover {
+    background: var(--vibe-primary);
+    color: var(--vibe-text);
+    border-color: var(--vibe-primary);
+    box-shadow: var(--vibe-glow-primary);
+}
+
+@media (max-width: 1000px) {
+    .artists-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .artists-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .artist-card img {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+
+
