@@ -766,4 +766,141 @@ background:
     radial-gradient(
         circle,
         rgba(168, 85, 247, 0.3),
-        rgba(99, 102, 241, 0.12),)}
+        rgba(99, 102, 241, 0.12),
+
+        transparent 70%
+    );
+
+animation:
+    exploreOrbFloat 5s ease-in-out infinite;
+}
+.surprise-orb-inner {
+width: 82px;
+height: 82px;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+border: 1px solid var(--vibe-border);
+
+border-radius: 50%;
+
+background: rgba(255, 255, 255, 0.045);
+
+backdrop-filter: blur(14px);
+
+color: var(--vibe-primary);
+
+font-size: 1.8rem;
+
+box-shadow: var(--vibe-glow-primary);
+}
+@keyframes exploreOrbFloat {
+0%,
+100% {
+
+    transform:
+        translateY(0)
+        rotate(0deg);
+
+}
+
+50% {
+
+    transform:
+        translateY(-12px)
+        rotate(5deg);
+
+}
+}
+/* ===================================================== MOBILE ===================================================== */
+@media (max-width: 767.98px) {
+.explore-hero {
+
+    padding: 65px 0 55px;
+
+}
+
+
+.explore-title {
+
+    font-size: clamp(2.8rem, 14vw, 4.2rem);
+
+    letter-spacing: -3px;
+
+}
+
+
+.explore-subtitle {
+
+    font-size: 0.9rem;
+
+}
+
+
+.explore-search-input {
+
+    height: 58px;
+
+}
+
+
+.surprise-card {
+
+    padding: 35px 25px;
+
+}
+}
+@media (max-width: 575.98px) {
+.explore-section-title {
+
+    font-size: 1.6rem;
+
+}
+
+
+.explore-sort {
+
+    min-width: 145px;
+
+}
+
+
+.explore-song-card {
+
+    border-radius: 16px;
+
+    padding: 8px;
+
+}
+
+
+.explore-song-info {
+
+    padding-top: 12px;
+
+}
+
+
+.explore-song-title {
+
+    font-size: 0.82rem;
+
+}
+
+
+.explore-song-artist {
+
+    font-size: 0.68rem;
+
+}
+
+
+.explore-song-genre {
+
+    font-size: 0.57rem;
+
+}
+}
