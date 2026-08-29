@@ -260,12 +260,12 @@ body {
     position: absolute;
     bottom: 16px;
     right: 62px;
-    width: 41px;
-    height: 41px;
+    width: 39px;
+    height: 39px;
     border-radius: 50%;
-    background: rgba(239, 68, 68, 0.15);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #ef4444;
+    background: var(--vibe-primary);
+    border: 1px solid var(--vibe-primary);
+    color: var(--vibe-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -282,7 +282,6 @@ body {
 }
 
 .delete-btn:hover {
-    background: rgba(239, 68, 68, 0.3);
     transform: scale(1.1) !important;
 }
 

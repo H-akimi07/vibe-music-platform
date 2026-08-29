@@ -6,10 +6,11 @@ const songsData = [
     artist: "Mitski",
     lyric: "Toss your shoes in my washing machine heart",
     duration: "3:24",
-    cover: "🎤",
+    cover: "images/mist.jpg",
     plays: 120,
     liked: false,
     tags: ["Indie", "Pop"],
+    audio: "audio/first.mp3",
   },
   {
     id: 2,
@@ -17,10 +18,11 @@ const songsData = [
     artist: "Charli XCX",
     lyric: "I just wanna break the rules",
     duration: "2:58",
-    cover: "🎤",
+    cover: "images/charl.jpg",
     plays: 95,
     liked: false,
     tags: ["Pop", "Electronic"],
+    audio: "audio/second.mp3",
   },
   {
     id: 3,
@@ -28,10 +30,11 @@ const songsData = [
     artist: "beabadoobee",
     lyric: "Tangled in love, stuck by you, from the glue",
     duration: "4:12",
-    cover: "🎤",
+    cover: "images/glue.jpg",
     plays: 87,
     liked: false,
     tags: ["Indie", "Folk"],
+    audio: "audio/third.mp3",
   },
   {
     id: 4,
@@ -39,21 +42,24 @@ const songsData = [
     artist: "Lana Del Rey",
     lyric: "You're so art deco, out on the floor",
     duration: "3:11",
-    cover: "🎤",
+    cover: "images/art-deco.jpg",
     plays: 76,
     liked: false,
     tags: ["Pop", "Dream Pop"],
+    audio: "audio/forth.mp3",
   },
+
   {
     id: 5,
     title: "Midnight Dreams",
     artist: "Aron Walker",
     lyric: "Lost in the rain, echoes of you",
     duration: "5:06",
-    cover: "🎤",
+    cover: "images/midnight.jpg",
     plays: 65,
     liked: false,
     tags: ["Electronic", "Chill"],
+    audio: "audio/fifth.mp3",
   },
   {
     id: 6,
@@ -61,13 +67,13 @@ const songsData = [
     artist: "AURORA",
     lyric: "Shadows & light, fading away",
     duration: "3:45",
-    cover: "🎤",
+    cover: "images/fading.jpg",
     plays: 54,
     liked: false,
     tags: ["Pop", "Soul"],
+    audio: "audio/six.mp3",
   },
 ];
-
 // 2. APPLICATION STATE
 
 let state = {
@@ -141,6 +147,7 @@ function getSongs() {
 
 // 5. RENDER SONG CARDS
 
+// 5. RENDER SONG CARDS
 function renderSongs() {
   let filtered = [...state.songs];
 
@@ -161,47 +168,68 @@ function renderSongs() {
 
   if (filtered.length === 0) {
     dom.songGrid.innerHTML = `
-            <div class="col-12 text-center text-muted py-5">
-                <i class="bi bi-music-note-beamed fs-1 d-block mb-3"></i>
-                <h5>No songs found</h5>
-                <p>Try adjusting your search or filter</p>
-            </div>
-        `;
+      <div class="col-12 text-center text-muted py-5">
+        <i class="bi bi-music-note-beamed fs-1 d-block mb-3"></i>
+        <h5>No songs found</h5>
+        <p>Try adjusting your search or filter</p>
+      </div>
+    `;
     return;
   }
 
   dom.songGrid.innerHTML = filtered
     .map((song) => {
       const isActive = state.currentSong && state.currentSong.id === song.id;
+
+    
+      let coverHtml = "";
+      const cover = song.cover || "";
+      // اگه cover یک ایموجی یا خالی یا آدرس ناقص باشه
+      if (cover && cover !== "🎵" && cover !== "🎤" && cover.length > 2) {
+        coverHtml = `<img src="${cover}" alt="${song.title}" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem; background:#0d0d19; border-radius:12px;\\'>🎵</div>'">`;
+      } else {
+        coverHtml = `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem; background:#0d0d19; border-radius:12px;">🎵</div>`;
+      }
+
       return `
-            <div class="col-6 col-lg-4">
-                <div class="song-card ${isActive ? "playing" : ""}" data-id="${song.id}">
-                    <div class="song-cover">
-                        ${song.cover || "🎵"}
-                    </div>
-                    <div class="song-title">${song.title}</div>
-                    <div class="song-artist">${song.artist}</div>
-                    <div class="song-lyric text-muted small">"${song.lyric || ""}"</div>
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <span class="song-duration">${song.duration}</span>
-                        <span class="text-muted small">
-                            <i class="bi bi-heart${song.liked ? "-fill text-danger" : ""}"></i>
-                        </span>
-                    </div>
-                     <div class="d-flex gap-1 mt-2">
-                    <button class="play-btn" data-id="${song.id}">
-                        <i class="bi bi-play-fill"></i>
-                    </button>
-                    <button class="delete-btn" data-id="${song.id}" title="Delete song">
-                        <i class="bi bi-trash3-fill"></i>
-                    </button>
-                </div>
-                </div>
+        <div class="col-6 col-lg-4">
+          <div class="song-card ${isActive ? "playing" : ""}" data-id="${song.id}">
+            <div class="song-cover">
+              ${coverHtml}
             </div>
-        `;
+            <div class="song-title">${song.title}</div>
+            <div class="song-artist">${song.artist}</div>
+            <div class="song-lyric text-muted small">"${song.lyric || ""}"</div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="song-duration">${song.duration}</span>
+              <span class="text-muted small">
+                <i class="bi bi-heart${song.liked ? "-fill text-danger" : ""}"></i>
+              </span>
+            </div>
+            <button class="play-btn" data-id="${song.id}">
+              <i class="bi bi-play-fill"></i>
+            </button>
+          </div>
+        </div>
+      `;
     })
     .join("");
 
+  document.querySelectorAll(".song-card").forEach((card) => {
+    card.addEventListener("click", function (e) {
+      if (e.target.closest(".play-btn")) return;
+      const id = parseInt(this.dataset.id);
+      playSongById(id);
+    });
+  });
+
+  document.querySelectorAll(".play-btn").forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const id = parseInt(this.dataset.id);
+      playSongById(id);
+    });
+  });
   // 19. DELETE SONG FUNCTION
 
   function deleteSong(id) {
@@ -229,18 +257,16 @@ function renderSongs() {
   }
 
   // 20. DELETE BUTTON EVENT (inside renderSongs)
- 
-  
+
   document.querySelectorAll(".delete-btn").forEach((btn) => {
     btn.addEventListener("click", function (e) {
-      e.stopPropagation(); 
+      e.stopPropagation();
       const id = parseInt(this.dataset.id);
       if (confirm("Are you sure you want to delete this song?")) {
         deleteSong(id);
       }
     });
   });
-
 
   document.querySelectorAll(".song-card").forEach((card) => {
     card.addEventListener("click", function (e) {
@@ -259,37 +285,85 @@ function renderSongs() {
   });
 }
 
-// 6. RENDER RECENTLY ADDED
+// AUDIO PLAYER
 
+let audio = new Audio();
+
+function playAudio(song) {
+  if (!song.audio) {
+    console.warn("⚠️ No audio file for:", song.title);
+    return;
+  }
+
+  audio.pause();
+  audio.currentTime = 0;
+
+  audio.src = song.audio;
+
+  audio
+    .play()
+    .then(() => {
+      console.log("🎵 Now playing:", song.title);
+    })
+    .catch((err) => {
+      console.error("❌ Error playing audio:", err);
+      console.log("📁 Check if file exists:", song.audio);
+    });
+}
+
+function pauseAudio() {
+  audio.pause();
+}
+
+function setVolume(level) {
+  audio.volume = Math.max(0, Math.min(1, level));
+}
+setVolume(0.7); // 70%
+
+
+audio.addEventListener("ended", function () {
+  console.log("⏭️ Song ended, playing next...");
+  nextSong();
+});
+
+// 6. RENDER RECENTLY ADDED
 function renderRecent() {
   const recent = [...state.songs].sort((a, b) => b.id - a.id).slice(0, 3);
 
   if (recent.length === 0) {
     dom.recentGrid.innerHTML = `
-            <div class="col-12 text-center text-muted py-3">
-                <small>No recently added songs</small>
-            </div>
-        `;
+      <div class="col-12 text-center text-muted py-3">
+        <small>No recently added songs</small>
+      </div>
+    `;
     return;
   }
 
   dom.recentGrid.innerHTML = recent
-    .map(
-      (song) => `
+    .map((song) => {
+      let coverHtml = "";
+      const cover = song.cover || "";
+      if (cover && cover !== "🎵" && cover !== "🎤" && cover.length > 2) {
+        coverHtml = `<img src="${cover}" alt="${song.title}" style="width:40px; height:40px; object-fit:cover; border-radius:50%;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\\'fs-4\\'>🎵</span>'">`;
+      } else {
+        coverHtml = `<span class="fs-4">🎵</span>`;
+      }
+
+      return `
         <div class="col-6 col-md-4">
-            <div class="recent-item" data-id="${song.id}">
-                <div class="d-flex align-items-center gap-2">
-                    <span class="fs-4">${song.cover || "🎵"}</span>
-                    <div class="flex-grow-1">
-                        <div class="text-white small fw-semibold">${song.title}</div>
-                        <div class="text-muted small">${song.artist}</div>
-                    </div>
-                    <i class="bi bi-play-circle text-primary"></i>
-                </div>
+          <div class="recent-item" data-id="${song.id}">
+            <div class="d-flex align-items-center gap-2">
+              ${coverHtml}
+              <div class="flex-grow-1">
+                <div class="text-white small fw-semibold">${song.title}</div>
+                <div class="text-muted small">${song.artist}</div>
+              </div>
+              <i class="bi bi-play-circle text-primary"></i>
             </div>
+          </div>
         </div>
-    `,
-    )
+      `;
+    })
     .join("");
 
   document.querySelectorAll(".recent-item").forEach((item) => {
@@ -314,6 +388,8 @@ function playSongById(id) {
   state.currentSong = song;
   state.isPlaying = true;
   state.currentIndex = state.songs.findIndex((s) => s.id === id);
+
+  playAudio(song);
 
   updatePlayerUI();
   updateVinylState();
@@ -471,7 +547,6 @@ function updateStats() {
   dom.totalLikes.textContent = likes;
   dom.totalDuration.textContent = totalMinutes;
 }
-
 // 11. SEARCH AND FILTER
 
 dom.searchInput.addEventListener("input", function () {
