@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibe Music Platform</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
+
     <!-- Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- CSS-->
     <link rel="stylesheet" href="CSS/playlist.css">
 </head>
+
 <body>
 
     <!-- Hero section -->
@@ -26,15 +28,15 @@
         <div class="container py-5 mt-5">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
-    
+
                     <!-- تایتل -->
                     <h1 class="hero-title">
                         <span class="gradient-text">✦ PLAYLIST! ✦</span>
                     </h1>
-    
+
                     <!-- زیرنویس -->
                     <p class="text-white-50 fs-5 mt-3">Your personal collection of hits</p>
-    
+
                     <!-- آمار -->
                     <div class="d-flex flex-wrap justify-content-center gap-3 mt-3 text-white-50">
                         <span>
@@ -50,7 +52,7 @@
                             <span id="statArtists">6</span> Artists
                         </span>
                     </div>
-    
+
                     <!-- دکمه‌ها -->
                     <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
                         <button class="btn btn-primary rounded-pill px-4" id="playAllBtn">
@@ -63,7 +65,7 @@
                             <i class="bi bi-heart"></i> Save
                         </button>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -74,7 +76,7 @@
     <section class="vibe-search py-3">
         <div class="container">
             <div class="row g-3 align-items-center">
-    
+
                 <!-- search box -->
                 <div class="col-lg-6">
                     <div class="position-relative">
@@ -84,7 +86,7 @@
                             placeholder="Search songs, artists...">
                     </div>
                 </div>
-    
+
                 <!-- Button filter -->
                 <div class="col-lg-6 d-flex gap-2 flex-wrap justify-content-lg-end">
                     <button class="btn btn-sm btn-primary rounded-pill filter-btn active-filter" data-filter="all"
@@ -94,23 +96,23 @@
                     <button class="btn btn-sm btn-outline-secondary rounded-pill filter-btn" data-filter="recent"
                         id="filterRecent">Newest</button>
                 </div>
-    
+
             </div>
         </div>
     </section>
 
     <!-- Grid Songs Card -->
 
-        <section class="vibe-songs py-4">
+    <section class="vibe-songs py-4">
         <div class="container">
             <div class="row g-4" id="songGrid">
-               
+
             </div>
         </div>
     </section>
 
     <!-- Recently added -->
-    
+
     <section class="vibe-recent py-4">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -120,7 +122,7 @@
                 <span class="text-muted small" style="cursor:pointer;">View all</span>
             </div>
             <div class="row g-3" id="recentGrid">
-                
+
             </div>
         </div>
     </section>
@@ -155,91 +157,93 @@
     <nav class="vibe-bottom-nav fixed-bottom d-flex justify-content-around py-2">
         <i class="bi bi-house-fill text-white-50 fs-4" id="navHome"></i>
         <i class="bi bi-search text-white-50 fs-4" id="navSearch"></i>
-        <i class="bi bi-plus-circle-fill text-primary fs-1" style="margin-top:-10px; cursor:pointer;" data-bs-toggle="modal"
-            data-bs-target="#addSongModal"></i>
+        <i class="bi bi-plus-circle-fill text-primary fs-1" style="margin-top:-10px; cursor:pointer;"
+            data-bs-toggle="modal" data-bs-target="#addSongModal"></i>
         <i class="bi bi-heart text-white-50 fs-4" id="navFavorites"></i>
         <i class="bi bi-person text-white-50 fs-4" id="navProfile"></i>
     </nav>
 
     <!-- player bar -->
+    <section class="now-playing py-4">
+        <div class="container">
+            <div class="row align-items-center">
 
-    <footer class="vibe-player fixed-bottom d-flex align-items-center px-3" style="bottom:56px; z-index:1030;">
-    
-        <!-- song info and vinyl -->
-
-        <div class="d-flex align-items-center gap-3 flex-shrink-0">
-            <div class="vinyl-spin" id="vinylIcon">
-                <i class="bi bi-vinyl-fill text-primary fs-2"></i>
-            </div>
-            <div>
-                <div class="text-white fw-semibold" id="currentSongTitle">Washing Machine Heart</div>
-                <div class="text-muted small" id="currentSongArtist">Mitski</div>
-            </div>
-        </div>
-    
-        <!-- controls -->
-
-        <div class="d-flex align-items-center gap-2 mx-auto">
-            <button class="btn btn-sm btn-outline-light rounded-circle" id="prevBtn">
-                <i class="bi bi-skip-backward-fill"></i>
-            </button>
-            <button class="btn btn-sm btn-primary rounded-circle" id="playPauseBtn">
-                <i class="bi bi-play-fill"></i>
-            </button>
-            <button class="btn btn-sm btn-outline-light rounded-circle" id="nextBtn">
-                <i class="bi bi-skip-forward-fill"></i>
-            </button>
-        </div>
-    
-        
-        <div class="d-flex align-items-center gap-2 flex-grow-1 ms-3" style="min-width:120px;">
-            <span class="text-muted small" id="currentTime">1:24</span>
-            <div class="progress flex-grow-1" style="height:4px; cursor:pointer;" id="progressContainer">
-                <div class="progress-bar bg-primary" id="progressBar" style="width:42%;"></div>
-            </div>
-            <span class="text-muted small" id="totalTime">3:24</span>
-            <i class="bi bi-volume-up-fill text-white-50 ms-2" id="volumeIcon"></i>
-        </div>
-    
-        
-        <i class="bi bi-heart text-white-50 fs-5 ms-2" id="playerLikeBtn" style="cursor:pointer;"></i>
-    
-    </footer>
-
-    <!-- song modal -->
-    <div class="modal fade" id="addSongModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content vibe-modal">
-    
-                <div class="modal-header border-0">
-                    <h5 class="modal-title text-white">
-                        <i class="bi bi-plus-circle-fill text-primary"></i> Add New Song
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                <!-- Title-->
+                <div class="col-12">
+                    <h6 class="text-muted text-center mb-3">
+                        <i class="bi bi-vinyl-fill text-primary"></i> NOW PLAYING
+                    </h6>
                 </div>
-    
-                <div class="modal-body">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongTitle" placeholder="Song Title">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongArtist" placeholder="Artist Name">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongLyric" placeholder="Lyric snippet">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongDuration"
-                        placeholder="Duration (e.g. 3:24)">
+
+                <!-- Big vinyl -->
+                <div class="col-lg-4 text-center">
+                    <div class="vinyl-large-wrapper">
+                        <div class="vinyl-large" id="vinylLarge">
+                            <div class="vinyl-disc">
+                                <div class="vinyl-center-label">
+                                    <i class="bi bi-music-note-beamed"></i>
+                                </div>
+                                <div class="vinyl-groove"></div>
+                                <div class="vinyl-groove"></div>
+                                <div class="vinyl-groove"></div>
+                            </div>
+
+                            <div class="glow-ring" id="glowRing"></div>
+                        </div>
+                    </div>
                 </div>
-    
-                <div class="modal-footer border-0">
-                    <button class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary rounded-pill" id="addSongBtn">
-                        <i class="bi bi-plus-lg"></i> Add Song
-                    </button>
+
+                <!-- song info -->
+                <div class="col-lg-8">
+                    <div class="now-playing-info text-center text-lg-start">
+                        <h2 class="text-white fw-bold" id="nowPlayingTitle">Midnight Dreams</h2>
+                        <p class="text-primary fs-5" id="nowPlayingArtist">Aron Walker</p>
+
+                        <!-- badges -->
+                        <div class="d-flex gap-2 mb-3 flex-wrap justify-content-center justify-content-lg-start">
+                            <span class="badge vibe-badge">Chill</span>
+                            <span class="badge vibe-badge">Vibes</span>
+                            <span class="badge vibe-badge">PLAYLIST!</span>
+                        </div>
+
+
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="text-muted small" id="currentTime">1:24</span>
+                            <div class="progress flex-grow-1" style="height:6px; cursor:pointer;"
+                                id="progressContainer">
+                                <div class="progress-bar bg-primary" id="progressBar" style="width:42%;"></div>
+                            </div>
+                            <span class="text-muted small" id="totalTime">3:24</span>
+                        </div>
+
+                        <!-- controls -->
+                        <div class="d-flex gap-3 mt-3 justify-content-center justify-content-lg-start">
+                            <button class="btn btn-outline-light rounded-circle" id="prevBtn">
+                                <i class="bi bi-skip-backward-fill"></i>
+                            </button>
+                            <button class="btn btn-primary rounded-circle" id="playPauseBtn"
+                                style="width:50px;height:50px;">
+                                <i class="bi bi-play-fill fs-4"></i>
+                            </button>
+                            <button class="btn btn-outline-light rounded-circle" id="nextBtn">
+                                <i class="bi bi-skip-forward-fill"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary rounded-circle" id="likeBtn">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-    
+
             </div>
         </div>
-    </div>
+    </section>
 
 
-    <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    <script src="https://jsdelivr.net"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="JS/playlist.js"></script>
 </body>
+
 </html>
