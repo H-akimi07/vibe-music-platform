@@ -444,3 +444,58 @@ dom.filterBtns.forEach(btn => {
     });
 });
 
+// 12. PLAYER CONTROLS
+
+dom.playPauseBtn.addEventListener('click', function() {
+    if (!state.currentSong) {
+        if (state.songs.length > 0) {
+            playSongById(state.songs[0].id);
+        }
+        return;
+    }
+    
+    if (state.isPlaying) {
+        pauseSong();
+    } else {
+        state.isPlaying = true;
+        updatePlayerUI();
+        updateVinylState();
+        renderSongs();
+        startProgressSimulation();
+    }
+});
+
+dom.nextBtn.addEventListener('click', nextSong);
+dom.prevBtn.addEventListener('click', prevSong);
+
+dom.progressContainer.addEventListener('click', function(e) {
+    if (!state.currentSong) return;
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const width = rect.width;
+    const percent = (x / width) * 100;
+    dom.progressBar.style.width = percent + '%';
+    
+    const totalSeconds = durationToSeconds(state.currentSong.duration || '3:00');
+    const currentSeconds = Math.floor((percent / 100) * totalSeconds);
+    dom.currentTime.textContent = secondsToDuration(currentSeconds);
+    
+    if (state.isPlaying) {
+        clearInterval(progressInterval);
+        startProgressSimulation();
+    }
+});
+
+// 13. LIKE BUTTON
+
+
+dom.likeBtn.addEventListener('click', function() {
+    if (!state.currentSong) return;
+    const song = state.currentSong;
+    song.liked = !song.liked;
+    saveSongs(state.songs);
+    updatePlayerUI();
+    renderSongs();
+    updateStats();
+});
+
