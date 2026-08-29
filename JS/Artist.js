@@ -491,6 +491,31 @@ songs.forEach(song => {
 });
 
 
+// light mood js code
+
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+
+        themeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+        themeToggle.title = "Dark Mode";
+
+        localStorage.setItem("theme", "light");
+
+    } else {
+
+        themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+        themeToggle.title = "Light Mode";
+
+        localStorage.setItem("theme", "dark");
+    }
+});
+
+
 
 
 

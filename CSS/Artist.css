@@ -47,6 +47,187 @@
   --vibe-glow-secondary: 0 0 30px rgba(236, 72, 153, 0.25);
 }
 
+/* =========================
+   THEME VARIABLES
+========================= */
+
+:root {
+    --vibe-bg: #070711;
+    --vibe-card: #11111f;
+    --vibe-card-hover: #18182a;
+
+    --vibe-primary: #a855f7;
+    --vibe-secondary: #ec4899;
+    --vibe-accent: #6366f1;
+
+    --vibe-text: #ffffff;
+    --vibe-text-secondary: #e5e7eb;
+    --vibe-muted: #9ca3af;
+
+    --vibe-border: rgba(255, 255, 255, 0.08);
+}
+
+
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode {
+
+    --vibe-bg: #f7f7fb;
+    --vibe-card: #ffffff;
+    --vibe-card-hover: #f0f0f6;
+
+    --vibe-text: #171721;
+    --vibe-text-secondary: #444451;
+    --vibe-muted: #777783;
+
+    --vibe-border: rgba(20, 20, 30, 0.10);
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    background: var(--vibe-bg);
+    color: var(--vibe-text);
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+body.light-mode .album-card,
+body.light-mode .artist-card,
+body.light-mode .music-card,
+body.light-mode .related-artist,
+body.light-mode .card {
+    background: var(--vibe-card);
+    color: var(--vibe-text);
+    border-color: var(--vibe-border);
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+body.light-mode .text-white {
+    color: var(--vibe-text) !important;
+}
+
+body.light-mode .text-light {
+    color: var(--vibe-text-secondary) !important;
+}
+
+body.light-mode .text-secondary,
+body.light-mode .text-muted {
+    color: var(--vibe-muted) !important;
+}
+
+
+/* =========================
+   RELATED ARTISTS
+========================= */
+
+body.light-mode .related-artists,
+body.light-mode .related-section {
+    color: var(--vibe-text);
+}
+
+
+/* =========================
+   ALBUM SECTION
+========================= */
+
+body.light-mode .albums-section,
+body.light-mode .album-section {
+    color: var(--vibe-text);
+}
+
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+body.light-mode .about-section {
+    color: var(--vibe-text);
+}
+
+
+/* =========================
+   BORDERS
+========================= */
+
+body.light-mode hr {
+    border-color: var(--vibe-border);
+}
+
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--vibe-border);
+    border-radius: 50%;
+
+    background: var(--vibe-card);
+    color: var(--vibe-text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg) scale(1.05);
+    background: var(--vibe-card-hover);
+}
+
+
+/* =========================
+   LIGHT MODE HERO
+========================= */
+
+body.light-mode .artist-hero {
+    color: var(--vibe-text);
+}
+
+
+/* =========================
+   SMOOTH TRANSITION
+========================= */
+
+body,
+.artist-hero,
+.album-card,
+.artist-card,
+.music-card,
+.related-artist,
+.card,
+.theme-toggle {
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+}
+
 
 /* Hero section part... */
 
