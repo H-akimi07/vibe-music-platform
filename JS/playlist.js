@@ -557,3 +557,26 @@ document.getElementById('saveBtn').addEventListener('click', function() {
     alert('✅ Playlist saved to your library!');
 });
 
+
+// 16. CARD LIKE (Event Delegation)
+
+document.addEventListener('click', function(e) {
+    const likeBtn = e.target.closest('.song-card .bi-heart, .song-card .bi-heart-fill');
+    if (!likeBtn) return;
+    
+    const card = likeBtn.closest('.song-card');
+    if (!card) return;
+    
+    const id = parseInt(card.dataset.id);
+    const song = state.songs.find(s => s.id === id);
+    if (!song) return;
+    
+    song.liked = !song.liked;
+    saveSongs(state.songs);
+    renderSongs();
+    updateStats();
+    
+    if (state.currentSong && state.currentSong.id === id) {
+        updatePlayerUI();
+    }
+});
