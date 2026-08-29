@@ -427,4 +427,20 @@ function updateStats() {
     dom.totalDuration.textContent = totalMinutes;
 }
 
+// 11. SEARCH AND FILTER
+
+
+dom.searchInput.addEventListener('input', function() {
+    state.searchQuery = this.value;
+    renderSongs();
+});
+
+dom.filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        dom.filterBtns.forEach(b => b.classList.remove('active-filter'));
+        this.classList.add('active-filter');
+        state.filter = this.dataset.filter;
+        renderSongs();
+    });
+});
 
