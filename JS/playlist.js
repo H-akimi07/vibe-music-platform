@@ -580,3 +580,28 @@ document.addEventListener('click', function(e) {
         updatePlayerUI();
     }
 });
+
+
+// 17. INITIALIZE APP
+
+
+function init() {
+    state.songs = getSongs();
+    
+    renderSongs();
+    renderRecent();
+    updateStats();
+    
+    updatePlayerUI();
+    updateVinylState();
+    
+    if (!state.currentSong && state.songs.length > 0) {
+        state.currentSong = state.songs[0];
+        updatePlayerUI();
+    }
+    
+    console.log('✅ VIBE Playlist initialized!');
+    console.log(`📊 ${state.songs.length} songs loaded`);
+}
+
+document.addEventListener('DOMContentLoaded', init);
