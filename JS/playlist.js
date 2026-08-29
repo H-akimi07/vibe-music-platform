@@ -253,3 +253,63 @@ function renderRecent() {
         });
     });
 }
+
+// 7. PLAYBACK FUNCTIONS
+
+function playSongById(id) {
+    const song = state.songs.find(s => s.id === id);
+    if (!song) return;
+    
+    if (state.currentSong && state.currentSong.id === id && state.isPlaying) {
+        pauseSong();
+        return;
+    }
+    
+    state.currentSong = song;
+    state.isPlaying = true;
+    state.currentIndex = state.songs.findIndex(s => s.id === id);
+    
+    updatePlayerUI();
+    updateVinylState();
+    renderSongs();
+    updateStats();
+    startProgressSimulation();
+    
+    saveToRecentlyPlayed(song);
+}
+
+function pauseSong() {
+    state.isPlaying = false;
+    clearInterval(progressInterval);
+    updatePlayerUI();
+    updateVinylState();
+    renderSongs();
+}
+
+function nextSong() {
+    if (state.songs.length === 0) return;
+    if (state.currentIndex === -1) {
+        playSongById(state.songs[0].id);
+        return;
+    }
+    const nextIndex = (state.currentIndex + 1) % state.songs.length;
+    playSongById(state.songs[nextIndex].id);
+}
+
+function prevSong() {
+    if (state.songs.length === 0) return;
+    if (state.currentIndex === -1) {
+        playSongById(state.songs[0].id);
+        return;
+    }
+    const prevIndex = (state.currentIndex - 1 + state.songs.length) % state.songs.length;
+    playSongById(state.songs[prevIndex].id);
+}
+
+function saveToRecentlyPlayed(song) {
+    let recent = JSON.parse(localStorage.getItem('vibe_recently_played') || '[]');
+    recent = recent.filter(s => s.id !== song.id);
+    recent.unshift({ ...song, playedAt: Date.now() });
+    if (recent.length > 10) recent = recent.slice(0, 10);
+    localStorage.setItem('vibe_recently_played', JSON.stringify(recent));
+}
