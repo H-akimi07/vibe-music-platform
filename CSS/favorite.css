@@ -1,6 +1,6 @@
 /*
    =====================================================
-   VIBE â€” FAVORITES PAGE
+   VIBE — FAVORITES PAGE
    Page-specific styles only.
    IMPORTANT: Global colors come from colors.css,
    shared component styles come from explore.css
@@ -10,15 +10,28 @@
 /* =====================================================
    HERO STATS
 ===================================================== */
-
-
- /* body {
-    background-color: #0f172a;
-}  */
-.explore-title,
-.favorite-stat-value {
-    color: #111 !important;
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+main {
+    flex: 1;
+}
+
+.favorite-stat-value {
+    color: #570e46 !important;
+}
+/* 
+.explore-title, */
+.explore-title span {
+    color: var(--vibe-secondary) !important;
+}
+.explore-section-title {
+    color: #9b0b62 !important;
+}
+
 .favorite-hero {
     padding-bottom: 60px;
 }
@@ -98,7 +111,7 @@
 }
 
 /* =====================================================
-   FAVORITE CARD â€” heart is always filled here
+   FAVORITE CARD — heart is always filled here
 ===================================================== */
 
 .explore-favorite-btn.is-favorite {
@@ -106,7 +119,6 @@
 }
 
 /* Small removal animation so the grid doesn't just "jump" */
-
 .explore-song-card.is-removing {
     opacity: 0;
     transform: scale(0.92);
@@ -114,63 +126,77 @@
 }
 
 /* =====================================================
+   NOW PLAYING BAR — fixes extra empty space above footer
+===================================================== */
+
+.now-playing-card {
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+main {
+    padding-bottom: 110px;
+}
+
+/* =====================================================
    MOBILE
 ===================================================== */
 
 @media (max-width: 767.98px) {
-
     .favorite-stats {
         gap: 18px;
         margin-top: 26px;
     }
-
     .favorite-stat-value {
         font-size: 1.5rem;
     }
-
     .favorite-search {
         max-width: 100%;
         flex: 1 1 100%;
     }
 }
-/* DARK CODES */
 
-/* body.dark-mode {
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark-mode {
     background-color: #0f172a;
     color: #e2e8f0;
-} */
+}
 
-/* Titles */
-/* body.dark-mode .explore-title,
-body.dark-mode .favorite-stat-value {
-    color: #ffffff !important;
-} */
+body.dark-mode .explore-title,
+body.dark-mode .explore-title span {
+    color: #ff4d6d;
+}
 
-/* Stats label */
-/* body.dark-mode .favorite-stat-label {
+body.dark-mode .favorite-stat-label {
     color: #94a3b8;
-} */
+}
 
-/* Divider */
-/* body.dark-mode .favorite-stat-divider {
+body.dark-mode .favorite-stat-divider {
     background: #334155;
-} */
+}
 
-/* Cards */
-/* body.dark-mode .explore-song-card {
+body.dark-mode .explore-song-card {
     background: #1e293b;
-} */
+}
 
-/* Search input */
-/* body.dark-mode .explore-search-input {
+body.dark-mode .explore-search-input {
     background: #1e293b;
     color: white;
     border-color: #334155;
-} */
+}
 
-/* Buttons */
-/* body.dark-mode .favorite-clear-btn {
+body.dark-mode .favorite-clear-btn {
     background: rgba(255, 255, 255, 0.05);
     color: #e2e8f0;
     border-color: #334155;
-} */
+}
+
+body.dark-mode .explore-favorite-btn.is-favorite {
+    color: #ff4d6d;
+}
