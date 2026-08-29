@@ -1,12 +1,3 @@
-/* =========================================
-   VIBE PLAYLISTS - APPLICATION DATA
-========================================= */
-
-/*
- * Demo song data.
- * Replace these paths with the actual files
- * inside your project.
- */
 
 const songs = [
   {
@@ -18,8 +9,8 @@ const songs = [
     album: "Midnight Drive",
     duration: "3:42",
     durationSeconds: 222,
-    cover: "assets/images/albums/midnight-drive.jpg",
-    audio: "assets/audio/midnight-drive.mp3",
+    cover: "images/midnight.jpg",
+    audio: "audio/first.mp3",
   },
 
   {
@@ -31,8 +22,8 @@ const songs = [
     album: "Neon Dreams",
     duration: "4:05",
     durationSeconds: 245,
-    cover: "assets/images/albums/neon-dreams.jpg",
-    audio: "assets/audio/neon-dreams.mp3",
+    cover: "images/art-deco.jpg",
+    audio: "audio/third.mp3",
   },
 
   {
@@ -44,8 +35,8 @@ const songs = [
     album: "Afterglow",
     duration: "3:28",
     durationSeconds: 208,
-    cover: "assets/images/albums/afterglow.jpg",
-    audio: "assets/audio/afterglow.mp3",
+    cover: "images/charl.jpg",
+    audio: "audio/second.mp3",
   },
 
   {
@@ -57,8 +48,8 @@ const songs = [
     album: "Electric Heart",
     duration: "3:56",
     durationSeconds: 236,
-    cover: "assets/images/albums/electric-heart.jpg",
-    audio: "assets/audio/electric-heart.mp3",
+    cover: "images/fading.jpg",
+    audio: "audio/forth.mp3",
   },
 
   {
@@ -70,8 +61,8 @@ const songs = [
     album: "Lost In The City",
     duration: "4:12",
     durationSeconds: 252,
-    cover: "assets/images/albums/lost-in-the-city.jpg",
-    audio: "assets/audio/lost-in-the-city.mp3",
+    cover: "images/glue.jpg",
+    audio: "audio/fifth.mp3",
   },
 
   {
@@ -83,21 +74,21 @@ const songs = [
     album: "Purple Sky",
     duration: "3:36",
     durationSeconds: 216,
-    cover: "assets/images/albums/purple-sky.jpg",
-    audio: "assets/audio/purple-sky.mp3",
+    cover: "images/mist.jpg",
+    audio: "audio/sixth.mp3",
   },
 ];
 
-/* =========================================
+/* 
    DEFAULT PLAYLISTS
-========================================= */
+*/
 
 const defaultPlaylists = [
   {
     id: 1,
     name: "Late Night Vibes",
     description: "Songs for late-night listening.",
-    cover: "assets/images/albums/midnight-drive.jpg",
+    cover: "images/art-deco.jpg",
     songIds: [1, 3, 6],
     updatedAt: Date.now(),
   },
@@ -106,7 +97,7 @@ const defaultPlaylists = [
     id: 2,
     name: "Neon Energy",
     description: "Electric sounds for high-energy moments.",
-    cover: "assets/images/albums/neon-dreams.jpg",
+    cover: "images/fading.jpg",
     songIds: [2, 4],
     updatedAt: Date.now(),
   },
@@ -115,7 +106,7 @@ const defaultPlaylists = [
     id: 3,
     name: "Chill & Relax",
     description: "A smooth collection for slow moments.",
-    cover: "assets/images/albums/afterglow.jpg",
+    cover: "images/midnight.jpg",
     songIds: [3, 5],
     updatedAt: Date.now(),
   },
@@ -124,15 +115,15 @@ const defaultPlaylists = [
     id: 4,
     name: "Weekend Mix",
     description: "Your soundtrack for the weekend.",
-    cover: "assets/images/albums/electric-heart.jpg",
+    cover: "images/glue.jpg",
     songIds: [1, 2, 4, 6],
     updatedAt: Date.now(),
   },
 ];
 
-/* =========================================
+/* 
    LOCAL STORAGE
-========================================= */
+*/
 
 const STORAGE_KEY = "vibePlaylists";
 const VOLUME_KEY = "vibeVolume";
@@ -146,9 +137,9 @@ let currentSongIndex = -1;
 let currentPlaylistSongs = [];
 let isPlaying = false;
 
-/* =========================================
+/* 
    DOM ELEMENTS
-========================================= */
+*/
 
 const playlistGrid = document.getElementById("playlistGrid");
 const emptyState = document.getElementById("emptyState");
@@ -201,24 +192,24 @@ const playAllButton = document.getElementById("playAllButton");
 
 const toastContainer = document.getElementById("toastContainer");
 
-/* =========================================
+/* 
    BOOTSTRAP MODALS
-========================================= */
+*/
 
 const createPlaylistModal = new bootstrap.Modal(createPlaylistModalElement);
 
 const playlistDetailsModal = new bootstrap.Modal(playlistDetailsModalElement);
 
-/* =========================================
+/* 
    INITIALIZATION
-========================================= */
+*/
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
 function initializeApp() {
   loadPlaylists();
   loadVolume();
-  loadTheme();
+  // loadTheme();
 
   renderPlaylists();
   updateDashboard();
@@ -226,9 +217,9 @@ function initializeApp() {
   setupEventListeners();
 }
 
-/* =========================================
+/* 
    LOAD PLAYLISTS
-========================================= */
+*/
 
 function loadPlaylists() {
   try {
@@ -248,9 +239,9 @@ function loadPlaylists() {
   }
 }
 
-/* =========================================
+/* 
    SAVE PLAYLISTS
-========================================= */
+*/
 
 function savePlaylists() {
   try {
@@ -261,9 +252,9 @@ function savePlaylists() {
   }
 }
 
-/* =========================================
+/* 
    EVENT LISTENERS
-========================================= */
+*/
 
 function setupEventListeners() {
   /* Create playlist */
@@ -329,9 +320,9 @@ function setupEventListeners() {
   });
 }
 
-/* =========================================
+/* 
    CREATE PLAYLIST
-========================================= */
+*/
 
 function openCreateModal() {
   createPlaylistForm.reset();
@@ -385,7 +376,7 @@ function handleCreatePlaylist(event) {
     description: description || "A new collection of your favorite songs.",
     cover: selectedCover
       ? selectedCover.value
-      : "assets/images/albums/midnight-drive.jpg",
+      : "images/fading.jpg",
     songIds: [],
     updatedAt: Date.now(),
   };
@@ -402,9 +393,9 @@ function handleCreatePlaylist(event) {
   showToast("Playlist created successfully.");
 }
 
-/* =========================================
+/* 
    RENDER PLAYLISTS
-========================================= */
+*/
 
 function renderPlaylists(customList = playlists) {
   playlistGrid.innerHTML = "";
@@ -425,9 +416,9 @@ function renderPlaylists(customList = playlists) {
   });
 }
 
-/* =========================================
+/* 
    CREATE PLAYLIST CARD
-========================================= */
+*/
 
 function createPlaylistCard(playlist, index) {
   const article = document.createElement("article");
@@ -449,7 +440,7 @@ function createPlaylistCard(playlist, index) {
                 class="playlist-cover"
                 src="${playlist.cover}"
                 alt="${escapeHTML(playlist.name)}"
-                onerror="this.src='assets/images/albums/midnight-drive.jpg'"
+                onerror="this.src='images/glue.jpg'"
             >
 
             <div class="cover-overlay">
@@ -536,9 +527,9 @@ function createPlaylistCard(playlist, index) {
   return article;
 }
 
-/* =========================================
+/* 
    PLAYLIST CARD EVENTS
-========================================= */
+*/
 
 function handlePlaylistGridClick(event) {
   const actionButton = event.target.closest("[data-action]");
@@ -574,9 +565,9 @@ function handlePlaylistGridClick(event) {
   }
 }
 
-/* =========================================
+/* 
    PLAY PLAYLIST
-========================================= */
+*/
 
 function playPlaylist(playlistId) {
   const playlist = playlists.find((item) => item.id === playlistId);
@@ -602,9 +593,9 @@ function playPlaylist(playlistId) {
   loadSong(currentPlaylistSongs[currentSongIndex], true);
 }
 
-/* =========================================
+/* 
    PLAY ALL
-========================================= */
+*/
 
 function playAllSongs() {
   if (playlists.length === 0) {
@@ -631,9 +622,9 @@ function playAllSongs() {
   loadSong(currentPlaylistSongs[currentSongIndex], true);
 }
 
-/* =========================================
+/* 
    LOAD SONG
-========================================= */
+*/
 
 function loadSong(song, autoPlay = false) {
   if (!song) {
@@ -670,9 +661,9 @@ function loadSong(song, autoPlay = false) {
   }
 }
 
-/* =========================================
+/* 
    PLAY / PAUSE
-========================================= */
+*/
 
 function togglePlayPause() {
   if (!audioPlayer.src) {
@@ -692,9 +683,9 @@ function togglePlayPause() {
   }
 }
 
-/* =========================================
+/* 
    AUDIO PLAY
-========================================= */
+*/
 
 function handleAudioPlay() {
   isPlaying = true;
@@ -708,9 +699,9 @@ function handleAudioPlay() {
   updateActivePlaylistCard();
 }
 
-/* =========================================
+/* 
    AUDIO PAUSE
-========================================= */
+*/
 
 function handleAudioPause() {
   isPlaying = false;
@@ -722,9 +713,9 @@ function handleAudioPause() {
   mainPlayButton.setAttribute("aria-label", "Play");
 }
 
-/* =========================================
+/* 
    NEXT SONG
-========================================= */
+*/
 
 function playNextSong() {
   if (currentPlaylistSongs.length === 0) {
@@ -740,9 +731,9 @@ function playNextSong() {
   loadSong(currentPlaylistSongs[currentSongIndex], true);
 }
 
-/* =========================================
+/* 
    PREVIOUS SONG
-========================================= */
+*/
 
 function playPreviousSong() {
   if (currentPlaylistSongs.length === 0) {
@@ -758,9 +749,9 @@ function playPreviousSong() {
   loadSong(currentPlaylistSongs[currentSongIndex], true);
 }
 
-/* =========================================
+/* 
    PROGRESS
-========================================= */
+*/
 
 function updateProgress() {
   if (!audioPlayer.duration) {
@@ -790,9 +781,9 @@ function handleProgressChange() {
   audioPlayer.currentTime = (percentage / 100) * audioPlayer.duration;
 }
 
-/* =========================================
+/* 
    VOLUME
-========================================= */
+*/
 
 function loadVolume() {
   const savedVolume = localStorage.getItem(VOLUME_KEY);
@@ -825,9 +816,9 @@ function updateVolumeIcon(volume) {
   }
 }
 
-/* =========================================
+/* 
    SEARCH
-========================================= */
+*/
 
 function handleSearch(event) {
   const query = event.target.value.trim().toLowerCase();
@@ -841,9 +832,9 @@ function handleSearch(event) {
   renderPlaylists(filtered);
 }
 
-/* =========================================
+/* 
    FILTER
-========================================= */
+*/
 
 function handleFilter(event) {
   document
@@ -867,9 +858,9 @@ function handleFilter(event) {
   renderPlaylists(filtered);
 }
 
-/* =========================================
+/* 
    PLAYLIST DETAILS
-========================================= */
+*/
 
 function openPlaylistDetails(playlistId) {
   const playlist = playlists.find((item) => item.id === playlistId);
@@ -891,7 +882,7 @@ function openPlaylistDetails(playlistId) {
                 class="details-cover"
                 src="${playlist.cover}"
                 alt="${escapeHTML(playlist.name)}"
-                onerror="this.src='assets/images/albums/midnight-drive.jpg'"
+                onerror="this.src='images/charl.jpg'"
             >
 
             <div>
@@ -952,9 +943,9 @@ function openPlaylistDetails(playlistId) {
   playlistDetailsModal.show();
 }
 
-/* =========================================
+/* 
    SONG ROW
-========================================= */
+*/
 
 function createSongRow(song) {
   return `
@@ -998,9 +989,9 @@ function createSongRow(song) {
     `;
 }
 
-/* =========================================
+/* 
    DETAILS EVENTS
-========================================= */
+*/
 
 function handleDetailsClick(event) {
   const button = event.target.closest("[data-details-action]");
@@ -1029,9 +1020,9 @@ function handleDetailsClick(event) {
   }
 }
 
-/* =========================================
+/* 
    PLAY SINGLE SONG
-========================================= */
+*/
 
 function playSingleSongFromPlaylist(playlistId, songId) {
   const playlist = playlists.find((item) => item.id === playlistId);
@@ -1057,9 +1048,9 @@ function playSingleSongFromPlaylist(playlistId, songId) {
   loadSong(currentPlaylistSongs[currentSongIndex], true);
 }
 
-/* =========================================
+/* 
    ADD SONG
-========================================= */
+*/
 
 function addSongToCurrentPlaylist() {
   const playlist = playlists.find((item) => item.id === currentPlaylistId);
@@ -1094,9 +1085,9 @@ function addSongToCurrentPlaylist() {
   showToast(`"${selectedSong.title}" added to playlist.`);
 }
 
-/* =========================================
+/* 
    EDIT PLAYLIST
-========================================= */
+*/
 
 function editPlaylist(playlistId) {
   const playlist = playlists.find((item) => item.id === playlistId);
@@ -1142,9 +1133,9 @@ function editPlaylist(playlistId) {
   showToast("Playlist updated successfully.");
 }
 
-/* =========================================
+/* 
    DELETE PLAYLIST
-========================================= */
+*/
 
 function deletePlaylist(playlistId) {
   const playlist = playlists.find((item) => item.id === playlistId);
@@ -1171,9 +1162,9 @@ function deletePlaylist(playlistId) {
   showToast("Playlist deleted.");
 }
 
-/* =========================================
+/* 
    DASHBOARD
-========================================= */
+*/
 
 function updateDashboard() {
   playlistCountElement.textContent = playlists.length;
@@ -1196,9 +1187,9 @@ function updateDashboard() {
   lastUpdatedElement.textContent = getRelativeDate(latest);
 }
 
-/* =========================================
+/* 
    ACTIVE PLAYLIST CARD
-========================================= */
+*/
 
 function updateActivePlaylistCard() {
   document
@@ -1224,9 +1215,9 @@ function updateActivePlaylistCard() {
   }
 }
 
-/* =========================================
+/* 
    THEME
-========================================= */
+*/
 
 function loadTheme() {
   const savedTheme = localStorage.getItem(THEME_KEY);
@@ -1250,9 +1241,9 @@ function toggleTheme() {
     : '<i class="bi bi-moon-stars"></i>';
 }
 
-/* =========================================
+/* 
    KEYBOARD SHORTCUTS
-========================================= */
+*/
 
 function handleKeyboardShortcuts(event) {
   /* Ctrl + K focuses search */
@@ -1280,9 +1271,9 @@ function isTypingInField(element) {
   return tag === "input" || tag === "textarea" || tag === "select";
 }
 
-/* =========================================
+/* 
    TOAST
-========================================= */
+*/
 
 function showToast(message) {
   const toastElement = document.createElement("div");
@@ -1320,9 +1311,9 @@ function showToast(message) {
   });
 }
 
-/* =========================================
+/* 
    UTILITY FUNCTIONS
-========================================= */
+*/
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) {
@@ -1371,11 +1362,7 @@ function getRelativeDate(timestamp) {
   });
 }
 
-/*
- * Escape HTML to prevent user-generated
- * playlist names from being inserted
- * as executable markup.
- */
+
 
 function escapeHTML(value) {
   const div = document.createElement("div");
