@@ -1,0 +1,176 @@
+/*
+   =====================================================
+   VIBE â€” FAVORITES PAGE
+   Page-specific styles only.
+   IMPORTANT: Global colors come from colors.css,
+   shared component styles come from explore.css
+   =====================================================
+*/
+
+/* =====================================================
+   HERO STATS
+===================================================== */
+
+
+ /* body {
+    background-color: #0f172a;
+}  */
+.explore-title,
+.favorite-stat-value {
+    color: #111 !important;
+}
+.favorite-hero {
+    padding-bottom: 60px;
+}
+
+.favorite-stats {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-top: 34px;
+}
+
+.favorite-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.favorite-stat-value {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--vibe-text);
+    letter-spacing: -1px;
+}
+
+.favorite-stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--vibe-muted);
+    letter-spacing: 0.5px;
+}
+
+.favorite-stat-divider {
+    width: 1px;
+    height: 34px;
+    background: var(--vibe-border);
+}
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.favorite-search {
+    max-width: 280px;
+}
+
+.favorite-search .explore-search-input {
+    height: 46px;
+    padding-left: 44px;
+    font-size: 0.85rem;
+}
+
+.favorite-search .explore-search-icon {
+    left: 17px;
+    font-size: 0.9rem;
+}
+
+.favorite-clear-btn {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 16px;
+    border: 1px solid var(--vibe-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--vibe-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: 0.25s ease;
+}
+
+.favorite-clear-btn:hover {
+    color: var(--vibe-secondary);
+    border-color: var(--vibe-border-hover);
+    background: rgba(236, 72, 153, 0.08);
+}
+
+/* =====================================================
+   FAVORITE CARD â€” heart is always filled here
+===================================================== */
+
+.explore-favorite-btn.is-favorite {
+    color: var(--vibe-secondary);
+}
+
+/* Small removal animation so the grid doesn't just "jump" */
+
+.explore-song-card.is-removing {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 767.98px) {
+
+    .favorite-stats {
+        gap: 18px;
+        margin-top: 26px;
+    }
+
+    .favorite-stat-value {
+        font-size: 1.5rem;
+    }
+
+    .favorite-search {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+/* DARK CODES */
+
+/* body.dark-mode {
+    background-color: #0f172a;
+    color: #e2e8f0;
+} */
+
+/* Titles */
+/* body.dark-mode .explore-title,
+body.dark-mode .favorite-stat-value {
+    color: #ffffff !important;
+} */
+
+/* Stats label */
+/* body.dark-mode .favorite-stat-label {
+    color: #94a3b8;
+} */
+
+/* Divider */
+/* body.dark-mode .favorite-stat-divider {
+    background: #334155;
+} */
+
+/* Cards */
+/* body.dark-mode .explore-song-card {
+    background: #1e293b;
+} */
+
+/* Search input */
+/* body.dark-mode .explore-search-input {
+    background: #1e293b;
+    color: white;
+    border-color: #334155;
+} */
+
+/* Buttons */
+/* body.dark-mode .favorite-clear-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    border-color: #334155;
+} */
