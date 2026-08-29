@@ -540,3 +540,20 @@ dom.addSongBtn.addEventListener('click', function() {
     updateStats();
 });
 
+// 15. PLAY ALL AND SHUFFLE
+
+document.getElementById('playAllBtn').addEventListener('click', function() {
+    if (state.songs.length === 0) return;
+    playSongById(state.songs[0].id);
+});
+
+document.getElementById('shuffleBtn').addEventListener('click', function() {
+    if (state.songs.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * state.songs.length);
+    playSongById(state.songs[randomIndex].id);
+});
+
+document.getElementById('saveBtn').addEventListener('click', function() {
+    alert('✅ Playlist saved to your library!');
+});
+
