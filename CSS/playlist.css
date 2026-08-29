@@ -1,443 +1,670 @@
-/* 
-   VIBE — Global Color System
-   All team members use these variables for the design.
- */
+
+/* FILE: CSS/playlist.css                                          */
+/* DESCRIPTION: Playlist page styles with Dark/Light mode support  */
+
+/* 1. GLOBAL THEME VARIABLES (DARK MODE DEFAULT)                  */
 
 :root {
-  /*   BACKGROUND COLORS   */
+    /* ----- BACKGROUND COLORS ----- */
+    --vibe-bg: #070711;
+    --vibe-card: #11111f;
+    --vibe-card-hover: #18182a;
 
-  --vibe-bg: #070711;
-  --vibe-card: #11111f;
-  --vibe-card-hover: #18182a;
+    /* ----- BRAND COLORS ----- */
+    --vibe-primary: #a855f7;
+    --vibe-secondary: #ec4899;
+    --vibe-accent: #6366f1;
 
-  /*      BRAND COLORS      */
+    /* ----- TEXT COLORS ----- */
+    --vibe-text: #ffffff;
+    --vibe-text-secondary: #e5e7eb;
+    --vibe-muted: #9ca3af;
 
-  --vibe-primary: #a855f7;
-  --vibe-secondary: #ec4899;
-  --vibe-accent: #6366f1;
+    /* ----- BORDER & UI COLORS ----- */
+    --vibe-border: rgba(255, 255, 255, 0.08);
+    --vibe-border-hover: rgba(168, 85, 247, 0.4);
+    --vibe-input-bg: #0d0d19;
 
-  /*      TEXT COLORS      */
+    /* ----- GRADIENTS ----- */
+    --vibe-gradient: linear-gradient(135deg, var(--vibe-primary), var(--vibe-secondary));
+    --vibe-gradient-accent: linear-gradient(135deg, var(--vibe-accent), var(--vibe-primary));
 
-  --vibe-text: #ffffff;
-  --vibe-text-secondary: #e5e7eb;
-  --vibe-muted: #9ca3af;
-
-  /*      BORDER & UI COLORS     */
-
-  --vibe-border: rgba(255, 255, 255, 0.08);
-  --vibe-border-hover: rgba(168, 85, 247, 0.4);
-
-  --vibe-input-bg: #0d0d19;
-
-  /*      GRADIENTS     */
-
-  --vibe-gradient: linear-gradient(
-    135deg,
-    var(--vibe-primary),
-    var(--vibe-secondary)
-  );
-
-  --vibe-gradient-accent: linear-gradient(
-    135deg,
-    var(--vibe-accent),
-    var(--vibe-primary)
-  );
-
-  /*     SHADOWS & GLOW     */
-
-  --vibe-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-
-  --vibe-glow-primary: 0 0 30px rgba(168, 85, 247, 0.25);
-
-  --vibe-glow-secondary: 0 0 30px rgba(236, 72, 153, 0.25);
+    /* ----- SHADOWS & GLOW ----- */
+    --vibe-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --vibe-glow-primary: 0 0 30px rgba(168, 85, 247, 0.25);
+    --vibe-glow-secondary: 0 0 30px rgba(236, 72, 153, 0.25);
 }
 
+/* 2. RESET & BASE STYLES                                         */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: var(--vibe-bg);
-  color: var(--vibe-text);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding-bottom: 120px;
-  overflow-x: hidden;
+    background-color: var(--vibe-bg);
+    color: var(--vibe-text);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 120px;
+    overflow-x: hidden;
 }
 
-/*  SCROLLBAR  */
+/* 3. CUSTOM SCROLLBAR                                             */
+
 ::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--vibe-bg);
+    background: var(--vibe-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--vibe-primary);
-  border-radius: 10px;
+    background: var(--vibe-primary);
+    border-radius: 10px;
 }
 
-/*  HEADER  */
+/* 4. HEADER / NAVIGATION BAR                                      */
+
 .vibe-header {
-  background: rgba(7, 7, 17, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--vibe-border);
-  padding: 8px 0;
-  z-index: 1050;
+    background: rgba(7, 7, 17, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--vibe-border);
+    padding: 8px 0;
+    z-index: 1050;
 }
 
 .vibe-header .active-link {
-  color: var(--vibe-primary) !important;
-  border-bottom: 2px solid var(--vibe-primary);
-  padding-bottom: 4px;
+    color: var(--vibe-primary) !important;
+    border-bottom: 2px solid var(--vibe-primary);
+    padding-bottom: 4px;
 }
 
 .vibe-header .nav-link {
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
 }
 .vibe-header .nav-link:hover {
-  color: var(--vibe-text) !important;
+    color: var(--vibe-text) !important;
 }
 
-/*  HERO  */
+/* 5. HERO SECTION                                                 */
+
 .vibe-hero {
-  min-height: 55vh;
-  background: radial-gradient(
-    ellipse at 30% 50%,
-    rgba(168, 85, 247, 0.08),
-    transparent 70%
-  );
-  display: flex;
-  align-items: center;
+    min-height: 55vh;
+    background: radial-gradient(ellipse at 30% 50%, rgba(168, 85, 247, 0.08), transparent 70%);
+    display: flex;
+    align-items: center;
 }
 
 .hero-title {
-  font-size: clamp(3rem, 10vw, 7rem);
-  letter-spacing: -2px;
-  font-weight: 900;
+    font-size: clamp(3rem, 10vw, 7rem);
+    letter-spacing: -2px;
+    font-weight: 900;
 }
 
 .gradient-text {
-  background: var(--vibe-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    background: var(--vibe-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/*  SEARCH  */
+/* 6. SEARCH & FILTER BAR                                          */
+
 .vibe-search {
-  background: rgba(7, 7, 17, 0.5);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid var(--vibe-border);
-  border-bottom: 1px solid var(--vibe-border);
+    background: rgba(7, 7, 17, 0.5);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--vibe-border);
+    border-bottom: 1px solid var(--vibe-border);
 }
 
 .vibe-input {
-  background-color: var(--vibe-input-bg) !important;
-  border: 1px solid var(--vibe-border) !important;
-  color: var(--vibe-text) !important;
-  border-radius: 50px !important;
-  padding: 12px 50px 12px 20px !important;
+    background-color: var(--vibe-input-bg) !important;
+    border: 1px solid var(--vibe-border) !important;
+    color: var(--vibe-text) !important;
+    border-radius: 50px !important;
+    padding: 12px 50px 12px 20px !important;
 }
 
 .vibe-input:focus {
-  border-color: var(--vibe-primary) !important;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.15) !important;
+    border-color: var(--vibe-primary) !important;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.15) !important;
 }
 
 .vibe-input::placeholder {
-  color: var(--vibe-muted);
+    color: var(--vibe-muted);
 }
 
 .filter-btn {
-  transition: all 0.3s ease;
-  font-size: 0.85rem;
-  padding: 6px 18px;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    padding: 6px 18px;
 }
 .filter-btn.active-filter {
-  background-color: var(--vibe-primary) !important;
-  border-color: var(--vibe-primary) !important;
-  color: #fff !important;
+    background-color: var(--vibe-primary) !important;
+    border-color: var(--vibe-primary) !important;
+    color: #fff !important;
 }
 
-/*  SONG CARDS  */
+/* 7. SONG CARDS                                                   */
+
 .song-card {
-  background: var(--vibe-card);
-  border: 1px solid var(--vibe-border);
-  border-radius: 16px;
-  padding: 16px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+    background: var(--vibe-card);
+    border: 1px solid var(--vibe-border);
+    border-radius: 16px;
+    padding: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .song-card:hover {
-  background: var(--vibe-card-hover);
-  transform: translateY(-6px);
-  border-color: var(--vibe-border-hover);
-  box-shadow: var(--vibe-glow-primary);
+    background: var(--vibe-card-hover);
+    transform: translateY(-6px);
+    border-color: var(--vibe-border-hover);
+    box-shadow: var(--vibe-glow-primary);
 }
 
+/* ----- Song Cover Image ----- */
 .song-card .song-cover {
-  width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 12px;
-  object-fit: cover;
-  background: var(--vibe-input-bg);
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--vibe-input-bg);
 }
 
+/* ----- Song Title ----- */
 .song-card .song-title {
-  font-weight: 700;
-  font-size: 1rem;
-  margin-top: 10px;
-  color: var(--vibe-text);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 10px;
+    color: var(--vibe-text) !important;
 }
 
+/* ----- Artist Name ----- */
 .song-card .song-artist {
-  color: var(--vibe-primary);
-  font-size: 0.85rem;
+    color: var(--vibe-primary) !important;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
+/* ----- Lyric Snippet ----- */
+.song-card .song-lyric {
+    color: var(--vibe-text-secondary) !important;
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+/* ----- Duration ----- */
 .song-card .song-duration {
-  color: var(--vibe-muted);
-  font-size: 0.8rem;
+    color: var(--vibe-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
-/*  PLAY BUTTON ON CARD  */
+/* ----- Like Heart Icon ----- */
+.song-card .bi-heart {
+    font-size: 1.1rem;
+    color: #6b6b80 !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+}
+
+.song-card .bi-heart-fill {
+    font-size: 1.1rem;
+    color: #ef4444 !important;
+    transition: all 0.3s ease;
+    cursor: pointer; 
+}
+
+.song-card .bi-heart:hover {
+    color: #ef4444 !important;
+    transform: scale(1.2);
+}
+
+/* ----- Play Button (appears on hover) ----- */
 .play-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--vibe-gradient);
-  border: none;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.3s ease;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--vibe-gradient);
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
 }
 
 .song-card:hover .play-btn {
-  opacity: 1;
-  transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
 }
 
-/*  RECENTLY ADDED  */
+/* ===== Delete Button ===== */
+.delete-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 62px;
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.song-card:hover .delete-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: scale(1.1) !important;
+}
+
+/* ----- Active / Playing State ----- */
+.song-card.playing {
+    border-color: var(--vibe-primary);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+/* 8. RECENTLY ADDED SECTION                                       */
+
 .recent-item {
-  background: var(--vibe-card);
-  border: 1px solid var(--vibe-border);
-  border-radius: 12px;
-  padding: 12px 16px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+    background: var(--vibe-card);
+    border: 1px solid var(--vibe-border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .recent-item:hover {
-  background: var(--vibe-card-hover);
-  border-color: var(--vibe-border-hover);
+    background: var(--vibe-card-hover);
+    border-color: var(--vibe-border-hover);
 }
 
-/*  STATS  */
+/* 9. STATS BAR                                                    */
+
 .vibe-stats {
-  border-top: 1px solid var(--vibe-border);
-  border-bottom: 1px solid var(--vibe-border);
-  background: rgba(7, 7, 17, 0.5);
+    border-top: 1px solid var(--vibe-border);
+    border-bottom: 1px solid var(--vibe-border);
+    background: rgba(7, 7, 17, 0.5);
 }
 
-/*  BOTTOM NAV  */
+/* 10. BOTTOM NAVIGATION                                           */
+
 .vibe-bottom-nav {
-  background: rgba(7, 7, 17, 0.95);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--vibe-border);
-  padding: 6px 0 12px;
-  z-index: 1040;
+    background: rgba(7, 7, 17, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--vibe-border);
+    padding: 6px 0 12px;
+    z-index: 1040;
 }
 
 .vibe-bottom-nav i {
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 .vibe-bottom-nav i:hover {
-  color: var(--vibe-primary) !important;
-  transform: translateY(-2px);
+    color: var(--vibe-primary) !important;
+    transform: translateY(-2px);
 }
 
-/* player bar */
+/* 11. NOW PLAYING / LARGE VINYL SECTION                           */
 
 .now-playing {
-  background: rgba(7, 7, 17, 0.6);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid var(--vibe-border);
-  border-bottom: 1px solid var(--vibe-border);
-  padding: 30px 0;
+    background: rgba(7, 7, 17, 0.6);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--vibe-border);
+    border-bottom: 1px solid var(--vibe-border);
+    padding: 30px 0;
 }
 
-/*  large vinyle */
+/* ----- Large Vinyl Wrapper ----- */
 .vinyl-large-wrapper {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .vinyl-large {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto;
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
 }
 
+/* ----- Vinyl Disc ----- */
 .vinyl-disc {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #2a2a4a, #0a0a1a 80%);
-  box-shadow:
-    0 0 60px rgba(168, 85, 247, 0.15),
-    inset 0 0 60px rgba(0, 0, 0, 0.5);
-  position: relative;
-  animation: spinVinyl 3s linear infinite;
-  animation-play-state: paused;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #2a2a4a, #0a0a1a 80%);
+    box-shadow: 0 0 60px rgba(168, 85, 247, 0.15), inset 0 0 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: spinVinyl 3s linear infinite;
+    animation-play-state: paused;
 }
 
 .vinyl-large.playing .vinyl-disc {
-  animation-play-state: running;
+    animation-play-state: running;
 }
 
-/* vinyl groove */
+/* ----- Vinyl Grooves (concentric circles) ----- */
 .vinyl-groove {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .vinyl-groove:nth-child(1) {
-  width: 70%;
-  height: 70%;
+    width: 70%;
+    height: 70%;
 }
-
 .vinyl-groove:nth-child(2) {
-  width: 55%;
-  height: 55%;
+    width: 55%;
+    height: 55%;
 }
-
 .vinyl-groove:nth-child(3) {
-  width: 40%;
-  height: 40%;
+    width: 40%;
+    height: 40%;
 }
 
-/*  vinyl lable */
+/* ----- Center Label ----- */
 .vinyl-center-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--vibe-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1.5rem;
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--vibe-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.5rem;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
 }
 
-/*  shiny circle */
+/* ----- Glow Ring (appears when playing) ----- */
 .glow-ring {
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .vinyl-large.playing .glow-ring {
-  opacity: 1;
-  border-color: var(--vibe-primary);
-  box-shadow:
-    0 0 50px rgba(168, 85, 247, 0.3),
-    0 0 100px rgba(236, 72, 153, 0.15);
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-/* (badge)  */
-.vibe-badge {
-  background: rgba(168, 85, 247, 0.15);
-  color: var(--vibe-primary);
-  padding: 6px 16px;
-  border-radius: 50px;
-  font-weight: 500;
-  border: 1px solid rgba(168, 85, 247, 0.2);
-}
-
-/*  Animations */
-@keyframes spinVinyl {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulseGlow {
-  0%,
-  100% {
-    box-shadow:
-      0 0 40px rgba(168, 85, 247, 0.25),
-      0 0 80px rgba(236, 72, 153, 0.1);
+    opacity: 1;
     border-color: var(--vibe-primary);
-  }
-  50% {
-    box-shadow:
-      0 0 70px rgba(168, 85, 247, 0.4),
-      0 0 120px rgba(236, 72, 153, 0.2);
-    border-color: var(--vibe-secondary);
-  }
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.3), 0 0 100px rgba(236, 72, 153, 0.15);
+    animation: pulseGlow 2s ease-in-out infinite;
 }
 
-/*  RESPONSIVE  */
+/* ----- Badge / Tag Styles ----- */
+.vibe-badge {
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--vibe-primary);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 500;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+/* 12. ANIMATIONS                                                  */
+
+/* Vinyl spin animation */
+@keyframes spinVinyl {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Glow ring pulse animation */
+@keyframes pulseGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 40px rgba(168, 85, 247, 0.25), 0 0 80px rgba(236, 72, 153, 0.1);
+        border-color: var(--vibe-primary);
+    }
+    50% {
+        box-shadow: 0 0 70px rgba(168, 85, 247, 0.4), 0 0 120px rgba(236, 72, 153, 0.2);
+        border-color: var(--vibe-secondary);
+    }
+}
+
+/* 13. MODAL (Add Song)                                            */
+
+.vibe-modal {
+    background: var(--vibe-card) !important;
+    border: 1px solid var(--vibe-border);
+    border-radius: 20px !important;
+}
+
+.vibe-modal .modal-header,
+.vibe-modal .modal-footer {
+    border-color: var(--vibe-border) !important;
+}
+
+/* 14. RESPONSIVE BREAKPOINTS                                      */
+
+/* Tablets and smaller */
 @media (max-width: 992px) {
-  .vinyl-large {
-    width: 180px;
-    height: 180px;
-  }
-  .vinyl-center-label {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
+    .vinyl-large {
+        width: 180px;
+        height: 180px;
+    }
+    .vinyl-center-label {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
 }
 
+/* Mobile devices */
 @media (max-width: 576px) {
-  .vinyl-large {
-    width: 140px;
-    height: 140px;
-  }
-  .vinyl-center-label {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-  .now-playing h2 {
-    font-size: 1.3rem;
-  }
+    .vinyl-large {
+        width: 140px;
+        height: 140px;
+    }
+    .vinyl-center-label {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    .now-playing h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* 15. LIGHT MODE THEME                                            */
+
+[data-theme="light"] {
+    /* ----- Background ----- */
+    --vibe-bg: #f4f2fa;
+    --vibe-card: #ffffff;
+    --vibe-card-hover: #f0edf8;
+
+    /* ----- Text ----- */
+    --vibe-text: #1a1a2e;
+    --vibe-text-secondary: #2d2d44;
+    --vibe-muted: #6b6b80;
+
+    /* ----- Border & UI ----- */
+    --vibe-border: rgba(0, 0, 0, 0.1);
+    --vibe-border-hover: rgba(168, 85, 247, 0.4);
+    --vibe-input-bg: #f0edf8;
+
+    /* ----- Shadows ----- */
+    --vibe-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --vibe-glow-primary: 0 0 30px rgba(168, 85, 247, 0.15);
+}
+
+/* ----- Light Mode: Hero ----- */
+[data-theme="light"] .vibe-hero {
+    background: radial-gradient(ellipse at 30% 50%, rgba(168, 85, 247, 0.05), transparent 70%);
+}
+
+/* ----- Light Mode: Search ----- */
+[data-theme="light"] .vibe-search {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .vibe-input {
+    background-color: #f0edf8 !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #1a1a2e !important;
+}
+[data-theme="light"] .vibe-input::placeholder {
+    color: #6b6b80;
+}
+
+/* ----- Light Mode: Song Cards ----- */
+[data-theme="light"] .song-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .song-card:hover {
+    background: #f0edf8 !important;
+    border-color: var(--vibe-primary) !important;
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15) !important;
+}
+
+[data-theme="light"] .song-card .song-title {
+    color: #1a1a2e !important;
+}
+
+[data-theme="light"] .song-card .song-artist {
+    color: var(--vibe-primary) !important;
+}
+
+[data-theme="light"] .song-card .song-lyric {
+    color: #4a4a6a !important;
+    opacity: 0.9;
+}
+
+[data-theme="light"] .song-card .bi-heart {
+    color: #6b6b80 !important;
+}
+
+[data-theme="light"] .song-card .bi-heart-fill {
+    color: #ef4444 !important;
+}
+
+[data-theme="light"] .song-card .bi-heart:hover {
+    color: #ef4444 !important;
+}
+
+/* ----- Light Mode: Recently Added ----- */
+[data-theme="light"] .recent-item {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .recent-item:hover {
+    background: #f0edf8;
+    border-color: var(--vibe-primary) !important;
+}
+
+[data-theme="light"] .recent-item .text-white {
+    color: #1a1a2e !important;
+}
+
+/* ----- Light Mode: Stats ----- */
+[data-theme="light"] .vibe-stats {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .vibe-stats .text-white-50 {
+    color: #4a4a6a !important;
+}
+
+/* ----- Light Mode: Now Playing ----- */
+[data-theme="light"] .now-playing {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .now-playing .text-white {
+    color: #1a1a2e !important;
+}
+
+[data-theme="light"] .vibe-badge {
+    background: rgba(168, 85, 247, 0.08);
+    color: var(--vibe-primary);
+    border-color: rgba(168, 85, 247, 0.15);
+}
+
+/* ----- Light Mode: Modal ----- */
+[data-theme="light"] .vibe-modal {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .vibe-modal .modal-title {
+    color: #1a1a2e !important;
+}
+
+[data-theme="light"] .vibe-modal .vibe-input {
+    background-color: #f0edf8 !important;
+    color: #1a1a2e !important;
+}
+
+[data-theme="light"] .vibe-modal .modal-header,
+[data-theme="light"] .vibe-modal .modal-footer {
+    border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ----- Light Mode: Scrollbar ----- */
+[data-theme="light"] ::-webkit-scrollbar-track {
+    background: #f4f2fa;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: var(--vibe-primary);
+    border-radius: 10px;
 }
