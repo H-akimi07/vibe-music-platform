@@ -28,77 +28,44 @@
     <div class="background-glow glow-one"></div>
     <div class="background-glow glow-two"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg vibe-navbar">
-        <div class="container-fluid px-lg-5">
-
-            <a class="navbar-brand vibe-logo" href="index.html">
-                <span class="logo-icon">
-                    <i class="bi bi-vinyl-fill"></i>
-                </span>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
+    
+    <!-- NAVBAR -->
+    <header class="site-header container-fluid">
+        <nav class="navbar navbar-expand-lg vibe-navbar w-100">
+            <a class="brand" href="index.html" aria-label="VIBE home">
+                <span class="brand-mark"><i class="bi bi-soundwave"></i></span>
                 <span>VIBE</span>
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation"
-                aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+    
+            <button class="navbar-toggler bootstrap-menu-toggle icon-btn" id="bootstrapMenuToggle" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>
             </button>
-
-            <div class="collapse navbar-collapse" id="mainNavigation">
-
-                <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="bi bi-house me-1"></i>
-                            Home
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="explore.html">
-                            <i class="bi bi-compass me-1"></i>
-                            Explore
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="artist.html">
-                            <i class="bi bi-person-music me-1"></i>
-                            Artists
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="favorites.html">
-                            <i class="bi bi-heart me-1"></i>
-                            Favorites
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="playlists.html">
-                            <i class="bi bi-music-note-list me-1"></i>
-                            Playlists
-                        </a>
-                    </li>
-
-                </ul>
-
-                <div class="nav-actions d-flex align-items-center gap-2">
-
-                    <button class="icon-button" id="themeButton" type="button" aria-label="Toggle theme">
-                        <i class="bi bi-moon-stars"></i>
-                    </button>
-
-                    <div class="profile-avatar">
-                        V
-                    </div>
-
-                </div>
+            <div class="nav-links collapse navbar-collapse justify-content-center" id="navLinks">
+                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link" href="explore.html">Explore</a>
+                <a class="nav-link" href="artist.html">Artists</a>
+                <a class="nav-link" href="favorite.html">Favorites</a>
+                <a class="nav-link" href="playlists.html">Playlists</a>
             </div>
-        </div>
-    </nav>
+    
+            <div class="nav-actions ms-lg-2">
+                <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+                <a class="profile-chip" href="favorites.html" aria-label="Open favorites">
+                    <span class="profile-avatar">S</span>
+                </a>
+                <button class="mobile-menu icon-btn" id="menuToggle" type="button" aria-label="Open menu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
 
 
     <!-- Main Content -->
