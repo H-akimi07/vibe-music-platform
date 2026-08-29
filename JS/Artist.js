@@ -22,10 +22,8 @@ songs: [
 };
 
 
-// آهنگ فعلی
 let currentAudio = new Audio();
 
-// آهنگ فعلی که انتخاب شده
 let currentSongId = null;
 
 
@@ -179,17 +177,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         control.addEventListener("click", (event) => {
 
-          // جلوگیری از اجرای event ردیف
           event.stopPropagation();
 
 
-          // اگر همین آهنگ در حال پخش است
           if (
             currentSongId === song.id &&
             !currentAudio.paused
           ) {
 
-            // توقف
             currentAudio.pause();
 
             playIcon.innerText = "▶";
@@ -199,11 +194,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
 
-          // متوقف کردن آهنگ قبلی
           currentAudio.pause();
 
 
-          // برگرداندن ظاهر همه آهنگ‌ها
           document.querySelectorAll(".song-row").forEach(row => {
 
             row.classList.remove("active");
@@ -226,14 +219,12 @@ document.addEventListener("DOMContentLoaded", () => {
           });
 
 
-          // آهنگ جدید
           currentSongId = song.id;
 
           currentAudio.src = song.audioUrl;
           currentAudio.load();
 
 
-          // فعال کردن آهنگ
           songRow.classList.add("active");
 
           songNumber.style.display = "none";
@@ -241,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
           playIcon.innerText = "⏸";
 
 
-          // پخش
           currentAudio.play()
             .then(() => {
 
