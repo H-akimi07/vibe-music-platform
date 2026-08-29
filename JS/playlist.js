@@ -313,3 +313,92 @@ function saveToRecentlyPlayed(song) {
     if (recent.length > 10) recent = recent.slice(0, 10);
     localStorage.setItem('vibe_recently_played', JSON.stringify(recent));
 }
+
+// 8. PLAYER UI UPDATES
+
+function updatePlayerUI() {
+    const song = state.currentSong;
+    
+    if (!song) {
+        dom.currentTitle.textContent = 'No song selected';
+        dom.currentArtist.textContent = '--';
+        dom.totalTime.textContent = '0:00';
+        dom.currentTime.textContent = '0:00';
+        dom.progressBar.style.width = '0%';
+        dom.playPauseBtn.innerHTML = '<i class="bi bi-play-fill fs-4"></i>';
+        dom.likeBtn.className = 'btn btn-outline-secondary rounded-circle';
+        dom.likeBtn.innerHTML = '<i class="bi bi-heart"></i>';
+        return;
+    }
+    
+    dom.currentTitle.textContent = song.title;
+    dom.currentArtist.textContent = song.artist;
+    dom.totalTime.textContent = song.duration || '3:00';
+    
+    if (state.isPlaying) {
+        dom.playPauseBtn.innerHTML = '<i class="bi bi-pause-fill fs-4"></i>';
+    } else {
+        dom.playPauseBtn.innerHTML = '<i class="bi bi-play-fill fs-4"></i>';
+    }
+    
+    if (song.liked) {
+        dom.likeBtn.className = 'btn btn-danger rounded-circle';
+        dom.likeBtn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+    } else {
+        dom.likeBtn.className = 'btn btn-outline-secondary rounded-circle';
+        dom.likeBtn.innerHTML = '<i class="bi bi-heart"></i>';
+    }
+}
+
+function updateVinylState() {
+    if (state.isPlaying) {
+        dom.vinylLarge.classList.add('playing');
+    } else {
+        dom.vinylLarge.classList.remove('playing');
+    }
+}
+
+// 9. PROGRESS BAR
+
+
+let progressInterval = null;
+
+function startProgressSimulation() {
+    clearInterval(progressInterval);
+    if (!state.currentSong || !state.isPlaying) return;
+    
+    const totalSeconds = durationToSeconds(state.currentSong.duration || '3:00');
+    let currentSeconds = 0;
+    
+    progressInterval = setInterval(() => {
+        currentSeconds += 1;
+        const progress = Math.min((currentSeconds / totalSeconds) * 100, 100);
+        dom.progressBar.style.width = progress + '%';
+        dom.currentTime.textContent = secondsToDuration(currentSeconds);
+        
+        if (progress >= 100) {
+            clearInterval(progressInterval);
+            nextSong();
+        }
+    }, 1000);
+}
+
+function durationToSeconds(duration) {
+    const parts = duration.split(':').map(Number);
+    if (parts.length === 2) {
+        return parts[0] * 60 + parts[1];
+    }
+    return 180;
+}
+
+function secondsToDuration(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+function resetProgress() {
+    clearInterval(progressInterval);
+    dom.progressBar.style.width = '0%';
+    dom.currentTime.textContent = '0:00';
+}
