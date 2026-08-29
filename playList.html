@@ -4,282 +4,536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibe Music Platform</title>
+
+    <title>VIBE — Playlists</title>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Google Font-->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- CSS-->
-    <link rel="stylesheet" href="CSS/playlist.css">
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="css/playlist.css">
 </head>
 
 <body>
 
-    <!-- Hero section -->
-    <section class="vibe-hero">
-        <div class="container py-5 mt-5">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mx-auto text-center">
+    <!-- Background Glow -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
 
-                    <!-- title-->
-                    <h1 class="hero-title">
-                        <span class="gradient-text">✦ PLAYLIST! ✦</span>
-                    </h1>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg vibe-navbar">
+        <div class="container-fluid px-lg-5">
 
-                    <!-- subtitle-->
-                    <p class="text-white-50 fs-5 mt-3">Your personal collection of hits</p>
+            <a class="navbar-brand vibe-logo" href="index.html">
+                <span class="logo-icon">
+                    <i class="bi bi-vinyl-fill"></i>
+                </span>
+                <span>VIBE</span>
+            </a>
 
-                    <!-- ststus-->
-                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-3 text-white-50">
-                        <span>
-                            <i class="bi bi-music-note-beamed text-primary"></i>
-                            <span id="statSongs">12</span> Songs
-                        </span>
-                        <span>
-                            <i class="bi bi-clock text-secondary"></i>
-                            <span id="statDuration">48</span> min
-                        </span>
-                        <span>
-                            <i class="bi bi-people text-primary"></i>
-                            <span id="statArtists">6</span> Artists
-                        </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation"
+                aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavigation">
+
+                <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house me-1"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="explore.html">
+                            <i class="bi bi-compass me-1"></i>
+                            Explore
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="artist.html">
+                            <i class="bi bi-person-music me-1"></i>
+                            Artists
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">
+                            <i class="bi bi-heart me-1"></i>
+                            Favorites
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="playlists.html">
+                            <i class="bi bi-music-note-list me-1"></i>
+                            Playlists
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="nav-actions d-flex align-items-center gap-2">
+
+                    <button class="icon-button" id="themeButton" type="button" aria-label="Toggle theme">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+
+                    <div class="profile-avatar">
+                        V
                     </div>
 
-                    <!-- Buttons-->
-                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
-                        <button class="btn btn-primary rounded-pill px-4" id="playAllBtn">
-                            <i class="bi bi-play-fill"></i> Play All
-                        </button>
-                        <button class="btn btn-outline-secondary rounded-pill px-4" id="shuffleBtn">
-                            <i class="bi bi-shuffle"></i> Shuffle
-                        </button>
-                        <button class="btn btn-outline-light rounded-pill px-4" id="saveBtn">
-                            <i class="bi bi-heart"></i> Save
-                        </button>
-                    </div>
-
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Filter and search section -->
-
-    <section class="vibe-search py-3">
-        <div class="container">
-            <div class="row g-3 align-items-center">
-
-                <!-- search box -->
-                <div class="col-lg-6">
-                    <div class="position-relative">
-                        <i class="bi bi-search position-absolute text-muted"
-                            style="top:50%; right:18px; transform:translateY(-50%);"></i>
-                        <input type="text" class="form-control vibe-input ps-5" id="searchInput"
-                            placeholder="Search songs, artists...">
-                    </div>
-                </div>
-
-                <!-- Button filter -->
-                <div class="col-lg-6 d-flex gap-2 flex-wrap justify-content-lg-end">
-                    <button class="btn btn-sm btn-primary rounded-pill filter-btn active-filter" data-filter="all"
-                        id="filterAll">All</button>
-                    <button class="btn btn-sm btn-outline-secondary rounded-pill filter-btn" data-filter="popular"
-                        id="filterPopular">Most Popular</button>
-                    <button class="btn btn-sm btn-outline-secondary rounded-pill filter-btn" data-filter="recent"
-                        id="filterRecent">Newest</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Grid Songs Card -->
-
-    <section class="vibe-songs py-4">
-        <div class="container">
-            <div class="row g-4" id="songGrid">
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Recently added -->
-
-    <section class="vibe-recent py-4">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="text-white fw-bold">
-                    <i class="bi bi-clock-history text-primary"></i> Recently Added
-                </h5>
-                <span class="text-muted small" style="cursor:pointer;">View all</span>
-            </div>
-            <div class="row g-3" id="recentGrid">
-
-            </div>
-        </div>
-    </section>
-
-    <!-- stats bar -->
-
-    <section class="vibe-stats py-3">
-        <div class="container">
-            <div class="row text-center text-white-50 g-3">
-                <div class="col-3">
-                    <i class="bi bi-music-note-beamed text-primary"></i>
-                    <span id="totalSongs">12</span> Songs
-                </div>
-                <div class="col-3">
-                    <i class="bi bi-clock text-secondary"></i>
-                    <span id="totalDuration">48</span> min
-                </div>
-                <div class="col-3">
-                    <i class="bi bi-people text-primary"></i>
-                    <span id="totalArtists">6</span> Artists
-                </div>
-                <div class="col-3">
-                    <i class="bi bi-heart-fill text-danger"></i>
-                    <span id="totalLikes">24</span> Likes
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bottom navigation -->
-
-    <nav class="vibe-bottom-nav fixed-bottom d-flex justify-content-around py-2">
-        <i class="bi bi-house-fill text-white-50 fs-4" id="navHome"></i>
-        <i class="bi bi-search text-white-50 fs-4" id="navSearch"></i>
-        <i class="bi bi-plus-circle-fill text-primary fs-1" style="margin-top:-10px; cursor:pointer;"
-            data-bs-toggle="modal" data-bs-target="#addSongModal"></i>
-        <i class="bi bi-heart text-white-50 fs-4" id="navFavorites"></i>
-        <i class="bi bi-person text-white-50 fs-4" id="navProfile"></i>
     </nav>
 
-    <!-- player bar -->
-    <section class="now-playing py-4">
-        <div class="container">
-            <div class="row align-items-center">
 
-                <!-- Title-->
-                <div class="col-12">
-                    <h6 class="text-muted text-center mb-3">
-                        <i class="bi bi-vinyl-fill text-primary"></i> NOW PLAYING
-                    </h6>
+    <!-- Main Content -->
+    <main class="container-fluid px-3 px-lg-5 py-4 py-lg-5">
+
+        <!-- Hero Section -->
+        <section class="playlist-hero">
+
+            <div class="hero-content">
+
+                <span class="section-kicker">
+                    <i class="bi bi-stars"></i>
+                    YOUR MUSIC SPACE
+                </span>
+
+                <h1>
+                    Your
+                    <span>Playlists</span>
+                </h1>
+
+                <p>
+                    Create, organize and enjoy your favorite music
+                    in one beautiful place.
+                </p>
+
+                <div class="hero-actions">
+
+                    <button class="gradient-button" id="openCreatePlaylist" type="button">
+                        <i class="bi bi-plus-lg"></i>
+                        Create Playlist
+                    </button>
+
+                    <button class="glass-button" id="playAllButton" type="button">
+                        <i class="bi bi-play-fill"></i>
+                        Play All
+                    </button>
+
                 </div>
 
-                <!-- Big vinyl -->
-                <div class="col-lg-4 text-center">
-                    <div class="vinyl-large-wrapper">
-                        <div class="vinyl-large" id="vinylLarge">
-                            <div class="vinyl-disc">
-                                <div class="vinyl-center-label">
-                                    <i class="bi bi-music-note-beamed"></i>
-                                </div>
-                                <div class="vinyl-groove"></div>
-                                <div class="vinyl-groove"></div>
-                                <div class="vinyl-groove"></div>
-                            </div>
+            </div>
 
-                            <div class="glow-ring" id="glowRing"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-vinyl">
 
-                <!-- song info -->
-                <div class="col-lg-8">
-                    <div class="now-playing-info text-center text-lg-start">
-                        <h2 class="text-white fw-bold" id="nowPlayingTitle">Midnight Dreams</h2>
-                        <p class="text-primary fs-5" id="nowPlayingArtist">Aron Walker</p>
+                <div class="vinyl-decoration">
+                    <div class="vinyl-groove groove-one"></div>
+                    <div class="vinyl-groove groove-two"></div>
+                    <div class="vinyl-groove groove-three"></div>
 
-                        <!-- badges -->
-                        <div class="d-flex gap-2 mb-3 flex-wrap justify-content-center justify-content-lg-start">
-                            <span class="badge vibe-badge">Chill</span>
-                            <span class="badge vibe-badge">Vibes</span>
-                            <span class="badge vibe-badge">PLAYLIST!</span>
-                        </div>
-
-
-                        <div class="d-flex align-items-center gap-3">
-                            <span class="text-muted small" id="currentTime">1:24</span>
-                            <div class="progress flex-grow-1" style="height:6px; cursor:pointer;"
-                                id="progressContainer">
-                                <div class="progress-bar bg-primary" id="progressBar" style="width:42%;"></div>
-                            </div>
-                            <span class="text-muted small" id="totalTime">3:24</span>
-                        </div>
-
-                        <!-- controls -->
-                        <div class="d-flex gap-3 mt-3 justify-content-center justify-content-lg-start">
-                            <button class="btn btn-outline-light rounded-circle" id="prevBtn">
-                                <i class="bi bi-skip-backward-fill"></i>
-                            </button>
-                            <button class="btn btn-primary rounded-circle" id="playPauseBtn"
-                                style="width:50px;height:50px;">
-                                <i class="bi bi-play-fill fs-4"></i>
-                            </button>
-                            <button class="btn btn-outline-light rounded-circle" id="nextBtn">
-                                <i class="bi bi-skip-forward-fill"></i>
-                            </button>
-                            <button class="btn btn-outline-secondary rounded-circle" id="likeBtn">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                        </div>
+                    <div class="vinyl-label">
+                        <i class="bi bi-music-note-beamed"></i>
                     </div>
                 </div>
 
             </div>
-        </div>
-    </section>
 
-    <!-- ========================================================== -->
-    <!-- ADD SONG MODAL                                             -->
-    <!-- ========================================================== -->
-    <div class="modal fade" id="addSongModal" tabindex="-1" aria-hidden="true">
+        </section>
+
+
+        <!-- Dashboard -->
+        <section class="dashboard-section">
+
+            <div class="dashboard-card">
+                <div class="dashboard-icon">
+                    <i class="bi bi-collection-play"></i>
+                </div>
+
+                <div>
+                    <span>Total Playlists</span>
+                    <strong id="playlistCount">0</strong>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-icon pink">
+                    <i class="bi bi-music-note-list"></i>
+                </div>
+
+                <div>
+                    <span>Total Songs</span>
+                    <strong id="totalSongs">0</strong>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-icon blue">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+
+                <div>
+                    <span>Last Updated</span>
+                    <strong id="lastUpdated">Today</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="toolbar-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">
+                        YOUR COLLECTION
+                    </span>
+
+                    <h2>My Playlists</h2>
+                </div>
+            </div>
+
+            <div class="playlist-toolbar">
+
+                <div class="search-wrapper">
+
+                    <i class="bi bi-search"></i>
+
+                    <input type="search" id="playlistSearch" class="form-control" placeholder="Search playlists..."
+                        autocomplete="off">
+
+                    <kbd>CTRL K</kbd>
+
+                </div>
+
+                <div class="filter-buttons">
+
+                    <button class="filter-button active" data-filter="all" type="button">
+                        All
+                    </button>
+
+                    <button class="filter-button" data-filter="large" type="button">
+                        Most Songs
+                    </button>
+
+                    <button class="filter-button" data-filter="small" type="button">
+                        Quick Mix
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Playlist Grid -->
+        <section class="playlist-grid" id="playlistGrid">
+            <!-- Playlist cards are rendered by JavaScript -->
+        </section>
+
+
+        <!-- Empty State -->
+        <section class="empty-state d-none" id="emptyState">
+
+            <div class="empty-icon">
+                <i class="bi bi-music-note-list"></i>
+            </div>
+
+            <h3>No playlists found</h3>
+
+            <p>
+                Try another search or create your first playlist.
+            </p>
+
+            <button class="gradient-button" id="emptyCreateButton" type="button">
+                <i class="bi bi-plus-lg"></i>
+                Create Playlist
+            </button>
+
+        </section>
+
+
+        <!-- Music Player -->
+        <section class="music-player-section">
+
+            <div class="player-background"></div>
+
+            <div class="player-content">
+
+                <!-- Album Artwork -->
+                <div class="player-artwork-wrapper">
+
+                    <div class="player-vinyl" id="playerVinyl">
+
+                        <div class="vinyl-lines"></div>
+
+                        <div class="player-cover">
+                            <img id="playerCover" src="assets/images/albums/midnight-drive.jpg"
+                                alt="Current song cover">
+
+                            <span class="vinyl-center">
+                                <i class="bi bi-music-note"></i>
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Song Information -->
+                <div class="player-info">
+
+                    <span class="now-playing">
+                        <span class="pulse-dot"></span>
+                        NOW PLAYING
+                    </span>
+
+                    <h2 id="playerTitle">
+                        Select a song
+                    </h2>
+
+                    <p id="playerArtist">
+                        VIBE Music
+                    </p>
+
+                    <div class="player-progress">
+
+                        <span id="currentTime">
+                            0:00
+                        </span>
+
+                        <input type="range" id="progressBar" min="0" max="100" value="0" aria-label="Music progress">
+
+                        <span id="duration">
+                            0:00
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Player Controls -->
+                <div class="player-controls">
+
+                    <button class="player-control small" id="previousButton" type="button" aria-label="Previous song">
+                        <i class="bi bi-skip-start-fill"></i>
+                    </button>
+
+                    <button class="player-control main" id="mainPlayButton" type="button" aria-label="Play">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+
+                    <button class="player-control small" id="nextButton" type="button" aria-label="Next song">
+                        <i class="bi bi-skip-end-fill"></i>
+                    </button>
+
+                </div>
+
+
+                <!-- Volume -->
+                <div class="volume-control">
+
+                    <i class="bi bi-volume-up-fill" id="volumeIcon"></i>
+
+                    <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+
+                </div>
+
+            </div>
+
+            <!-- Hidden HTML Audio -->
+            <audio id="audioPlayer" preload="metadata"></audio>
+
+        </section>
+
+    </main>
+
+
+    <!-- Create Playlist Modal -->
+    <div class="modal fade" id="createPlaylistModal" tabindex="-1" aria-labelledby="createPlaylistModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
+
             <div class="modal-content vibe-modal">
-    
-                <!-- Header -->
-                <div class="modal-header border-0">
-                    <h5 class="modal-title text-white">
-                        <i class="bi bi-plus-circle-fill text-primary"></i> Add New Song
-                    </h5>
+
+                <div class="modal-header">
+
+                    <div>
+                        <span class="section-kicker">
+                            NEW COLLECTION
+                        </span>
+
+                        <h2 class="modal-title" id="createPlaylistModalLabel">
+                            Create Playlist
+                        </h2>
+                    </div>
+
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
+
                 </div>
-    
-                <!-- Body -->
-                <div class="modal-body">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongTitle" placeholder="Song Title">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongArtist" placeholder="Artist Name">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongLyric"
-                        placeholder="Lyric snippet (optional)">
-                    <input type="text" class="form-control vibe-input mb-3" id="newSongDuration"
-                        placeholder="Duration (e.g. 3:24)">
-                </div>
-    
-                <!-- Footer -->
-                <div class="modal-footer border-0">
-                    <button class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary rounded-pill" id="addSongBtn">
-                        <i class="bi bi-plus-lg"></i> Add Song
-                    </button>
-                </div>
-    
+
+                <form id="createPlaylistForm">
+
+                    <div class="modal-body">
+
+                        <div class="form-group">
+
+                            <label for="playlistName">
+                                Playlist Name
+                            </label>
+
+                            <input type="text" id="playlistName" class="form-control vibe-input"
+                                placeholder="e.g. Late Night Vibes" maxlength="40" required>
+
+                            <small class="validation-message">
+                                Give your playlist a memorable name.
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="playlistDescription">
+                                Description
+                            </label>
+
+                            <textarea id="playlistDescription" class="form-control vibe-input" rows="3"
+                                placeholder="Describe your playlist..." maxlength="120"></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Choose Cover
+                            </label>
+
+                            <div class="cover-selector">
+
+                                <label class="cover-option selected">
+                                    <input type="radio" name="playlistCover"
+                                        value="assets/images/albums/midnight-drive.jpg" checked>
+
+                                    <img src="assets/images/albums/midnight-drive.jpg" alt="Cover option">
+                                </label>
+
+                                <label class="cover-option">
+                                    <input type="radio" name="playlistCover"
+                                        value="assets/images/albums/neon-dreams.jpg">
+
+                                    <img src="assets/images/albums/neon-dreams.jpg" alt="Cover option">
+                                </label>
+
+                                <label class="cover-option">
+                                    <input type="radio" name="playlistCover" value="assets/images/albums/afterglow.jpg">
+
+                                    <img src="assets/images/albums/afterglow.jpg" alt="Cover option">
+                                </label>
+
+                                <label class="cover-option">
+                                    <input type="radio" name="playlistCover"
+                                        value="assets/images/albums/electric-heart.jpg">
+
+                                    <img src="assets/images/albums/electric-heart.jpg" alt="Cover option">
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="glass-button" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="gradient-button">
+                            <i class="bi bi-check2"></i>
+                            Create Playlist
+                        </button>
+
+                    </div>
+
+                </form>
+
             </div>
+
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
-    <script src="JS/playlist.js"></script>
+
+    <!-- Playlist Details Modal -->
+    <div class="modal fade" id="playlistDetailsModal" tabindex="-1" aria-labelledby="playlistDetailsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+
+            <div class="modal-content vibe-modal">
+
+                <div class="modal-header">
+
+                    <div>
+                        <span class="section-kicker">
+                            PLAYLIST
+                        </span>
+
+                        <h2 class="modal-title" id="playlistDetailsModalLabel">
+                            Playlist Details
+                        </h2>
+                    </div>
+
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div id="playlistDetailsContent">
+                        <!-- Details are rendered by JavaScript -->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer">
+    </div>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Page JavaScript -->
+    <script src="js/playlist.js"></script>
 
 </body>
 
