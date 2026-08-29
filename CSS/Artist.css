@@ -436,4 +436,288 @@
 }
 
 
+/* cards section 5 */
+
+/* ================= LAST SECTION ================= */
+
+.artist-info {
+          background: var(--vibe-card);
+
+}
+
+
+/* MAIN CARD */
+
+.info-card {
+    height: 100%;
+    background: var(--vibe-card);
+    border: 1px solid var(--vibe-border);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: var(--vibe-shadow);
+    transition: 0.3s ease;
+}
+
+.info-card:hover {
+    border-color: var(--vibe-border-hover);
+    box-shadow: var(--vibe-glow-primary);
+}
+
+
+/* TITLES */
+
+.info-card h3 {
+    color: var(--vibe-text);
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.about-card p {
+    color: var(--vibe-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* GENRES */
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 18px 0;
+}
+
+.genres span {
+    padding: 5px 11px;
+    border: 1px solid var(--vibe-border);
+    border-radius: 20px;
+    color: var(--vibe-text-secondary);
+    font-size: 11px;
+}
+
+
+/* DETAILS */
+
+.artist-details {
+    margin-top: 20px;
+}
+
+.artist-details div {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.artist-details i {
+    color: var(--vibe-primary);
+}
+
+.artist-details span {
+    color: var(--vibe-muted);
+    font-size: 12px;
+}
+
+.artist-details strong {
+    color: var(--vibe-text-secondary);
+    font-size: 11px;
+}
+
+
+/* LISTENERS */
+
+.listeners-card {
+    height: auto;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title span {
+    color: var(--vibe-muted);
+    font-size: 12px;
+}
+
+.card-title h2 {
+    color: var(--vibe-text);
+    margin: 5px 0 0;
+    font-size: 28px;
+}
+
+
+/* MINI CHART */
+
+.chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 50px;
+}
+
+.chart span {
+    width: 5px;
+    border-radius: 5px;
+    background: var(--vibe-gradient);
+    animation: chartMove 2s infinite alternate;
+}
+
+.chart span:nth-child(1) {
+    height: 20px;
+}
+
+.chart span:nth-child(2) {
+    height: 28px;
+}
+
+.chart span:nth-child(3) {
+    height: 18px;
+}
+
+.chart span:nth-child(4) {
+    height: 38px;
+}
+
+.chart span:nth-child(5) {
+    height: 48px;
+}
+
+.chart span:nth-child(6) {
+    height: 35px;
+}
+
+@keyframes chartMove {
+    from {
+        transform: scaleY(.7);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+
+/* COUNTRIES */
+
+.countries-card {
+    height: auto;
+}
+
+.country {
+    display: grid;
+    grid-template-columns: 20px 95px 1fr 35px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 13px;
+}
+
+.country span,
+.country p,
+.country b {
+    font-size: 11px;
+}
+
+.country span {
+    color: var(--vibe-muted);
+}
+
+.country p {
+    color: var(--vibe-text-secondary);
+    margin: 0;
+}
+
+.country b {
+    color: var(--vibe-text-secondary);
+}
+
+.progress {
+    height: 3px;
+    background: var(--vibe-input-bg);
+}
+
+.progress div {
+    height: 100%;
+    background: var(--vibe-gradient);
+    border-radius: 5px;
+}
+
+
+/* TOP PLAYED */
+
+.played-card {
+    min-height: 100%;
+}
+
+.card-title a {
+    color: var(--vibe-primary);
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.song-item {
+    display: grid;
+    grid-template-columns: 20px 35px 1fr auto;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--vibe-border);
+}
+
+.song-item > span {
+    color: var(--vibe-muted);
+    font-size: 11px;
+}
+
+.song-item img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.song-item p {
+    color: var(--vibe-text-secondary);
+    font-size: 11px;
+    margin: 0;
+}
+
+.song-item b {
+    color: var(--vibe-muted);
+    font-size: 10px;
+}
+
+
+/* FANS */
+
+.fans-title {
+    margin-top: 22px;
+    margin-bottom: 12px !important;
+}
+
+.fans {
+    display: flex;
+}
+
+.fans img {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--vibe-card);
+    margin-left: -5px;
+    transition: 0.3s;
+}
+
+.fans img:hover {
+    transform: translateY(-5px);
+    border-color: var(--vibe-primary);
+    box-shadow: var(--vibe-glow-primary);
+}
+
+
 

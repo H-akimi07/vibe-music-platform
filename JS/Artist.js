@@ -449,6 +449,48 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// cards section 5 
+
+// ================= LAST SECTION JS =================
+
+const listeners = document.getElementById("listeners");
+
+let target = 2.4;
+let current = 0;
+
+const counter = setInterval(() => {
+
+    current += 0.1;
+
+    if (current >= target) {
+        current = target;
+        clearInterval(counter);
+    }
+
+    listeners.textContent = current.toFixed(1) + "M";
+
+}, 50);
+
+
+// SONG CLICK
+
+const songs = document.querySelectorAll(".song-item");
+
+songs.forEach(song => {
+
+    song.addEventListener("click", () => {
+
+        songs.forEach(item => {
+            item.style.background = "transparent";
+        });
+
+        song.style.background = "var(--vibe-card-hover)";
+
+    });
+
+});
+
+
 
 
 
