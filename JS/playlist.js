@@ -80,7 +80,7 @@ let state = {
   searchQuery: "",
 };
 
-
+// 3.dom elements
 const dom = {
   songGrid: document.getElementById("songGrid"),
   recentGrid: document.getElementById("recentGrid"),
@@ -110,3 +110,32 @@ const dom = {
   newLyric: document.getElementById("newSongLyric"),
   newDuration: document.getElementById("newSongDuration"),
 };
+
+// 4. LOCAL STORAGE FUNCTIONS
+
+const STORAGE_KEY = 'vibe_playlist';
+
+function saveSongs(songs) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(songs));
+}
+
+function loadSongs() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        try {
+            return JSON.parse(saved);
+        } catch {
+            return null;
+        }
+    }
+    return null;
+}
+
+function getSongs() {
+    const saved = loadSongs();
+    if (saved && saved.length > 0) {
+        return saved;
+    }
+    saveSongs(songsData);
+    return [...songsData];
+}
