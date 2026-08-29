@@ -139,3 +139,117 @@ function getSongs() {
     saveSongs(songsData);
     return [...songsData];
 }
+
+
+// 5. RENDER SONG CARDS
+
+function renderSongs() {
+    let filtered = [...state.songs];
+    
+    if (state.filter === 'popular') {
+        filtered.sort((a, b) => b.plays - a.plays);
+    } else if (state.filter === 'recent') {
+        filtered.sort((a, b) => b.id - a.id);
+    }
+    
+    if (state.searchQuery.trim()) {
+        const query = state.searchQuery.toLowerCase().trim();
+        filtered = filtered.filter(song => 
+            song.title.toLowerCase().includes(query) ||
+            song.artist.toLowerCase().includes(query)
+        );
+    }
+    
+    if (filtered.length === 0) {
+        dom.songGrid.innerHTML = `
+            <div class="col-12 text-center text-muted py-5">
+                <i class="bi bi-music-note-beamed fs-1 d-block mb-3"></i>
+                <h5>No songs found</h5>
+                <p>Try adjusting your search or filter</p>
+            </div>
+        `;
+        return;
+    }
+    
+    dom.songGrid.innerHTML = filtered.map((song) => {
+        const isActive = state.currentSong && state.currentSong.id === song.id;
+        return `
+            <div class="col-6 col-lg-4">
+                <div class="song-card ${isActive ? 'playing' : ''}" data-id="${song.id}">
+                    <div class="song-cover">
+                        ${song.cover || '🎵'}
+                    </div>
+                    <div class="song-title">${song.title}</div>
+                    <div class="song-artist">${song.artist}</div>
+                    <div class="song-lyric text-muted small">"${song.lyric || ''}"</div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="song-duration">${song.duration}</span>
+                        <span class="text-muted small">
+                            <i class="bi bi-heart${song.liked ? '-fill text-danger' : ''}"></i>
+                        </span>
+                    </div>
+                    <button class="play-btn" data-id="${song.id}">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    document.querySelectorAll('.song-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.play-btn')) return;
+            const id = parseInt(this.dataset.id);
+            playSongById(id);
+        });
+    });
+    
+    document.querySelectorAll('.play-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const id = parseInt(this.dataset.id);
+            playSongById(id);
+        });
+    });
+}
+
+
+// 6. RENDER RECENTLY ADDED
+
+
+function renderRecent() {
+    const recent = [...state.songs]
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 3);
+    
+    if (recent.length === 0) {
+        dom.recentGrid.innerHTML = `
+            <div class="col-12 text-center text-muted py-3">
+                <small>No recently added songs</small>
+            </div>
+        `;
+        return;
+    }
+    
+    dom.recentGrid.innerHTML = recent.map(song => `
+        <div class="col-6 col-md-4">
+            <div class="recent-item" data-id="${song.id}">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="fs-4">${song.cover || '🎵'}</span>
+                    <div class="flex-grow-1">
+                        <div class="text-white small fw-semibold">${song.title}</div>
+                        <div class="text-muted small">${song.artist}</div>
+                    </div>
+                    <i class="bi bi-play-circle text-primary"></i>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    document.querySelectorAll('.recent-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const id = parseInt(this.dataset.id);
+            playSongById(id);
+        });
+    });
+}
