@@ -1,4 +1,16 @@
-/*  HOME PAGE CONTROLLER  */
+/*
+  HOME PAGE CONTROLLER
+  Demonstrates:
+  - conditions
+  - loops
+  - functions
+  - objects
+  - arrays + map/filter/find
+  - DOM manipulation
+  - events
+  - form validation
+  - LocalStorage
+*/
 
 const homeState = {
   currentVibeIndex: new Date().getDate() % vibeDays.length,
@@ -383,8 +395,37 @@ function initHome() {
 
 document.addEventListener("DOMContentLoaded", initHome);
 
-/* VIBE shared data foundation.
-  Every teammate should import/use these same objects and IDs. */
+/* Footer interactions */
+document.addEventListener("DOMContentLoaded", () => {
+  const footerYear = document.getElementById("footerYear");
+  if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+  const footerSurpriseBtn = document.getElementById("footerSurpriseBtn");
+  const surpriseBtn = document.getElementById("surpriseMeBtn");
+
+  if (footerSurpriseBtn) {
+    footerSurpriseBtn.addEventListener("click", () => {
+      if (surpriseBtn) {
+        surpriseBtn.click();
+        return;
+      }
+
+      if (typeof songs !== "undefined" && songs.length) {
+        const randomSong = songs[Math.floor(Math.random() * songs.length)];
+        document.dispatchEvent(
+          new CustomEvent("vibe:surprise", {
+            detail: randomSong,
+          }),
+        );
+      }
+    });
+  }
+});
+
+/*
+  VIBE shared data foundation.
+  Every teammate should import/use these same objects and IDs.
+*/
 
 const vibeSongs = [
   {
