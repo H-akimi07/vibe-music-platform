@@ -402,3 +402,29 @@ function resetProgress() {
     dom.progressBar.style.width = '0%';
     dom.currentTime.textContent = '0:00';
 }
+
+// 10. UPDATE STATS
+
+
+function updateStats() {
+    const songs = state.songs;
+    const total = songs.length;
+    
+    const artists = new Set(songs.map(s => s.artist));
+    const totalArtists = artists.size;
+    
+    const likes = songs.filter(s => s.liked).length;
+    
+    let totalSeconds = 0;
+    songs.forEach(s => {
+        totalSeconds += durationToSeconds(s.duration || '3:00');
+    });
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    
+    dom.totalSongs.textContent = total;
+    dom.totalArtists.textContent = totalArtists;
+    dom.totalLikes.textContent = likes;
+    dom.totalDuration.textContent = totalMinutes;
+}
+
+

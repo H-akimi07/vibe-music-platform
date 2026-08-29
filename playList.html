@@ -239,11 +239,48 @@
         </div>
     </section>
 
+    <!-- ========================================================== -->
+    <!-- ADD SONG MODAL                                             -->
+    <!-- ========================================================== -->
+    <div class="modal fade" id="addSongModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content vibe-modal">
+    
+                <!-- Header -->
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-white">
+                        <i class="bi bi-plus-circle-fill text-primary"></i> Add New Song
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+    
+                <!-- Body -->
+                <div class="modal-body">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongTitle" placeholder="Song Title">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongArtist" placeholder="Artist Name">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongLyric"
+                        placeholder="Lyric snippet (optional)">
+                    <input type="text" class="form-control vibe-input mb-3" id="newSongDuration"
+                        placeholder="Duration (e.g. 3:24)">
+                </div>
+    
+                <!-- Footer -->
+                <div class="modal-footer border-0">
+                    <button class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary rounded-pill" id="addSongBtn">
+                        <i class="bi bi-plus-lg"></i> Add Song
+                    </button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
 
-    <script src="https://jsdelivr.net"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
     <script src="JS/playlist.js"></script>
+
 </body>
 
 </html>
