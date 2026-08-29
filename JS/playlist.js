@@ -499,3 +499,44 @@ dom.likeBtn.addEventListener('click', function() {
     updateStats();
 });
 
+// 14. ADD NEW SONG
+
+dom.addSongBtn.addEventListener('click', function() {
+    const title = dom.newTitle.value.trim();
+    const artist = dom.newArtist.value.trim();
+    const lyric = dom.newLyric.value.trim();
+    const duration = dom.newDuration.value.trim();
+    
+    if (!title || !artist) {
+        alert('Please enter title and artist name!');
+        return;
+    }
+    
+    const newSong = {
+        id: Date.now(),
+        title: title,
+        artist: artist,
+        lyric: lyric || '',
+        duration: duration || '3:00',
+        cover: '🎵',
+        plays: 0,
+        liked: false,
+        tags: []
+    };
+    
+    state.songs.push(newSong);
+    saveSongs(state.songs);
+    
+    dom.newTitle.value = '';
+    dom.newArtist.value = '';
+    dom.newLyric.value = '';
+    dom.newDuration.value = '';
+    
+    const modal = bootstrap.Modal.getInstance(document.getElementById('addSongModal'));
+    if (modal) modal.hide();
+    
+    renderSongs();
+    renderRecent();
+    updateStats();
+});
+
