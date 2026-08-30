@@ -278,6 +278,7 @@ This page should demonstrate DOM manipulation, events, functions, arrays, object
 
 Work from the page's feature branch, pull the latest `main` before integration, commit meaningful changes, push the branch and open a Pull Request.
 
+
 # VIBE — Playlists Page
 
 ## Ownership

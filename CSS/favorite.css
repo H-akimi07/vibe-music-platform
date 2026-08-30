@@ -1,4 +1,15 @@
-/*   HERO STATS*/
+/*
+   =====================================================
+   VIBE — FAVORITES PAGE
+   Page-specific styles only.
+   IMPORTANT: Global colors come from colors.css,
+   shared component styles come from explore.css
+   =====================================================
+*/
+
+/* =====================================================
+   HERO STATS
+===================================================== */
 body {
     min-height: 100vh;
     display: flex;
@@ -59,7 +70,9 @@ main {
     background: var(--vibe-border);
 }
 
-/*   TOOLBAR*/
+/* =====================================================
+   TOOLBAR
+===================================================== */
 
 .favorite-search {
     max-width: 280px;
@@ -97,7 +110,9 @@ main {
     background: rgba(236, 72, 153, 0.08);
 }
 
-/*   FAVORITE CARD — heart is always filled here*/
+/* =====================================================
+   FAVORITE CARD — heart is always filled here
+===================================================== */
 
 .explore-favorite-btn.is-favorite {
     color: var(--vibe-secondary);
@@ -110,7 +125,9 @@ main {
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/*   NOW PLAYING BAR — fixes extra empty space above footer*/
+/* =====================================================
+   NOW PLAYING BAR — fixes extra empty space above footer
+===================================================== */
 
 .now-playing-card {
     /* position: fixed; */
@@ -124,7 +141,9 @@ main {
     padding-bottom: 110px;
 }
 
-/*   MOBILE*/
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 767.98px) {
     .favorite-stats {
