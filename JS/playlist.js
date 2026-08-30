@@ -299,8 +299,7 @@ function setupEventListeners() {
   /* Volume */
   volumeBar.addEventListener("input", handleVolumeChange);
 
-  /* Theme */
-  themeButton.addEventListener("click", toggleTheme);
+  /* Theme is handled globally by JS/theme.js. */
 
   /* Play all */
   playAllButton.addEventListener("click", playAllSongs);

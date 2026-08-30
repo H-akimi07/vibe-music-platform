@@ -1979,3 +1979,76 @@ input[type="range"] {
     min-height: 185px;
   }
 }
+
+/* Light Mode */
+/* LIGHT MODE */
+
+body[data-theme="light"] {
+  --vibe-bg: #f7f7fb;
+  --vibe-card: #ffffff;
+  --vibe-text: #111827;
+  --vibe-muted: #6b7280;
+  --vibe-border: rgba(0, 0, 0, 0.08);
+
+  background: var(--vibe-bg);
+  color: var(--vibe-text);
+}
+
+/* Navbar */
+
+body[data-theme="light"] .navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Cards */
+
+body[data-theme="light"] .song-card,
+body[data-theme="light"] .artist-card,
+body[data-theme="light"] .genre-card,
+body[data-theme="light"] .vibe-card {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Text */
+
+body[data-theme="light"] .song-artist,
+body[data-theme="light"] .artist-genre,
+body[data-theme="light"] .recent-item span,
+body[data-theme="light"] .text-secondary {
+  color: #6b7280 !important;
+}
+
+/* Footer */
+
+body[data-theme="light"] .footer {
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Inputs */
+
+body[data-theme="light"] input,
+body[data-theme="light"] .form-control {
+  background: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Search */
+
+body[data-theme="light"] .search-results {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Player */
+
+body[data-theme="light"] .music-player {
+  background: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}

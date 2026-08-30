@@ -1,0 +1,272 @@
+/*=======
+   VIBE — LIGHT MODE
+   This file only overrides the colors/backgrounds needed
+   for the Light Theme.
+======= */
+
+body.light-mode {
+  --vibe-bg: #f7f7fb;
+  --vibe-card: #ffffff;
+  --vibe-card-hover: #f1eff8;
+
+  --vibe-primary: #9333ea;
+  --vibe-secondary: #db2777;
+  --vibe-accent: #4f46e5;
+
+  --vibe-text: #171321;
+  --vibe-text-secondary: #3f3a48;
+  --vibe-muted: #6b6675;
+
+  --vibe-border: rgba(23, 19, 33, 0.09);
+  --vibe-border-hover: rgba(147, 51, 234, 0.35);
+  --vibe-input-bg: #f1f0f6;
+
+  --vibe-shadow: 0 10px 30px rgba(30, 20, 50, 0.1);
+  --vibe-glow-primary: 0 0 30px rgba(147, 51, 234, 0.14);
+  --vibe-glow-secondary: 0 0 30px rgba(219, 39, 119, 0.14);
+
+  background: var(--vibe-bg);
+  color: var(--vibe-text);
+}
+
+/*
+   GLOBAL
+ */
+
+body.light-mode {
+  background-color: var(--vibe-bg);
+  color: var(--vibe-text);
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+body.light-mode main,
+body.light-mode section {
+  background-color: transparent;
+}
+
+/*
+   NAVBAR
+ */
+
+body.light-mode .navbar {
+  background: rgba(247, 247, 251, 0.82);
+  border-bottom: 1px solid var(--vibe-border);
+  box-shadow: 0 5px 25px rgba(30, 20, 50, 0.06);
+}
+
+body.light-mode .navbar-brand,
+body.light-mode .nav-link {
+  color: var(--vibe-text);
+}
+
+body.light-mode .nav-link:hover,
+body.light-mode .nav-link.active {
+  color: var(--vibe-primary);
+}
+
+/*
+   CARDS
+ */
+
+body.light-mode .vibe-card,
+body.light-mode .song-card,
+body.light-mode .artist-card,
+body.light-mode .genre-card {
+  background: var(--vibe-card);
+  border-color: var(--vibe-border);
+  box-shadow: var(--vibe-shadow);
+}
+
+body.light-mode .vibe-card:hover,
+body.light-mode .song-card:hover,
+body.light-mode .artist-card:hover,
+body.light-mode .genre-card:hover {
+  background: var(--vibe-card-hover);
+  border-color: var(--vibe-border-hover);
+}
+
+/*
+   TEXT
+ */
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6 {
+  color: var(--vibe-text);
+}
+
+body.light-mode p {
+  color: var(--vibe-text-secondary);
+}
+
+body.light-mode .text-muted {
+  color: var(--vibe-muted) !important;
+}
+
+/*
+   INPUTS / SEARCH
+ */
+
+body.light-mode input,
+body.light-mode textarea,
+body.light-mode select {
+  background: var(--vibe-input-bg);
+  color: var(--vibe-text);
+  border-color: var(--vibe-border);
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+  color: var(--vibe-muted);
+}
+
+body.light-mode input:focus,
+body.light-mode textarea:focus,
+body.light-mode select:focus {
+  border-color: var(--vibe-primary);
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+
+/*
+   BUTTONS
+ */
+
+body.light-mode .btn-outline-light {
+  color: var(--vibe-text);
+  border-color: var(--vibe-border);
+}
+
+body.light-mode .btn-outline-light:hover {
+  color: #fff;
+  border-color: transparent;
+  background: var(--vibe-gradient);
+}
+
+/*
+   PLAYER
+ */
+
+body.light-mode .music-player,
+body.light-mode .player {
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid var(--vibe-border);
+  box-shadow: 0 -10px 35px rgba(30, 20, 50, 0.1);
+}
+
+body.light-mode .player-title,
+body.light-mode .current-song-title {
+  color: var(--vibe-text);
+}
+
+body.light-mode .player-artist,
+body.light-mode .current-song-artist {
+  color: var(--vibe-muted);
+}
+
+/*
+   FOOTER
+ */
+
+body.light-mode .vibe-footer {
+  background:
+    radial-gradient(
+      circle at 12% 20%,
+      rgba(147, 51, 234, 0.09),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(219, 39, 119, 0.07),
+      transparent 28%
+    ),
+    linear-gradient(180deg, #f7f7fb, #eeeef6);
+
+  border-top-color: var(--vibe-border);
+}
+
+body.light-mode .footer-heading,
+body.light-mode .footer-tagline,
+body.light-mode .footer-cta h3 {
+  color: var(--vibe-text);
+}
+
+body.light-mode .footer-description,
+body.light-mode .footer-links a,
+body.light-mode .footer-copyright,
+body.light-mode .footer-bottom-links a {
+  color: var(--vibe-muted);
+}
+
+body.light-mode .footer-links a:hover,
+body.light-mode .footer-bottom-links a:hover {
+  color: var(--vibe-primary);
+}
+
+body.light-mode .footer-social {
+  color: var(--vibe-muted);
+  background: rgba(255, 255, 255, 0.65);
+  border-color: var(--vibe-border);
+}
+
+body.light-mode .footer-social:hover {
+  color: var(--vibe-primary);
+  background: rgba(147, 51, 234, 0.08);
+  border-color: rgba(147, 51, 234, 0.3);
+}
+
+/*
+   MODALS
+ */
+
+body.light-mode .modal-content {
+  color: var(--vibe-text);
+  background: var(--vibe-card);
+  border-color: var(--vibe-border);
+  box-shadow: 0 20px 60px rgba(30, 20, 50, 0.18);
+}
+
+/*
+   DROPDOWNS
+ */
+
+body.light-mode .dropdown-menu {
+  background: var(--vibe-card);
+  border-color: var(--vibe-border);
+  box-shadow: var(--vibe-shadow);
+}
+
+body.light-mode .dropdown-item {
+  color: var(--vibe-text-secondary);
+}
+
+body.light-mode .dropdown-item:hover {
+  color: var(--vibe-text);
+  background: var(--vibe-card-hover);
+}
+
+/*  THEME TRANSITION*/
+
+body,
+.navbar,
+.vibe-card,
+.song-card,
+.artist-card,
+.genre-card,
+.music-player,
+.player,
+.vibe-footer,
+input,
+textarea,
+select,
+.dropdown-menu {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
