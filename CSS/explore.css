@@ -1,6 +1,226 @@
-/*  VIBE — EXPLORE PAGE Page-specific styles only.
-IMPORTANT: Global colors come from style.css  */
-/*  NAVBAR  */
+:root {
+  --vibe-bg: #070711;
+  --vibe-card: #11111f;
+  --vibe-card-hover: #18182a;
+  --vibe-primary: #a855f7;
+  --vibe-secondary: #ec4899;
+  --vibe-accent: #6366f1;
+  --vibe-text: #ffffff;
+  --vibe-text-secondary: #e5e7eb;
+  --vibe-muted: #9ca3af;
+  --vibe-border: rgba(255, 255, 255, 0.08);
+  --vibe-border-hover: rgba(168, 85, 247, 0.4);
+  --vibe-input-bg: #0d0d19;
+  --vibe-gradient: linear-gradient(
+    135deg,
+    var(--vibe-primary),
+    var(--vibe-secondary)
+  );
+  --vibe-gradient-accent: linear-gradient(
+    135deg,
+    var(--vibe-accent),
+    var(--vibe-primary)
+  );
+  --vibe-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --vibe-glow-primary: 0 0 30px rgba(168, 85, 247, 0.25);
+  --vibe-glow-secondary: 0 0 30px rgba(236, 72, 153, 0.25);
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+}
+
+body[data-theme="light"] {
+  --vibe-bg: #f7f5fb;
+  --vibe-card: #ffffff;
+  --vibe-card-hover: #f0ecf8;
+  --vibe-text: #171323;
+  --vibe-text-secondary: #3b3547;
+  --vibe-muted: #6f687a;
+  --vibe-border: rgba(23, 19, 35, 0.1);
+  --vibe-input-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding-bottom: 118px;
+  overflow-x: hidden;
+  color: var(--vibe-text);
+  background:
+    radial-gradient(
+      circle at 75% 10%,
+      rgba(168, 85, 247, 0.09),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 45%,
+      rgba(99, 102, 241, 0.06),
+      transparent 28%
+    ),
+    var(--vibe-bg);
+  font-family: Inter, sans-serif;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+
+.ambient {
+  position: fixed;
+  z-index: -1;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.ambient-one {
+  background: var(--vibe-primary);
+  top: -180px;
+  right: 15%;
+}
+.ambient-two {
+  background: var(--vibe-secondary);
+  top: 48%;
+  left: -240px;
+}
+.ambient-three {
+  background: var(--vibe-accent);
+  bottom: -240px;
+  right: 5%;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 14px 28px 0;
+  background: linear-gradient(to bottom, var(--vibe-bg) 45%, transparent);
+}
+
+.vibe-navbar {
+  max-width: 1240px;
+  margin: auto;
+  min-height: 72px;
+  padding: 12px 18px 12px 22px;
+  border: 1px solid var(--vibe-border);
+  border-radius: 22px;
+  background: rgba(17, 17, 31, 0.72);
+  backdrop-filter: blur(22px);
+  box-shadow: var(--vibe-shadow);
+}
+
+body[data-theme="light"] .vibe-navbar {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font:
+    800 1.15rem Poppins,
+    sans-serif;
+  letter-spacing: 0.13em;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--vibe-gradient);
+  box-shadow: var(--vibe-glow-primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  margin-right: 26px;
+}
+
+.nav-link {
+  padding: 9px 13px;
+  border-radius: 10px;
+  color: var(--vibe-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--vibe-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+.nav-link.active {
+  box-shadow: inset 0 -2px 0 var(--vibe-primary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--vibe-border);
+  border-radius: 12px;
+  color: var(--vibe-muted);
+  background: transparent;
+  transition: 0.2s ease;
+}
+.icon-btn:hover {
+  color: var(--vibe-text);
+  border-color: var(--vibe-border-hover);
+  background: var(--vibe-card-hover);
+  transform: translateY(-1px);
+}
+
+.profile-chip {
+  padding-left: 2px;
+}
+.profile-avatar {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  font-weight: 800;
+  background: var(--vibe-gradient);
+}
+
+.mobile-menu {
+  display: none;
+}
+
 .vibe-explore-navbar {
   position: sticky;
   top: 0;
@@ -76,7 +296,7 @@ IMPORTANT: Global colors come from style.css  */
 
   border: 1px solid var(--vibe-border);
 }
-/*  HERO  */
+/* ===================================================== HERO ===================================================== */
 .explore-hero {
   position: relative;
 
@@ -189,7 +409,7 @@ IMPORTANT: Global colors come from style.css  */
 
   line-height: 1.8;
 }
-/*  SEARCH  */
+/* ===================================================== SEARCH ===================================================== */
 .explore-search {
   position: relative;
 
@@ -264,7 +484,7 @@ IMPORTANT: Global colors come from style.css  */
 
   font-size: 0.8rem;
 }
-/*  3D RECORD  */
+/* ===================================================== 3D RECORD ===================================================== */
 .explore-record {
   position: relative;
 
@@ -364,7 +584,7 @@ IMPORTANT: Global colors come from style.css  */
     transform: translateY(-16px) rotate(3deg);
   }
 }
-/*  SECTION HEADINGS  */
+/* ===================================================== SECTION HEADINGS ===================================================== */
 .explore-section-label {
   display: block;
 
@@ -389,7 +609,7 @@ IMPORTANT: Global colors come from style.css  */
 
   letter-spacing: -1px;
 }
-/*  GENRE BUTTONS  */
+/* ===================================================== GENRE BUTTONS ===================================================== */
 .genre-btn {
   flex: 0 0 auto;
 
@@ -429,7 +649,7 @@ IMPORTANT: Global colors come from style.css  */
 
   box-shadow: var(--vibe-glow-primary);
 }
-/*  MUSIC CONTROLS  */
+/* ===================================================== MUSIC CONTROLS ===================================================== */
 .explore-result-count {
   color: var(--vibe-muted);
 
@@ -455,7 +675,7 @@ IMPORTANT: Global colors come from style.css  */
 
   box-shadow: none;
 }
-/*  SONG CARD  */
+/* ===================================================== SONG CARD ===================================================== */
 .explore-song-card {
   position: relative;
 
@@ -623,7 +843,7 @@ IMPORTANT: Global colors come from style.css  */
 .explore-favorite-btn.active {
   color: var(--vibe-secondary);
 }
-/*  EMPTY STATE  */
+/* ===================================================== EMPTY STATE ===================================================== */
 .empty-state-icon {
   width: 75px;
   height: 75px;
@@ -658,7 +878,7 @@ IMPORTANT: Global colors come from style.css  */
 
   font-weight: 600;
 }
-/*  SURPRISE CARD  */
+/* ===================================================== SURPRISE CARD ===================================================== */
 .surprise-card {
   position: relative;
 
@@ -733,7 +953,7 @@ IMPORTANT: Global colors come from style.css  */
 
   box-shadow: var(--vibe-glow-secondary);
 }
-/*  SURPRISE 3D ORB  */
+/* ===================================================== SURPRISE 3D ORB ===================================================== */
 .surprise-orb {
   width: 190px;
   height: 190px;
@@ -787,7 +1007,7 @@ IMPORTANT: Global colors come from style.css  */
     transform: translateY(-12px) rotate(5deg);
   }
 }
-/*  MOBILE  */
+/* ===================================================== MOBILE ===================================================== */
 @media (max-width: 767.98px) {
   .explore-hero {
     padding: 65px 0 55px;
@@ -1401,77 +1621,4 @@ IMPORTANT: Global colors come from style.css  */
   .footer-cta {
     min-height: 185px;
   }
-}
-
-/* Light Mode */
-/* LIGHT MODE */
-
-body[data-theme="light"] {
-  --vibe-bg: #f7f7fb;
-  --vibe-card: #ffffff;
-  --vibe-text: #111827;
-  --vibe-muted: #6b7280;
-  --vibe-border: rgba(0, 0, 0, 0.08);
-
-  background: var(--vibe-bg);
-  color: var(--vibe-text);
-}
-
-/* Navbar */
-
-body[data-theme="light"] .navbar {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Cards */
-
-body[data-theme="light"] .song-card,
-body[data-theme="light"] .artist-card,
-body[data-theme="light"] .genre-card,
-body[data-theme="light"] .vibe-card {
-  background: #ffffff;
-  color: #111827;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* Text */
-
-body[data-theme="light"] .song-artist,
-body[data-theme="light"] .artist-genre,
-body[data-theme="light"] .recent-item span,
-body[data-theme="light"] .text-secondary {
-  color: #6b7280 !important;
-}
-
-/* Footer */
-
-body[data-theme="light"] .footer {
-  background: #ffffff;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Inputs */
-
-body[data-theme="light"] input,
-body[data-theme="light"] .form-control {
-  background: white;
-  color: black;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Search */
-
-body[data-theme="light"] .search-results {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Player */
-
-body[data-theme="light"] .music-player {
-  background: rgba(255, 255, 255, 0.9);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }

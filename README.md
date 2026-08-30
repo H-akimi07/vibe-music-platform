@@ -2,8 +2,9 @@
 
 VIBE is a responsive music-discovery website built collaboratively by a team of five.
 
-## Demo Link 
-[https://h-akimi07.github.io/vibe-music-platform/](https://vibe-music-platform.vercel.app/)
+# DEMO LINK
+
+https://vibe-music-platform.vercel.app/
 
 ## Pages
 
@@ -191,17 +192,17 @@ This page should demonstrate DOM manipulation, events, functions, arrays, object
 
 Work from the page's feature branch, pull the latest `main` before integration, commit meaningful changes, push the branch and open a Pull Request.
 
-# VIBE — Artist Page
+# VIBE — Favorites Page
 
 ## Ownership
 
-- **Page:** `Artist.html`
-- **JavaScript:** `JS/Artist.js`
-- **CSS:** `CSS/Artist.css`
+- **Page:** `favorite.html`
+- **JavaScript:** `JS/favorite.js`
+- **CSS:** `CSS/favorite.css`
 
 ## Responsibility
 
-Artist profile, statistics, popular songs, albums, related content and interactive song selection.
+Persistent favorite songs, search, sorting, statistics, empty states and playback controls.
 
 ## Shared rules
 
@@ -249,47 +250,17 @@ This page should demonstrate DOM manipulation, events, functions, arrays, object
 
 Work from the page's feature branch, pull the latest `main` before integration, commit meaningful changes, push the branch and open a Pull Request.
 
-# VIBE — Favorites Page
+# VIBE — Artist Page
 
 ## Ownership
 
-- **Page:** `favorite.html`
-- **JavaScript:** `JS/favorite.js`
-- **CSS:** `CSS/favorite.css`
+- **Page:** `Artist.html`
+- **JavaScript:** `JS/Artist.js`
+- **CSS:** `CSS/Artist.css`
 
 ## Responsibility
 
-Persistent favorite songs, search, sorting, statistics, empty states and playback controls.
-
-## Shared rules
-
-- Use the VIBE global palette from `CSS/colors.css`.
-- Use `JS/theme.js` for light/dark mode.
-- Keep existing LocalStorage keys.
-- Reuse the shared navigation, player and data architecture where applicable.
-- Use Bootstrap 5 for responsive layout and common UI.
-- Do not change another teammate's page without communicating first.
-
-## Rubric focus
-
-This page should demonstrate DOM manipulation, events, functions, arrays, objects, array methods and conditions. Add meaningful comments around non-obvious logic and keep commits small and descriptive.
-
-## Git
-
-Work from the page's feature branch, pull the latest `main` before integration, commit meaningful changes, push the branch and open a Pull Request.
-
-
-# VIBE — Playlists Page
-
-## Ownership
-
-- **Page:** `playList.html`
-- **JavaScript:** `JS/playlist.js`
-- **CSS:** `CSS/playlist.css`
-
-## Responsibility
-
-Playlist CRUD, search/filtering, playlist details, adding songs, deleting/editing playlists, persistence and audio controls.
+Artist profile, statistics, popular songs, albums, related content and interactive song selection.
 
 ## Shared rules
 

@@ -1,7 +1,8 @@
-/*   VIBE — GLOBAL THEME CONTROLLER
+/* ============================================================
+   VIBE — GLOBAL THEME CONTROLLER
    Shared by every page.
    Storage key: vibeTheme
-*/
+   ============================================================ */
 
 (function () {
   "use strict";
@@ -32,18 +33,17 @@
 
       if (icon) {
         icon.className =
-          safeTheme === "dark" ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+          safeTheme === "dark"
+            ? "bi bi-sun-fill"
+            : "bi bi-moon-stars-fill";
       }
 
       button.setAttribute(
         "aria-label",
-        safeTheme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+        safeTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"
       );
 
-      button.setAttribute(
-        "title",
-        safeTheme === "dark" ? "Light mode" : "Dark mode",
-      );
+      button.setAttribute("title", safeTheme === "dark" ? "Light mode" : "Dark mode");
     });
 
     // Supports the project's existing button IDs.
@@ -53,17 +53,19 @@
 
         if (icon) {
           icon.className =
-            safeTheme === "dark" ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+            safeTheme === "dark"
+              ? "bi bi-sun-fill"
+              : "bi bi-moon-stars-fill";
         }
 
         button.setAttribute(
           "aria-label",
-          safeTheme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+          safeTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"
         );
 
         button.setAttribute(
           "title",
-          safeTheme === "dark" ? "Light mode" : "Dark mode",
+          safeTheme === "dark" ? "Light mode" : "Dark mode"
         );
       });
     });
@@ -86,12 +88,13 @@
     clearTimeout(window.__vibeThemeToastTimer);
     window.__vibeThemeToastTimer = setTimeout(
       () => toast.classList.remove("show"),
-      1900,
+      1900
     );
   }
 
   function toggleVibeTheme() {
-    const nextTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
+    const nextTheme =
+      document.body.dataset.theme === "dark" ? "light" : "dark";
 
     localStorage.setItem(STORAGE_KEY, nextTheme);
     applyVibeTheme(nextTheme);
@@ -104,9 +107,7 @@
     const buttons = new Set();
 
     ["themeToggle", "themeButton", "theme-toggle"].forEach((id) => {
-      document
-        .querySelectorAll("#" + id)
-        .forEach((button) => buttons.add(button));
+      document.querySelectorAll("#" + id).forEach((button) => buttons.add(button));
     });
 
     document
