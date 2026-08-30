@@ -2,9 +2,12 @@
 
 VIBE is a responsive music-discovery website built collaboratively by a team of five.
 
-# DEMO LINK
+# DEMO Vercel LINK
 
 https://vibe-music-platform.vercel.app/
+
+# Demo GitHub Link
+https://h-akimi07.github.io/vibe-music-platform/
 
 ## Pages
 
