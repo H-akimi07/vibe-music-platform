@@ -114,17 +114,14 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 14px 28px 0;
+  padding: 0;
   background: linear-gradient(to bottom, var(--vibe-bg) 45%, transparent);
 }
 
 .vibe-navbar {
-  max-width: 1240px;
-  margin: auto;
   min-height: 72px;
   padding: 12px 18px 12px 22px;
   border: 1px solid var(--vibe-border);
-  border-radius: 22px;
   background: rgba(17, 17, 31, 0.72);
   backdrop-filter: blur(22px);
   box-shadow: var(--vibe-shadow);

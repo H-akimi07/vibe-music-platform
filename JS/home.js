@@ -999,3 +999,391 @@ function getVolume() {
 function saveVolume(volume) {
   localStorage.setItem(VIBE_STORAGE_KEYS.volume, String(volume));
 }
+
+// Active NavBar
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split("/").pop().toLowerCase();
+
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navLinks.forEach((link) => {
+    const linkPage = link.getAttribute("href").split("/").pop().toLowerCase();
+
+    if (
+      linkPage === currentPage ||
+      (currentPage === "" && linkPage === "index.html")
+    ) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// form validation
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+
+  if (!form) return;
+
+  const nameInput = document.getElementById("contactName");
+  const emailInput = document.getElementById("contactEmail");
+  const subjectInput = document.getElementById("contactSubject");
+  const messageInput = document.getElementById("contactMessage");
+  const termsInput = document.getElementById("contactTerms");
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const subjectError = document.getElementById("subjectError");
+  const messageError = document.getElementById("messageError");
+  const termsError = document.getElementById("termsError");
+
+  const successMessage = document.getElementById("successMessage");
+  const submitButton = form.querySelector(".contact-submit");
+
+  // Validation Functions
+
+  function validateName() {
+    const name = nameInput.value.trim();
+
+    if (name === "") {
+      nameError.textContent = "Please enter your name.";
+      nameInput.classList.add("invalid");
+      nameInput.classList.remove("valid");
+      return false;
+    }
+
+    if (name.length < 2) {
+      nameError.textContent = "Name must be at least 2 characters.";
+      nameInput.classList.add("invalid");
+      nameInput.classList.remove("valid");
+      return false;
+    }
+
+    nameError.textContent = "";
+    nameInput.classList.remove("invalid");
+    nameInput.classList.add("valid");
+
+    return true;
+  }
+
+  function validateEmail() {
+    const email = emailInput.value.trim();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email === "") {
+      emailError.textContent = "Please enter your email.";
+      emailInput.classList.add("invalid");
+      emailInput.classList.remove("valid");
+      return false;
+    }
+
+    if (!emailPattern.test(email)) {
+      emailError.textContent = "Please enter a valid email address.";
+      emailInput.classList.add("invalid");
+      emailInput.classList.remove("valid");
+      return false;
+    }
+
+    emailError.textContent = "";
+    emailInput.classList.remove("invalid");
+    emailInput.classList.add("valid");
+
+    return true;
+  }
+
+  function validateSubject() {
+    const subject = subjectInput.value.trim();
+
+    if (subject === "") {
+      subjectError.textContent = "Please enter a subject.";
+      subjectInput.classList.add("invalid");
+      subjectInput.classList.remove("valid");
+      return false;
+    }
+
+    if (subject.length < 3) {
+      subjectError.textContent = "Subject must be at least 3 characters.";
+      subjectInput.classList.add("invalid");
+      subjectInput.classList.remove("valid");
+      return false;
+    }
+
+    subjectError.textContent = "";
+    subjectInput.classList.remove("invalid");
+    subjectInput.classList.add("valid");
+
+    return true;
+  }
+
+  function validateMessage() {
+    const message = messageInput.value.trim();
+
+    if (message === "") {
+      messageError.textContent = "Please enter your message.";
+      messageInput.classList.add("invalid");
+      messageInput.classList.remove("valid");
+      return false;
+    }
+
+    if (message.length < 10) {
+      messageError.textContent = "Message must be at least 10 characters.";
+      messageInput.classList.add("invalid");
+      messageInput.classList.remove("valid");
+      return false;
+    }
+
+    messageError.textContent = "";
+    messageInput.classList.remove("invalid");
+    messageInput.classList.add("valid");
+
+    return true;
+  }
+
+  function validateTerms() {
+    if (!termsInput.checked) {
+      termsError.textContent = "Please accept the terms and conditions.";
+      return false;
+    }
+
+    termsError.textContent = "";
+
+    return true;
+  }
+
+  // Validate while typing
+
+  nameInput.addEventListener("input", validateName);
+  emailInput.addEventListener("input", validateEmail);
+  subjectInput.addEventListener("input", validateSubject);
+  messageInput.addEventListener("input", validateMessage);
+
+  termsInput.addEventListener("change", validateTerms);
+
+  // Form Submit
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    successMessage.classList.remove("show");
+
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isSubjectValid = validateSubject();
+    const isMessageValid = validateMessage();
+    const areTermsValid = validateTerms();
+
+    const isFormValid =
+      isNameValid &&
+      isEmailValid &&
+      isSubjectValid &&
+      isMessageValid &&
+      areTermsValid;
+
+    if (!isFormValid) {
+      return;
+    }
+
+    // Disable button while processing
+    submitButton.disabled = true;
+
+    submitButton.querySelector("span").textContent = "Sending...";
+
+    // Simulate sending
+    setTimeout(() => {
+      successMessage.classList.add("show");
+
+      form.reset();
+
+      // Remove validation styles
+      [nameInput, emailInput, subjectInput, messageInput].forEach((input) => {
+        input.classList.remove("valid");
+        input.classList.remove("invalid");
+      });
+
+      submitButton.disabled = false;
+
+      submitButton.querySelector("span").textContent = "Send Message";
+    }, 1000);
+  });
+});
+
+// Contact
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+
+  if (!form) return;
+
+  const name = document.getElementById("contactName");
+  const email = document.getElementById("contactEmail");
+  const subject = document.getElementById("contactSubject");
+  const message = document.getElementById("contactMessage");
+  const terms = document.getElementById("contactTerms");
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const subjectError = document.getElementById("subjectError");
+  const messageError = document.getElementById("messageError");
+  const termsError = document.getElementById("termsError");
+
+  const successMessage = document.getElementById("successMessage");
+  const submitButton = document.getElementById("contactSubmit");
+
+  // Name validation
+  function validateName() {
+    const value = name.value.trim();
+
+    if (value === "") {
+      nameError.textContent = "Please enter your name.";
+      name.classList.add("invalid");
+      return false;
+    }
+
+    if (value.length < 2) {
+      nameError.textContent = "Name must be at least 2 characters.";
+      name.classList.add("invalid");
+      return false;
+    }
+
+    nameError.textContent = "";
+    name.classList.remove("invalid");
+    name.classList.add("valid");
+
+    return true;
+  }
+
+  // Email validation
+  function validateEmail() {
+    const value = email.value.trim();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (value === "") {
+      emailError.textContent = "Please enter your email.";
+      email.classList.add("invalid");
+      return false;
+    }
+
+    if (!emailPattern.test(value)) {
+      emailError.textContent = "Please enter a valid email address.";
+      email.classList.add("invalid");
+      return false;
+    }
+
+    emailError.textContent = "";
+    email.classList.remove("invalid");
+    email.classList.add("valid");
+
+    return true;
+  }
+
+  // Subject validation
+  function validateSubject() {
+    const value = subject.value.trim();
+
+    if (value === "") {
+      subjectError.textContent = "Please enter a subject.";
+      subject.classList.add("invalid");
+      return false;
+    }
+
+    if (value.length < 3) {
+      subjectError.textContent = "Subject must be at least 3 characters.";
+      subject.classList.add("invalid");
+      return false;
+    }
+
+    subjectError.textContent = "";
+    subject.classList.remove("invalid");
+    subject.classList.add("valid");
+
+    return true;
+  }
+
+  // Message validation
+  function validateMessage() {
+    const value = message.value.trim();
+
+    if (value === "") {
+      messageError.textContent = "Please enter your message.";
+      message.classList.add("invalid");
+      return false;
+    }
+
+    if (value.length < 10) {
+      messageError.textContent = "Message must be at least 10 characters.";
+      message.classList.add("invalid");
+      return false;
+    }
+
+    messageError.textContent = "";
+    message.classList.remove("invalid");
+    message.classList.add("valid");
+
+    return true;
+  }
+
+  // Terms validation
+  function validateTerms() {
+    if (!terms.checked) {
+      termsError.textContent = "Please accept the terms and conditions.";
+      return false;
+    }
+
+    termsError.textContent = "";
+
+    return true;
+  }
+
+  // Validate while typing
+  name.addEventListener("input", validateName);
+  email.addEventListener("input", validateEmail);
+  subject.addEventListener("input", validateSubject);
+  message.addEventListener("input", validateMessage);
+  terms.addEventListener("change", validateTerms);
+
+  // Submit
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    successMessage.classList.remove("show");
+
+    const validName = validateName();
+    const validEmail = validateEmail();
+    const validSubject = validateSubject();
+    const validMessage = validateMessage();
+    const validTerms = validateTerms();
+
+    if (
+      !validName ||
+      !validEmail ||
+      !validSubject ||
+      !validMessage ||
+      !validTerms
+    ) {
+      return;
+    }
+
+    // Disable button
+    submitButton.disabled = true;
+
+    submitButton.querySelector("span").textContent = "Sending...";
+
+    // Demo submission
+    setTimeout(() => {
+      successMessage.classList.add("show");
+
+      form.reset();
+
+      name.classList.remove("valid");
+      email.classList.remove("valid");
+      subject.classList.remove("valid");
+      message.classList.remove("valid");
+
+      submitButton.disabled = false;
+
+      submitButton.querySelector("span").textContent = "Send Message";
+    }, 1000);
+  });
+});

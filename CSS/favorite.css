@@ -1,162 +1,152 @@
 /*
-   =====================================================
    VIBE — FAVORITES PAGE
    Page-specific styles only.
    IMPORTANT: Global colors come from colors.css,
    shared component styles come from explore.css
-   =====================================================
 */
 
-/* =====================================================
-   HERO STATS
-===================================================== */
+/*   HERO STATS*/
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }
 
 .favorite-stat-value {
-    color: #570e46 !important;
+  color: #570e46 !important;
 }
 /* 
 .explore-title, */
 .explore-title span {
-    color: var(--vibe-secondary) !important;
+  color: var(--vibe-secondary) !important;
 }
 .explore-section-title {
-    color: #9b0b62 !important;
+  color: #9b0b62 !important;
 }
 
 .favorite-hero {
-    padding-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 .favorite-stats {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    margin-top: 34px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-top: 34px;
 }
 
 .favorite-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .favorite-stat-value {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: var(--vibe-text);
-    letter-spacing: -1px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--vibe-text);
+  letter-spacing: -1px;
 }
 
 .favorite-stat-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--vibe-muted);
-    letter-spacing: 0.5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--vibe-muted);
+  letter-spacing: 0.5px;
 }
 
 .favorite-stat-divider {
-    width: 1px;
-    height: 34px;
-    background: var(--vibe-border);
+  width: 1px;
+  height: 34px;
+  background: var(--vibe-border);
 }
 
-/* =====================================================
-   TOOLBAR
-===================================================== */
+/*   TOOLBAR*/
 
 .favorite-search {
-    max-width: 280px;
+  max-width: 280px;
 }
 
 .favorite-search .explore-search-input {
-    height: 46px;
-    padding-left: 44px;
-    font-size: 0.85rem;
+  height: 46px;
+  padding-left: 44px;
+  font-size: 0.85rem;
 }
 
 .favorite-search .explore-search-icon {
-    left: 17px;
-    font-size: 0.9rem;
+  left: 17px;
+  font-size: 0.9rem;
 }
 
 .favorite-clear-btn {
-    display: flex;
-    align-items: center;
-    height: 46px;
-    padding: 0 16px;
-    border: 1px solid var(--vibe-border);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.025);
-    color: var(--vibe-muted);
-    font-size: 0.82rem;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 16px;
+  border: 1px solid var(--vibe-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--vibe-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: 0.25s ease;
 }
 
 .favorite-clear-btn:hover {
-    color: var(--vibe-secondary);
-    border-color: var(--vibe-border-hover);
-    background: rgba(236, 72, 153, 0.08);
+  color: var(--vibe-secondary);
+  border-color: var(--vibe-border-hover);
+  background: rgba(236, 72, 153, 0.08);
 }
 
-/* =====================================================
-   FAVORITE CARD — heart is always filled here
-===================================================== */
+/*   FAVORITE CARD — heart is always filled here*/
 
 .explore-favorite-btn.is-favorite {
-    color: var(--vibe-secondary);
+  color: var(--vibe-secondary);
 }
 
 /* Small removal animation so the grid doesn't just "jump" */
 .explore-song-card.is-removing {
-    opacity: 0;
-    transform: scale(0.92);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
-/* =====================================================
-   NOW PLAYING BAR — fixes extra empty space above footer
-===================================================== */
+/*   NOW PLAYING BAR — fixes extra empty space above footer*/
 
 .now-playing-card {
-    /* position: fixed; */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 main {
-    padding-bottom: 110px;
+  padding-bottom: 110px;
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/*   MOBILE*/
 
 @media (max-width: 767.98px) {
-    .favorite-stats {
-        gap: 18px;
-        margin-top: 26px;
-    }
-    .favorite-stat-value {
-        font-size: 1.5rem;
-    }
-    .favorite-search {
-        max-width: 100%;
-        flex: 1 1 100%;
-    }
+  .favorite-stats {
+    gap: 18px;
+    margin-top: 26px;
+  }
+  .favorite-stat-value {
+    font-size: 1.5rem;
+  }
+  .favorite-search {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
 }
 
 /* =========================
@@ -164,39 +154,39 @@ main {
 ========================= */
 
 body.dark-mode {
-    background-color: #0f172a;
-    color: #e2e8f0;
+  background-color: #0f172a;
+  color: #e2e8f0;
 }
 
 body.dark-mode .explore-title,
 body.dark-mode .explore-title span {
-    color: #ff4d6d;
+  color: #ff4d6d;
 }
 
 body.dark-mode .favorite-stat-label {
-    color: #94a3b8;
+  color: #94a3b8;
 }
 
 body.dark-mode .favorite-stat-divider {
-    background: #334155;
+  background: #334155;
 }
 
 body.dark-mode .explore-song-card {
-    background: #1e293b;
+  background: #1e293b;
 }
 
 body.dark-mode .explore-search-input {
-    background: #1e293b;
-    color: white;
-    border-color: #334155;
+  background: #1e293b;
+  color: white;
+  border-color: #334155;
 }
 
 body.dark-mode .favorite-clear-btn {
-    background: rgba(255, 255, 255, 0.05);
-    color: #e2e8f0;
-    border-color: #334155;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  border-color: #334155;
 }
 
 body.dark-mode .explore-favorite-btn.is-favorite {
-    color: #ff4d6d;
+  color: #ff4d6d;
 }

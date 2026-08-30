@@ -479,3 +479,29 @@ songs.forEach(song => {
     });
 
 });
+
+
+// active Navbar
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPage = window.location.pathname
+      .split("/")
+      .pop()
+      .toLowerCase();
+
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach((link) => {
+      const linkPage = link
+        .getAttribute("href")
+        .split("/")
+        .pop()
+        .toLowerCase();
+
+      if (
+        linkPage === currentPage ||
+        (currentPage === "" && linkPage === "index.html")
+      ) {
+        link.classList.add("active");
+      }
+    });
+  });
