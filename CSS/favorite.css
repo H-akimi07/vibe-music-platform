@@ -134,42 +134,43 @@
     }
 }
 /* DARK CODES */
-body.dark-mode {
+
+/* body.dark-mode {
     background-color: #0f172a;
     color: #e2e8f0;
-}
+} */
 
 /* Titles */
-body.dark-mode .explore-title,
+/* body.dark-mode .explore-title,
 body.dark-mode .favorite-stat-value {
     color: #ffffff !important;
-}
+} */
 
 /* Stats label */
-body.dark-mode .favorite-stat-label {
+/* body.dark-mode .favorite-stat-label {
     color: #94a3b8;
-}
+} */
 
 /* Divider */
-body.dark-mode .favorite-stat-divider {
+/* body.dark-mode .favorite-stat-divider {
     background: #334155;
-}
+} */
 
 /* Cards */
-body.dark-mode .explore-song-card {
+/* body.dark-mode .explore-song-card {
     background: #1e293b;
-}
+} */
 
 /* Search input */
-body.dark-mode .explore-search-input {
+/* body.dark-mode .explore-search-input {
     background: #1e293b;
     color: white;
     border-color: #334155;
-}
+} */
 
 /* Buttons */
-body.dark-mode .favorite-clear-btn {
+/* body.dark-mode .favorite-clear-btn {
     background: rgba(255, 255, 255, 0.05);
     color: #e2e8f0;
     border-color: #334155;
-}
+} */
