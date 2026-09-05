@@ -153,3 +153,81 @@
         </section>
 
 
+
+        <!-- ==================================================
+         FAVORITES SECTION
+    =================================================== -->
+
+        <section class="explore-music py-5">
+
+            <div class="container">
+
+
+                <!-- HEADER -->
+
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+
+
+                    <div>
+
+                        <span class="explore-section-label">
+                            LIBRARY
+                        </span>
+
+                        <h2 class="explore-section-title mb-0 text-dark">
+                            Your favorites
+                        </h2>
+
+                    </div>
+
+
+                    <div class="d-flex flex-wrap align-items-center gap-3">
+
+                        <div class="explore-search favorite-search">
+
+                            <i class="bi bi-search explore-search-icon"></i>
+
+                            <input type="search" id="favSearchInput" class="form-control explore-search-input"
+                                placeholder="Search your favorites..." autocomplete="off">
+
+                        </div>
+
+
+                        <select id="favSortSelect" class="form-select explore-sort">
+
+                            <option value="recent">
+                                Recently Added
+                            </option>
+
+                            <option value="az">
+                                A — Z
+                            </option>
+
+                            <option value="shortest">
+                                Shortest
+                            </option>
+
+                            <option value="longest">
+                                Longest
+                            </option>
+
+                        </select>
+
+
+                        <button id="clearFavoritesBtn" type="button" class="btn favorite-clear-btn">
+
+                            <i class="bi bi-trash3 me-1"></i>
+
+                            Clear all
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <p id="favResultCount" class="explore-result-count mb-4">
+                    0 tracks
+                </p>
+
