@@ -10,6 +10,15 @@
 /* =====================================================
    HERO STATS
 ===================================================== */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
 
 .favorite-stat-value {
     color: #570e46 !important;
