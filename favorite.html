@@ -311,3 +311,78 @@
 
 
     </main>
+
+<div class="now-playing-card">
+
+    <div class="now-playing-cover">
+        <img id="playerCover"
+             src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80"
+             alt="Now Playing">
+    </div>
+
+    <div class="now-playing-info">
+
+        <span class="explore-section-label">
+            NOW PLAYING
+        </span>
+
+        <h3 id="playerTitle">
+            Select a song
+        </h3>
+
+        <p id="playerArtist">
+            VIBE
+        </p>
+
+        <div class="player-progress">
+
+            <span id="currentTime">0:00</span>
+
+            <input
+                type="range"
+                id="progressBar"
+                min="0"
+                max="100"
+                value="0">
+
+            <span id="duration">0:00</span>
+
+        </div>
+
+        <div class="player-buttons">
+
+            <button onclick="previousSong()">
+                <i class="bi bi-skip-backward-fill"></i>
+            </button>
+
+            <button
+                id="playPauseBtn"
+                onclick="togglePlay()"
+                class="main-play">
+                <i class="bi bi-play-fill"></i>
+            </button>
+
+            <button onclick="nextSong()">
+                <i class="bi bi-skip-forward-fill"></i>
+            </button>
+
+            <div class="volume">
+
+                <i class="bi bi-volume-up"></i>
+
+                <input
+                    type="range"
+                    id="volumeBar"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="1">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<audio id="audioPlayer"></audio>
